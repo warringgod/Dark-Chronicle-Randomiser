@@ -61,6 +61,7 @@ I believe Item 1 is stolen item, item 2 is common, item 3 is rare maybe? test.
 
 """
 #Variables
+
 Change_HP = True
 Min_HP_Range = 50
 Max_HP_Range = 150
@@ -574,8 +575,8 @@ https://darkcloud.fandom.com/wiki/Dark_Chronicle_shops seems to suggest that the
 ? Price and Shops Set 12 = 9B56000
 ? Price and Shops Set 13 = 9B58800
 ? Price and Shops Set 14 = 9B5B000
-? Price and Shops Set 14 = 9B5E000
-? Price and Shops Set 14 = 9B61000
+? Price and Shops Set 15 = 9B5E000
+? Price and Shops Set 16 = 9B61000
 
 
 Chapter 1 Prices and Shops? = 9B4E800
