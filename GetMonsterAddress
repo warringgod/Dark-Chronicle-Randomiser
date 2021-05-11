@@ -1,0 +1,34 @@
+def Get_Address(HP_Address, attribute):
+    Card_HP_Address = int(HP_Address)
+
+    if attribute == "HP":
+        offset = int(0x00)
+    elif attribute == "ABS":
+        offset = int(0x06)
+    elif attribute == "GILDA":
+        offset = int(0x08)
+    elif attribute == "RAGE":
+        offset = int(0x10)
+    elif attribute == "ATK":
+        offset = int(0x16)
+    elif attribute == "DEF":
+        offset = int(0x18)
+    elif attribute == "ITEM1":
+        offset = int(0x50)
+    elif attribute == "ITEM2":
+        offset = int(0x52)
+    elif attribute == "ITEM3":
+        offset = int(0x54)
+
+    SumInt = Card_HP_Address + offset
+    SumHex = [hex(SumInt)]
+    return SumHex
+
+print(Get_Address(0X2F3368,"HP"))
+print(Get_Address(0X2F3368,"ABS"))
+print(Get_Address(0X2F3368,"GILDA"))
+print(Get_Address(0X2F3368,"ATK"))
+print(Get_Address(0X2F3368,"DEF"))
+print(Get_Address(0X2F3368,"ITEM1"))
+print(Get_Address(0X2F3368,"ITEM2"))
+print(Get_Address(0X2F3368,"ITEM3"))
