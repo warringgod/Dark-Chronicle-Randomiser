@@ -5,9 +5,7 @@
 --------------------------------
 #How to Use
 
-1. Download Simple Randomizer Maker https://github.com/Mips96/SimpleRandomizerMaker/releases
-2. Put the Randomizer.py file from this Github into the above folder, on the same level as the .exe file (delete the tutorial folder that will be there already)
-3. Run the .exe and click on "Load File" button, finding your DC2 rom ( I know this works with USA rom https://cdromance.com/ps2-iso/dark-cloud-2-usa/)
+1. Run the .exe and click on "Load File" button, finding your DC2 rom ( I know this works with USA rom https://cdromance.com/ps2-iso/dark-cloud-2-usa/)
    Your Window may freeze, and take a minute or more to actually randomise, as there is a lot of stuff to change in the 4GB rom, but it'll work.
    
 * Because I'm unable to create a UI properly, If you want to change the Min MAX value of the enemies for a hard/easy mode playthrough, you can edit directly the randomizer.py file, the Seed Functionality probably doesn't work either, sorry.
@@ -32,6 +30,9 @@ Changes I'd like to make, if i could figure out how to do them (someone please h
 * Buff Monicas monsters, because they suck ( or increase EXP gain for it)
 * Rando inventions ( So that 2/3 of the components are the same, but 1/3 is different so it isnt crazy), possibly rando photos instead.
 * Change Whether it's a Sealed Dungeon or not.
+
+Special Thanks to GateGuy for making the SRM, even if i'm not using it properly. 
+Simple Randomizer Maker https://github.com/Mips96/SimpleRandomizerMaker/releases
 
 contact me on alastorlion@hotmail.co.uk if you want to help/if there are any issues.
 Alternatively you can post an issue here
