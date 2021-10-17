@@ -16,53 +16,16 @@ def value(name):
 ########################
 
 Program_Name = "Dark Chronicle Randomiser"
-Rom_Name = "DarkCloud2"
+Rom_Name = "DC2 ROM Location"
 Rom_File_Format = "iso" # Rom file format (nes, gba, etc.)
 About_Page_Text = ""
 Timeout = 10
 Slow_Mode = False
 
-# Example below is addresses for the dark 0x2f4521cloud 2 USA rom, and how the statistics offsets are related to hp ( in hex)
-"""
-Count Balloon = 2F4521
-HP = 2F4560
-ABS = 2F4566
-Gilda = 2F4568
-Attacks to Break = 2F4570
-ATK = 2F4576
-DEF = 2F4578
-Wrench Effectiveness % = 2F458C
-Gun Effectiveness % = 2F458E
-Beam Effectiveness % = 2F4590
-Grenade Effectiveness % = 2F4592
-Sword Effectiveness % = 2F4594
-Armband Effectiveness % = 2F4596
-Item 1 = 2F45B0
-Item 2 = 2F45B2
-Item 3 = 2F45B4
-
-HP = HP + 0
-ABS = HP + 06
-Gilda = HP + 08
-Attacks to Break = HP + 10
-ATK = HP + 16
-DEF = HP + 18
-WRENCH % = HP +2C
-GUN % = HP +2E
-BEAM % = HP + 30
-GRENADE = HP + 32
-SWORD = HP + 34
-ARMBAND = HP +36
-ITEM 1 = HP + 50
-ITEM 2 = HP + 52
-ITEM 3 = HP + 54
-
-I believe Item 1 is stolen item, item 2 is common, item 3 is rare maybe? test.
-
-"""
 #Variables , these are all %'s of base values, whole numbers only, applies to all monsters
 # maybe if there is demand to make it based on dungeon i'd make that
 
+##CHANGE ME##
 Change_HP = True
 Min_HP_Range = 100
 Max_HP_Range = 100
@@ -82,6 +45,7 @@ Max_ATK_Range = 100
 Change_DEF = True
 Min_DEF_Range = 100
 Max_DEF_Range = 100
+##CHANGE ME#
 
 #Constants
 
@@ -136,6 +100,7 @@ tier7chests = [111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,1
 tier8chests = [186,187,188,190,191,192,193,194,195,196,197,189,295,198,199,388,389,296,384]
 
 """
+ITEM LIST NUMBER TO ITEM
 1,"Battle Wrench";
 2,"Drill Wrench";
 3,"Smash Wrench";
@@ -625,6 +590,45 @@ Shop 28				9B3AD3B	G-Parts (Future)
 Shop 29				9B3AD64	G-Tools (Future)
 Shop 30				9B3AD8F	G-Weapons (Future)
 Shop 31				9B3ADB7	Conda
+
+"""
+
+# Example below is addresses for the dark 0x2f4521cloud 2 USA rom, and how the statistics offsets are related to hp ( in hex) FOR MONSTERS
+"""
+Count Balloon = 2F4521
+HP = 2F4560
+ABS = 2F4566
+Gilda = 2F4568
+Attacks to Break = 2F4570
+ATK = 2F4576
+DEF = 2F4578
+Wrench Effectiveness % = 2F458C
+Gun Effectiveness % = 2F458E
+Beam Effectiveness % = 2F4590
+Grenade Effectiveness % = 2F4592
+Sword Effectiveness % = 2F4594
+Armband Effectiveness % = 2F4596
+Item 1 = 2F45B0
+Item 2 = 2F45B2
+Item 3 = 2F45B4
+
+HP = HP + 0
+ABS = HP + 06
+Gilda = HP + 08
+Attacks to Break = HP + 10
+ATK = HP + 16
+DEF = HP + 18
+WRENCH % = HP +2C
+GUN % = HP +2E
+BEAM % = HP + 30
+GRENADE = HP + 32
+SWORD = HP + 34
+ARMBAND = HP +36
+ITEM 1 = HP + 50
+ITEM 2 = HP + 52
+ITEM 3 = HP + 54
+
+I believe Item 1 is stolen item, item 2 is common, item 3 is rare maybe? test.
 
 """
 
@@ -18838,87 +18842,6 @@ Attributes = [
 		addresses=[0x9b3ac0b,0x9b3d418,0x9b3fc2d,0x9b4244b,0x9b44c5e,0x9b47c6a,0x9b4ac6e,0x9b4dcf2,0x9b50c03,0x9b53410,0x9b55c25,0x9b58443,0x9b5ac56,0x9b5d462,0x9b60466,0x9b634ea],
 		number_of_bytes=3,
 		possible_values=ChooseShopItems("ROSA"),
-		is_little_endian=False, ),
-
-# 23 CEDRIC SHOP
-# CEDRIC ITEM POOL [246,137,138,141,146,149,152,156,158,159,166,422,423]
-	Attribute(
-		name="CEDRIC ITEM 1",
-		addresses=[0x9b3ac31,0x9b50c29,0x9b53436,0x9b3d43e,0x9b3fc53,0x9b55c4b,0x9b58469,0x9b42471,0x9b44c84,0x9b5ac7c,0x9b5d488,0x9b47c90,0x9b4ac94,0x9b4dd18,0x9b6048c,0x9b63510],
-		number_of_bytes=3,
-		possible_values=ChooseShopItems("CEDRIC"),
-		is_little_endian=False, ),
-	Attribute(
-		name="CEDRIC ITEM 2",
-		addresses=[0x9b3ac35,0x9b50c2d,0x9b5343a,0x9b3d442,0x9b3fc57,0x9b55c4f,0x9b5846d,0x9b42475,0x9b44c88,0x9b5ac80,0x9b5d48c,0x9b47c94,0x9b4ac98,0x9b4dd1c,0x9b60490,0x9b63514],
-		number_of_bytes=3,
-		possible_values=ChooseShopItems("CEDRIC"),
-		is_little_endian=False, ),
-	Attribute(
-		name="CEDRIC ITEM 3",
-		addresses=[0x9b3ac39,0x9b50c31,0x9b5343e,0x9b3d446,0x9b3fc5b,0x9b55c53,0x9b58471,0x9b42479,0x9b44c8c,0x9b5ac84,0x9b5d490,0x9b47c98,0x9b4ac9c,0x9b4dd20,0x9b60494,0x9b63518],
-		number_of_bytes=3,
-		possible_values=ChooseShopItems("CEDRIC"),
-		is_little_endian=False, ),
-	Attribute(
-		name="CEDRIC ITEM 4",
-		addresses=[0x9b53442,0x9b3d44a,0x9b3fc5f,0x9b55c57,0x9b58475,0x9b4247d,0x9b44c90,0x9b5ac88,0x9b5d494,0x9b47c9c,0x9b4aca0,0x9b4dd24,0x9b60498,0x9b6351c],
-		number_of_bytes=3,
-		possible_values=ChooseShopItems("CEDRIC"),
-		is_little_endian=False, ),
-	Attribute(
-		name="CEDRIC ITEM 5",
-		addresses=[0x9b53446,0x9b3d44e,0x9b3fc63,0x9b55c5b,0x9b58479,0x9b42481,0x9b44c94,0x9b5ac8c,0x9b5d498,0x9b47ca0,0x9b4aca4,0x9b4dd28,0x9b6049c,0x9b63520],
-		number_of_bytes=3,
-		possible_values=ChooseShopItems("CEDRIC"),
-		is_little_endian=False, ),
-	Attribute(
-		name="CEDRIC ITEM 6",
-		addresses=[0x9b3fc67,0x9b55c5f,0x9b5847d,0x9b42485,0x9b44c98,0x9b5ac90,0x9b5d49c,0x9b47ca4,0x9b4aca8,0x9b4dd2c,0x9b604a0,0x9b63524],
-		number_of_bytes=3,
-		possible_values=ChooseShopItems("CEDRIC"),
-		is_little_endian=False, ),
-	Attribute(
-		name="CEDRIC ITEM 7",
-		addresses=[0x9b58481,0x9b42489,0x9b44c9c,0x9b5ac94,0x9b5d4a0,0x9b47ca8,0x9b4acac,0x9b4dd30,0x9b604a4,0x9b63528],
-		number_of_bytes=3,
-		possible_values=ChooseShopItems("CEDRIC"),
-		is_little_endian=False, ),
-	Attribute(
-		name="CEDRIC ITEM 8",
-		addresses=[0x9b58485,0x9b4248d,0x9b44ca0,0x9b5ac98,0x9b5d4a4,0x9b47cac,0x9b4acb0,0x9b4dd34,0x9b604a8,0x9b6352c],
-		number_of_bytes=3,
-		possible_values=ChooseShopItems("CEDRIC"),
-		is_little_endian=False, ),
-	Attribute(
-		name="CEDRIC ITEM 9",
-		addresses=[0x9b44ca4,0x9b5ac9c,0x9b5d4a8,0x9b47cb0,0x9b4acb4,0x9b4dd38,0x9b604ac,0x9b63530],
-		number_of_bytes=3,
-		possible_values=ChooseShopItems("CEDRIC"),
-		is_little_endian=False, ),
-	Attribute(
-		name="CEDRIC ITEM 10",
-		addresses=[0x9b5d4ac,0x9b47cb4,0x9b4acb8,0x9b4dd3c,0x9b604b0,0x9b6353],
-		number_of_bytes=3,
-		possible_values=ChooseShopItems("CEDRIC"),
-		is_little_endian=False, ),
-	Attribute(
-		name="CEDRIC ITEM 11",
-		addresses=[0x9b5d4b0,0x9b47cb8,0x9b4acbc,0x9b4dd40,0x9b604b4,0x9b63538],
-		number_of_bytes=3,
-		possible_values=ChooseShopItems("CEDRIC"),
-		is_little_endian=False, ),
-	Attribute(
-		name="CEDRIC ITEM 12",
-		addresses=[0x9b4acc0,0x9b4dd44,0x9b604b8,0x9b6353c],
-		number_of_bytes=3,
-		possible_values=ChooseShopItems("CEDRIC"),
-		is_little_endian=False, ),
-	Attribute(
-		name="CEDRIC ITEM 13",
-		addresses=[0x9b4acc4,0x9b4dd48,0x9b604bc,0x9b63540],
-		number_of_bytes=3,
-		possible_values=ChooseShopItems("CEDRIC"),
 		is_little_endian=False, ),
 
 # 24 WOODY TAILORS SHOP
