@@ -32,3 +32,6 @@ Changes I'd like to make, if i could figure out how to do them (someone please h
 * Buff Monicas monsters, because they suck ( or increase EXP gain for it)
 * Rando inventions ( So that 2/3 of the components are the same, but 1/3 is different so it isnt crazy), possibly rando photos instead.
 * Change Whether it's a Sealed Dungeon or not.
+
+contact me on alastorlion@hotmail.co.uk if you want to help/if there are any issues.
+Alternatively you can post an issue here
