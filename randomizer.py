@@ -27,23 +27,23 @@ Slow_Mode = False
 
 ##CHANGE ME##
 Change_HP = True
-Min_HP_Range = 100
-Max_HP_Range = 100
+Min_HP_Range = 80
+Max_HP_Range = 150
 
 Change_ABS = True
-Min_ABS_Range = 100
-Max_ABS_Range = 100
+Min_ABS_Range = 80
+Max_ABS_Range = 150
 
 Change_GILDA = True
-Min_GILDA_Range = 100
-Max_GILDA_Range = 100
+Min_GILDA_Range = 80
+Max_GILDA_Range = 150
 
 Change_ATK = True
-Min_ATK_Range = 100
-Max_ATK_Range = 100
+Min_ATK_Range = 80
+Max_ATK_Range = 150
 
 Change_DEF = True
-Min_DEF_Range = 100
+Min_DEF_Range = 80
 Max_DEF_Range = 100
 ##CHANGE ME#
 
@@ -98,12 +98,15 @@ tierfish = [310, 320, 321, 322, 323, 324, 325, 326, 327, 328, 329, 330, 331, 332
 tier1chests = [210,211,212,213,214,215,216,217,218,219,220,221,222,223,224,227,245,268,294,298,352,281]
 tier2chests = [228,229,230,231,232,233,234,235,236,275,276,237,238,239,240,241,242,243,244,226,280]
 tier3chests = [277,278,287,288,289,290,291,175,176,177,178,179,180,181,182,183,184,269,225]
-tier4chests = [310,312,313,314,315,316,317,318,319,299,300,253,254,255,256,257,301,292,270,274,279,282,283,284,285,293]
+tier4chests = [310,312,313,314,315,316,317,318,319,299,253,254,255,256,257,301,292,270,274,279,282,283,284,285,293]
 tier5chests = [286,381,320,321,322,323,324,325,326,327,328,329,330,331,332,333,334,335,272,297,304]
 tier6chests = [377,378,379,380,271,336,307,390,273,391,383,200,201,202,203,204,205,206,207,208,209]
 tier7chests = [111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,258,259,260,261,262,263,264,265,266,267]
 tier8chests = [186,187,188,190,191,192,193,194,195,196,197,189,295,198,199,388,389,296,384]
 
+
+previousShopName = "NULL"
+previousShopItems = []
 """
 ITEM LIST NUMBER TO ITEM
 1,"Battle Wrench";
@@ -401,7 +404,7 @@ ITEM LIST NUMBER TO ITEM
 297,"Treasure Chest Key";
 298,"Gun Repair Powder";
 299,"Crunchy Bread";
-300,"Crunchy Bread";
+300,"Crunchy Bread"; => doesn't work is broken
 301,"Roasted Chestnut";
 302,"Fishing Rod";
 303,"Lure Rod";
@@ -972,38 +975,62 @@ def concat(a,b,c):
 	string = int(string,16)
 	return string
 
+def concat5(a,b,c,d,e):
+	string = "0x" + str(a+30) + str(b+30) + str(c+30) + str(d+30) + str(e+30)
+	string = int(string,16)
+	return string
+
+
 def ChooseShopItems(Shop):
+	item_number = 0
 
-	x = random.randint(0, 100)
+	if previousShopName != Shop:
+		previousShopItems = [0]
 
-	if 0 <= x <= 29:
-		item_number = random.choice(tier1items)
-	elif 30 <= x <= 34:
-		item_number = random.choice(tierattachments)
-	elif 35 <= x <= 36:
-		item_number = random.choice(tierfish)
-	elif 37 <= x <= 39:
-		item_number = random.choice(tiergems)
-	elif 40 <= x <= 64:
-		item_number = random.choice(tier2items)
-	elif 65 <= x <= 69:
-		item_number = random.choice(tiercoins)
-	elif 70 <= x <= 74:
-		item_number = random.choice(tierclothes)
-	elif 75 <= x <= 80:
-		item_number = random.choice(tier3items)
-	elif 81 <= x <= 82:
-		item_number = random.choice(tierraregems)
-	elif 83 <= x <= 85:
-		item_number = random.choice(tier2ridepod)
-	elif 86 <= x <= 88:
-		item_number = random.choice(tier3ridepod)
-	elif 89 <= x <= 92:
-		item_number = random.choice(tier4ridepod)
-	elif 93 <= x <= 100:
-		item_number = random.choice(tier4chests)
+	while item_number in (previousShopItems):
 
-	y =	concat(fdig(item_number,1),fdig(item_number,2),fdig(item_number,3))
+		x = random.randint(0, 100)
+
+		if 0 <= x <= 29:
+			item_number = random.choice(tier1items)
+		elif 30 <= x <= 34:
+			item_number = random.choice(tierattachments)
+		elif 35 <= x <= 36:
+			item_number = random.choice(tierfish)
+		elif 37 <= x <= 39:
+			item_number = random.choice(tiergems)
+		elif 40 <= x <= 64:
+			item_number = random.choice(tier2items)
+		elif 65 <= x <= 69:
+			item_number = random.choice(tiercoins)
+		elif 70 <= x <= 74:
+			item_number = random.choice(tierclothes)
+		elif 75 <= x <= 80:
+			item_number = random.choice(tier3items)
+		elif 81 <= x <= 82:
+			item_number = random.choice(tierraregems)
+		elif 83 <= x <= 85:
+			item_number = random.choice(tier1chests)
+		elif 86 <= x <= 88:
+			item_number = random.choice(tier2chests)
+		elif 89 <= x <= 92:
+			item_number = random.choice(tier3chests)
+		elif 93 <= x <= 100:
+			item_number = random.choice(tier4chests)
+
+	print(item_number)
+
+	previousShopItems.append(item_number)
+
+	y = concat(fdig(item_number, 1), fdig(item_number, 2), fdig(item_number, 3))
+
+	return [y]
+
+def Change5DigitItemPrice(Price):
+
+	item_number = Price
+
+	y =	concat5(fdig(item_number,1),fdig(item_number,2),fdig(item_number,3),fdig(item_number,4),fdig(item_number,5))
 
 	return [y]
 
@@ -16388,19 +16415,19 @@ Attributes = [
 		is_little_endian=False, ),
 	Attribute(
 		name="MORTON ITEM 2",
-		addresses=[0x9b50856,0x9b5305f,0x9b55866,0x9b3a856,0x9b3d05f,0x9b5806f,0x9b3f866,0x9b5a86f,0x9b4206f,0x9b5d06f,0x9b6006f,0x9b4486f,0x9b4786f,0x9b4a86f,0x9b6307b,0x9b4d87b],
+		addresses=[0x9b5305f,0x9b55866,0x9b3a856,0x9b3d05f,0x9b5806f,0x9b3f866,0x9b5a86f,0x9b4206f,0x9b5d06f,0x9b6006f,0x9b4486f,0x9b4786f,0x9b4a86f,0x9b6307b,0x9b4d87b],
 		number_of_bytes=3,
 		possible_values=ChooseShopItems("MORTON"),
 		is_little_endian=False, ),
 	Attribute(
 		name="MORTON ITEM 3",
-		addresses=[0x9b5085a,0x9b53063,0x9b5586a,0x9b3a85a,0x9b3d063,0x9b58073,0x9b3f86a,0x9b5a873,0x9b42073,0x9b5d073,0x9b60073,0x9b44873,0x9b47873,0x9b4a873,0x9b6307f,0x9b4d87f],
+		addresses=[0x9b53063,0x9b5586a,0x9b3a85a,0x9b3d063,0x9b58073,0x9b3f86a,0x9b5a873,0x9b42073,0x9b5d073,0x9b60073,0x9b44873,0x9b47873,0x9b4a873,0x9b6307f,0x9b4d87f],
 		number_of_bytes=3,
 		possible_values=ChooseShopItems("MORTON"),
 		is_little_endian=False, ),
 	Attribute(
 		name="MORTON ITEM 4",
-		addresses=[0x9b5085e,0x9b53067,0x9b5586e,0x9b3a85e,0x9b3d067,0x9b58077,0x9b3f86e,0x9b5a877,0x9b42077,0x9b5d077,0x9b60077,0x9b44877,0x9b47877,0x9b4a877,0x9b63083,0x9b4d883],
+		addresses=[0x9b53067,0x9b5586e,0x9b3a85e,0x9b3d067,0x9b58077,0x9b3f86e,0x9b5a877,0x9b42077,0x9b5d077,0x9b60077,0x9b44877,0x9b47877,0x9b4a877,0x9b63083,0x9b4d883],
 		number_of_bytes=3,
 		possible_values=ChooseShopItems("MORTON"),
 		is_little_endian=False, ),
@@ -16979,6 +17006,7 @@ Attributes = [
 # GERALD ITEM POOL [10,24,26,28,36]
 
 # 15 BRUNO SHOP
+# HOLY WATER NOT RANDOMISED TO PREVENT SOFTLOCK WITH GORDON
 # BRUNO ITEM POOL [275,276,277,278]
 	Attribute(
 		name="BRUNO ITEM 1",
@@ -16986,12 +17014,7 @@ Attributes = [
 		number_of_bytes=3,
 		possible_values=ChooseShopItems("BRUNO"),
 		is_little_endian=False, ),
-	Attribute(
-		name="BRUNO ITEM 2",
-		addresses=[0x9b3aa92,0x9b3d29b,0x9b3faad,0x9b422c4,0x9b44ad3,0x9b47adb,0x9b4aadf,0x9b4db47,0x9b50a8a,0x9b53293,0x9b55aa5,0x9b582bc,0x9b5aacb,0x9b5d2d3,0x9b602d7,0x9b6333f],
-		number_of_bytes=3,
-		possible_values=ChooseShopItems("BRUNO"),
-		is_little_endian=False, ),
+#addresses=[0x9b3aa92,0x9b3d29b,0x9b3faad,0x9b422c4,0x9b44ad3,0x9b47adb,0x9b4aadf,0x9b4db47,0x9b50a8a,0x9b53293,0x9b55aa5,0x9b582bc,0x9b5aacb,0x9b5d2d3,0x9b602d7,0x9b6333f],
 	Attribute(
 		name="BRUNO ITEM 3",
 		addresses=[0x9b3aa96,0x9b3d29f,0x9b3fab1,0x9b422c8,0x9b44ad7,0x9b47adf,0x9b4aae3,0x9b4db4b,0x9b50a8e,0x9b53297,0x9b55aa9,0x9b582c0,0x9b5aacf,0x9b5d2d7,0x9b602db,0x9b63343],
@@ -17346,24 +17369,6 @@ Attributes = [
 		number_of_bytes=3,
 		possible_values=ChooseShopItems("WOODY TAILORS"),
 		is_little_endian=False, ),
-	Attribute(
-		name="WOODY TAILORS ITEM 6",
-		addresses=[0x9b3ac6f,0x9b3d484,0x9b3fc9d,0x9b424c3,0x9b44cda,0x9b47cee,0x9b4acfa,0x9b4dd7e,0x9b50c67,0x9b5347c,0x9b55c95,0x9b584bb,0x9b5acd2,0x9b5d4e6,0x9b604f2,0x9b63576],
-		number_of_bytes=3,
-		possible_values=ChooseShopItems("WOODY TAILORS"),
-		is_little_endian=False, ),
-	Attribute(
-		name="WOODY TAILORS ITEM 7",
-		addresses=[0x9b3ac73,0x9b3d488,0x9b3fca1,0x9b424c7,0x9b44cde,0x9b47cf2,0x9b4acfe,0x9b4dd82,0x9b50c6b,0x9b53480,0x9b55c99,0x9b584bf,0x9b5acd6,0x9b5d4ea,0x9b604f6,0x9b6357a],
-		number_of_bytes=3,
-		possible_values=ChooseShopItems("WOODY TAILORS"),
-		is_little_endian=False, ),
-	Attribute(
-		name="WOODY TAILORS ITEM 8",
-		addresses=[0x9b3ac77,0x9b3d48c,0x9b3fca5,0x9b424cb,0x9b44ce2,0x9b47cf6,0x9b4ad02,0x9b4dd86,0x9b50c6f,0x9b53484,0x9b55c9d,0x9b584c3,0x9b5acda,0x9b5d4ee,0x9b604fa,0x9b6357e],
-		number_of_bytes=3,
-		possible_values=ChooseShopItems("WOODY TAILORS"),
-		is_little_endian=False, ),
 
 # 25 JURAK ARMS SHOP
 # JURAK ARMS ITEM POOL [17,23,25,41,47,49,73,201,294,298,352] (201 IS REPLACED WITH 47 IN CHAPTER 5 ONWARDS)
@@ -17522,6 +17527,40 @@ Attributes = [
 		addresses=[0x9b3ad7c,0x9b3d599,0x9b3fdb5,0x9b425e4,0x9b44dfd,0x9b47e15,0x9b4ae21,0x9b4dea5,0x9b50d74,0x9b53591,0x9b55dad,0x9b585dc,0x9b5adf5,0x9b5d60d,0x9b60619,0x9b6369d],
 		number_of_bytes=3,
 		possible_values=ChooseShopItems("G TOOLS"),
+		is_little_endian=False, ),
+
+# 35 POLLYS SHOP(AFTER SHE JOINS)
+# ITEM POOL [SHOP 35,219,220,221,268,425]
+	Attribute(
+		name="POLLY POST RECRUIT ITEM 1",
+		addresses=[0x9B3AEFB,0x9B3D718,0x9B3FF38,0x9B41FF0,0x9B4276B,0x9B44F95,0x9B47FB6,0x9B4AFC2,0x9B4E09E,0x9B50ECB,0x9B536E8,0x9B55F04,0x9B58733,0x9B5AF5D,0x9B5D77A,0x9B60786,0x9B6380A],
+		number_of_bytes=3,
+		possible_values=ChooseShopItems("POLLY POST RECRUIT"),
+		is_little_endian=False, ),
+	Attribute(
+		name="POLLY POST RECRUIT ITEM 2",
+		addresses=[0x9B3AEFF, 0x9B3D71C, 0x9B3FF3C,0x9B41FF4,0x9B4276F,0x9B44F99,0x9B47FBA,0x9B4AFC6,0x9B4E0A2,0x9B50ECF,0x9B536EC,0x9B55F08,0x9B58737,0x9B5AF61,0x9B5D77E,0x9B6078A,0x9B6380E],
+		number_of_bytes=3,
+		possible_values=ChooseShopItems("POLLY POST RECRUIT"),
+		is_little_endian=False, ),
+	Attribute(
+		name="POLLY POST RECRUIT ITEM 3",
+		addresses=[0x9B3AF03, 0x9B3D720, 0x9B3FF40, 0x9B41FF8, 0x9B42773, 0x9B44F9D, 0x9B47FBE, 0x9B4AFCA, 0x9B4E0A6,
+				   0x9B50ED3, 0x9B536F0, 0x9B55F0C, 0x9B5873B, 0x9B5AF65, 0x9B5D77C, 0x9B60794, 0x9B6381E],
+		number_of_bytes=3,
+		possible_values=ChooseShopItems("POLLY POST RECRUIT"),
+		is_little_endian=False, ),
+	Attribute(
+		name="POLLY POST RECRUIT ITEM 4",
+		addresses=[0X9B3AF07,0X9B3D724,0X9B3FF44,0x9B41FFC,0x9B42777,0x9B44FA1,0x9B47FC2,0x9B4AFCE,0x9B4E0AA,0x9B50ED7,0x9B536F4,0x9B55F10,0x9B5873F,0x9B5AF69,0x9B5D786,0x9B60792,0x9B63816],
+		number_of_bytes=3,
+		possible_values=ChooseShopItems("POLLY POST RECRUIT"),
+		is_little_endian=False, ),
+	Attribute(
+		name="POLLY POST RECRUIT ITEM 5",
+		addresses=[0x9B3AF0B,0x9B3D728,0x9B3FF48,0x9B42000,0x9B4277B,0x9B44FA5,0x9B47FC6,0x9B47FC6,0x9B4E0AE,0x9B50EDB,0x9B536F8,0x9B55F14,0x9B58743,0x9B5AF6D,0x9B5D78A,0x9B60796,0x9B6381A],
+		number_of_bytes=3,
+		possible_values=ChooseShopItems("POLLY POST RECRUIT"),
 		is_little_endian=False, ),
 
 # 30 G WEAPONS SHOP
@@ -22050,6 +22089,27 @@ Attributes = [
 		number_of_bytes=3,
 		possible_values=ChooseZelmiteChestDrops(),
 		is_little_endian=False, ),
+
+# changing item prices
+	Attribute(
+		name="Fruit Of Eden Price",
+		addresses=[0X9B39E6E,0X9B3EE6F,0X9B4166F,0X9B43E6F,0X9B46E6F,0X9B49E6F,0X9B4CE6F,0X9B4FE6E,0X9B5266E,0X9B54E6F,0X9B5766F,0X9B59E6F,0X9B5C66F,0X9B5F66F,0X9B6266F,0X9B3C66E],
+		number_of_bytes=5,
+		possible_values=Change5DigitItemPrice(10000),
+		is_little_endian=False, ),
+	Attribute(
+		name="Witch Parfait Price",
+		addresses=[0X111E5499,0X9B3CCC1,0X9B3F4C2,0X9B41CC2,0X9B444C2,0X9B474C2,0X9B4A4C2,0X9B4D4C2, 0X9B504C1,0X9B52CC1,0X9B554C2,0X9B57CC2,0X9B5A4C2,0X9B5CCC2,0X9B5FCC2,0X9B62CC2,0XF5DBDB9,0X111E5499],
+		number_of_bytes=5,
+		possible_values=Change5DigitItemPrice(10000),
+		is_little_endian=False, ),
+	Attribute(
+		name="Potato Pie Price",
+		addresses=[0x9B3A4B1,0x9B3CCB1,0x9B3F4B2,0x9B41CB2,0x9B444B2,0x9B474B2,0x9B4A4B2,0x9B4D4B2,0x9B504B1,0x9B52CB1,0x9B554B2,0x9B57CB2,0x9B5A4B2,0x9B5CCB2,0x9B5FCB2,0x9B62CB2,0xF5DBDA9,0x111E5489],
+		number_of_bytes=5,
+		possible_values=Change5DigitItemPrice(10000),
+		is_little_endian=False, ),
+
 ]
 Required_Rules = [
 
