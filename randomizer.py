@@ -116,7 +116,7 @@ tier8chests = [186,187,188,190,191,192,193,194,195,196,197,189,295,198,199,388,3
 previousShopName = "NULL"
 previousShopItems = []
 
-####################################################### Change_HP
+ ####################################################### Change_HP
 
 def Min_HP_Multiplier(base_hp):
 
@@ -210,7 +210,7 @@ def Max_DEF_Multiplier(base_DEF):
 
 ####################################################### ChooseSewerItems
 
-def ChooseSewerDrops():
+def ChooseSewerMonsterDrops():
 
 	x = random.randint(0, 100)
 
@@ -230,9 +230,9 @@ def ChooseSewerDrops():
 
 ####################################################### ChooseSewerItems
 
-####################################################### ChooseSindainItems
+####################################################### ChooseRWoodsMonsterDrops
 
-def ChooseSindainItems():
+def ChooseRWoodsMonsterDrops():
 
 	x = random.randint(0, 100)
 
@@ -256,11 +256,11 @@ def ChooseSindainItems():
 		item_number = random.choice(tier3ridepod)
 	return [item_number]
 
-####################################################### ChooseSindainItems
+####################################################### ChooseRWoodsMonsterDrops
 
-####################################################### ChooseValleyItems
+####################################################### ChooseStarlightMonsterDrops
 
-def ChooseValleyItems():
+def ChooseStarlightMonsterDrops():
 
 	x = random.randint(0, 100)
 
@@ -282,11 +282,11 @@ def ChooseValleyItems():
 		item_number = random.choice(tier4ridepod)
 	return [item_number]
 
-####################################################### ChooseValleyItems
+####################################################### ChooseStarlightMonsterDrops
 
-####################################################### ChooseVeniccioItems
+####################################################### ChooseCaveMonsterDrops
 
-def ChooseVeniccioItems():
+def ChooseCaveMonsterDrops():
 
 	x = random.randint(0, 100)
 
@@ -306,11 +306,11 @@ def ChooseVeniccioItems():
 		item_number = random.choice(tier4ridepod)
 	return [item_number]
 
-####################################################### ChooseVeniccioItems
+####################################################### ChooseCaveMonsterDrops
 
-####################################################### ChooseHeimItems
+####################################################### ChooseGundorMonsterDrops
 
-def ChooseHeimItems():
+def ChooseGundorMonsterDrops():
 
 	x = random.randint(0, 100)
 
@@ -334,12 +334,12 @@ def ChooseHeimItems():
 		item_number = random.choice(tier4ridepod)
 	return [item_number]
 
-####################################################### ChooseHeimItems
+####################################################### ChooseGundorMonsterDrops
 
 
-####################################################### ChooseMoonItems
+####################################################### ChooseMoonMonsterDrops
 
-def ChooseMoonItems():
+def ChooseMoonMonsterDrops():
 
 	x = random.randint(0, 100)
 
@@ -363,11 +363,11 @@ def ChooseMoonItems():
 		item_number = random.choice(tier5ridepod)
 	return [item_number]
 
-####################################################### ChooseMoonItems
+####################################################### ChooseMoonMonsterDrops
 
-####################################################### ChooseZelmiteItems
+####################################################### ChooseZelmiteMonsterDrops
 
-def ChooseZelmiteItems():
+def ChooseZelmiteMonsterDrops():
 
 	x = random.randint(0, 100)
 
@@ -391,33 +391,33 @@ def ChooseZelmiteItems():
 		item_number = random.choice(tier6ridepod)
 	return [item_number]
 
-####################################################### ChooseZelmiteItems
+####################################################### ChooseZelmiteMonsterDrops
 
-####################################################### ChooseItemDrops
+####################################################### ChooseMonsterDrops
 
-def ChooseItemDrops(Dungeon):
+def ChooseMonsterDrops(Dungeon):
 	item = 0
 	if Dungeon == "Sewer":
-		item = ChooseSewerDrops()
+		item = ChooseSewerMonsterDrops()
 	if Dungeon == "Sindain":
-		item = ChooseSindainItems()
+		item = ChooseRWoodsMonsterDrops()
 	if Dungeon == "Valley":
-		item = ChooseValleyItems()
+		item = ChooseStarlightMonsterDrops()
 	if Dungeon == "Veniccio":
-		item = ChooseVeniccioItems()
+		item = ChooseCaveMonsterDrops()
 	if Dungeon == "Heim":
-		item = ChooseHeimItems()
+		item = ChooseGundorMonsterDrops()
 	if Dungeon == "Star":
-		item = ChooseHeimItems()
+		item = ChooseGundorMonsterDrops()
 	if Dungeon == "Moon":
-		item = ChooseMoonItems()
+		item = ChooseMoonMonsterDrops()
 	if Dungeon == "Zelmite":
-		item = ChooseZelmiteItems()
+		item = ChooseZelmiteMonsterDrops()
 	if Dungeon == "Depths":
-		item = ChooseHeimItems()
+		item = ChooseGundorMonsterDrops()
 	return item
 
-####################################################### ChooseItemDrops
+####################################################### ChooseMonsterDrops
 
 ## SHOP FNS ##
 
@@ -425,8 +425,18 @@ def fdig(num, n):
 	number = str(num)
 	return int(number[n -1])
 
-def concat(a,b,c):
+def concat2(a,b,c):
+	string = "0x" + str(a+30) + str(b+30)
+	string = int(string,16)
+	return string
+
+def concat3(a,b,c):
 	string = "0x" + str(a+30) + str(b+30) + str(c+30)
+	string = int(string,16)
+	return string
+
+def concat4(a,b,c,d):
+	string = "0x" + str(a+30) + str(b+30) + str(c+30)+ str(d+30)
 	string = int(string,16)
 	return string
 
@@ -477,7 +487,7 @@ def ChooseShopItems(Shop):
 
 	previousShopItems.append(item_number)
 
-	y = concat(fdig(item_number, 1), fdig(item_number, 2), fdig(item_number, 3))
+	y = concat3(fdig(item_number, 1), fdig(item_number, 2), fdig(item_number, 3))
 
 	return [y]
 
@@ -505,7 +515,7 @@ def ChooseSewerChestDrops():
 		item_number = random.choice(tier1ridepod)
 	elif x == 100:
 		item_number = random.choice(tier4chests + tier5chests + tier6chests + tier7chests + tier8chests + tier2ridepod)
-	y =	concat(fdig(item_number,1),fdig(item_number,2),fdig(item_number,3))
+	y =	concat3(fdig(item_number,1),fdig(item_number,2),fdig(item_number,3))
 
 	return [y]
 
@@ -530,7 +540,7 @@ def ChooseSindainChestDrops():
 	elif x == 100:
 		item_number = random.choice(tier5chests + tier6chests + tier7chests + tier8chests + tier3ridepod)
 
-	y =	concat(fdig(item_number,1),fdig(item_number,2),fdig(item_number,3))
+	y =	concat3(fdig(item_number,1),fdig(item_number,2),fdig(item_number,3))
 
 	return [y]
 
@@ -544,7 +554,7 @@ def ChooseSection3ChestDrops():
 
 	item_number = 189
 
-	y =	concat(fdig(item_number,1),fdig(item_number,2),fdig(item_number,3))
+	y =	concat3(fdig(item_number,1),fdig(item_number,2),fdig(item_number,3))
 
 	return [y]
 
@@ -571,7 +581,7 @@ def ChooseValleyChestDrops():
 	elif x == 100:
 		item_number = random.choice(tier6chests + tier7chests + tier8chests + tier4ridepod)
 
-	y =	concat(fdig(item_number,1),fdig(item_number,2),fdig(item_number,3))
+	y =	concat3(fdig(item_number,1),fdig(item_number,2),fdig(item_number,3))
 
 	return [y]
 
@@ -598,7 +608,7 @@ def ChooseVeniccioChestDrops():
 	elif x == 100:
 		item_number = random.choice(tier7chests + tier8chests)
 
-	y =	concat(fdig(item_number,1),fdig(item_number,2),fdig(item_number,3))
+	y =	concat3(fdig(item_number,1),fdig(item_number,2),fdig(item_number,3))
 
 	return [y]
 
@@ -625,7 +635,7 @@ def ChooseHeimChestDrops():
 	elif x == 100:
 		item_number = random.choice(tier8chests)
 
-	y =	concat(fdig(item_number,1),fdig(item_number,2),fdig(item_number,3))
+	y =	concat3(fdig(item_number,1),fdig(item_number,2),fdig(item_number,3))
 
 	return [y]
 
@@ -652,7 +662,7 @@ def ChooseMoonChestDrops():
 	elif x == 100:
 		item_number = random.choice(tier8chests)
 
-	y =	concat(fdig(item_number,1),fdig(item_number,2),fdig(item_number,3))
+	y =	concat3(fdig(item_number,1),fdig(item_number,2),fdig(item_number,3))
 
 	return [y]
 
@@ -673,7 +683,7 @@ def ChooseZelmiteChestDrops():
 	elif x >= 85:
 		item_number = random.choice(tier8chests)
 
-	y =	concat(fdig(item_number,1),fdig(item_number,2),fdig(item_number,3))
+	y =	concat3(fdig(item_number,1),fdig(item_number,2),fdig(item_number,3))
 
 	return [y]
 
@@ -722,19 +732,19 @@ Attributes = [
 		name="SEWER RAT ITEM1",
 		addresses=[0x2F3300],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Sewer"),
+		possible_values=ChooseMonsterDrops("Sewer"),
 		is_little_endian=True, ),
 	Attribute(
 		name="SEWER RAT ITEM2",
 		addresses=[0x2F3302],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Sewer"),
+		possible_values=ChooseMonsterDrops("Sewer"),
 		is_little_endian=True, ),
 	Attribute(
 		name="SEWER RAT ITEM3",
 		addresses=[0x2F3304],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Sewer"),
+		possible_values=ChooseMonsterDrops("Sewer"),
 		is_little_endian=True, ),
 #BEACH RAT 0x2F331C
 	Attribute(
@@ -776,19 +786,19 @@ Attributes = [
 		name="BEACH RAT ITEM1",
 		addresses=[0x2f33b8],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Veniccio"),
+		possible_values=ChooseMonsterDrops("Veniccio"),
 		is_little_endian=True, ),
 	Attribute(
 		name="BEACH RAT ITEM2",
 		addresses=[0x2f33ba],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Veniccio"),
+		possible_values=ChooseMonsterDrops("Veniccio"),
 		is_little_endian=True, ),
 	Attribute(
 		name="BEACH RAT ITEM3",
 		addresses=[0x2f33bc],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Veniccio"),
+		possible_values=ChooseMonsterDrops("Veniccio"),
 		is_little_endian=True, ),
 #castle eater 0x2F33D4
 	Attribute(
@@ -830,19 +840,19 @@ Attributes = [
 		name="CASTLE EATER ITEM1",
 		addresses=[0x2f3470],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Moon"),
+		possible_values=ChooseMonsterDrops("Moon"),
 		is_little_endian=True, ),
 	Attribute(
 		name="CASTLE EATER ITEM2",
 		addresses=[0x2f3472],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Moon"),
+		possible_values=ChooseMonsterDrops("Moon"),
 		is_little_endian=True, ),
 	Attribute(
 		name="CASTLE EATER ITEM3",
 		addresses=[0x2f3474],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Moon"),
+		possible_values=ChooseMonsterDrops("Moon"),
 		is_little_endian=True, ),
 #death mouse 0x2F348C
 	Attribute(
@@ -884,19 +894,19 @@ Attributes = [
 		name="DEATH MOUSE ITEM1",
 		addresses=[0x2f3528],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="DEATH MOUSE ITEM2",
 		addresses=[0x2f352a],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="DEATH MOUSE ITEM3",
 		addresses=[0x2f352c],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 #vanguard 0x2F3544
 	Attribute(
@@ -938,19 +948,19 @@ Attributes = [
 		name="VANGUARD ITEM1",
 		addresses=[0x2f35e0],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Sewer"),
+		possible_values=ChooseMonsterDrops("Sewer"),
 		is_little_endian=True, ),
 	Attribute(
 		name="VANGUARD ITEM2",
 		addresses=[0x2f35e2],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Sewer"),
+		possible_values=ChooseMonsterDrops("Sewer"),
 		is_little_endian=True, ),
 	Attribute(
 		name="VANGUARD ITEM3",
 		addresses=[0x2f35e4],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Sewer"),
+		possible_values=ChooseMonsterDrops("Sewer"),
 		is_little_endian=True, ),
 #neo vanguard 0x2F35FC
 	Attribute(
@@ -992,19 +1002,19 @@ Attributes = [
 		name="NEO VANGUARD ITEM1",
 		addresses=[0x2f3698],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Veniccio"),
+		possible_values=ChooseMonsterDrops("Veniccio"),
 		is_little_endian=True, ),
 	Attribute(
 		name="NEO VANGUARD ITEM2",
 		addresses=[0x2f369a],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Veniccio"),
+		possible_values=ChooseMonsterDrops("Veniccio"),
 		is_little_endian=True, ),
 	Attribute(
 		name="NEO VANGUARD ITEM3",
 		addresses=[0x2f369c],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Veniccio"),
+		possible_values=ChooseMonsterDrops("Veniccio"),
 		is_little_endian=True, ),
 #vanguard mk 2 0x2F36B4
 	Attribute(
@@ -1046,19 +1056,19 @@ Attributes = [
 		name="VANGUARD MK 2 ITEM1",
 		addresses=[0x2f3750],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Moon"),
+		possible_values=ChooseMonsterDrops("Moon"),
 		is_little_endian=True, ),
 	Attribute(
 		name="VANGUARD MK 2 ITEM2",
 		addresses=[0x2f3752],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Moon"),
+		possible_values=ChooseMonsterDrops("Moon"),
 		is_little_endian=True, ),
 	Attribute(
 		name="VANGUARD MK 2 ITEM3",
 		addresses=[0x2f3754],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Moon"),
+		possible_values=ChooseMonsterDrops("Moon"),
 		is_little_endian=True, ),
 #nail burst (boss) 0x2F376C
 	Attribute(
@@ -1100,19 +1110,19 @@ Attributes = [
 		name="NAIL BURST ITEM1",
 		addresses=[0x2f3808],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="NAIL BURST ITEM2",
 		addresses=[0x2f380a],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="NAIL BURST ITEM3",
 		addresses=[0x2f380c],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 #froggy 0x2F3824
 	Attribute(
@@ -1154,19 +1164,19 @@ Attributes = [
 		name="FROGGY ITEM1",
 		addresses=[0x2f38c0],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Sewer"),
+		possible_values=ChooseMonsterDrops("Sewer"),
 		is_little_endian=True, ),
 	Attribute(
 		name="FROGGY ITEM2",
 		addresses=[0x2f38c2],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Sewer"),
+		possible_values=ChooseMonsterDrops("Sewer"),
 		is_little_endian=True, ),
 	Attribute(
 		name="FROGGY ITEM3",
 		addresses=[0x2f38c4],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Sewer"),
+		possible_values=ChooseMonsterDrops("Sewer"),
 		is_little_endian=True, ),
 #geron 0x2F38DC
 	Attribute(
@@ -1208,19 +1218,19 @@ Attributes = [
 		name="GERON ITEM1",
 		addresses=[0x2f3978],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Veniccio"),
+		possible_values=ChooseMonsterDrops("Veniccio"),
 		is_little_endian=True, ),
 	Attribute(
 		name="GERON ITEM2",
 		addresses=[0x2f397a],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Veniccio"),
+		possible_values=ChooseMonsterDrops("Veniccio"),
 		is_little_endian=True, ),
 	Attribute(
 		name="GERON ITEM3",
 		addresses=[0x2f397c],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Veniccio"),
+		possible_values=ChooseMonsterDrops("Veniccio"),
 		is_little_endian=True, ),
 #gamal 0x2F3994
 	Attribute(
@@ -1262,19 +1272,19 @@ Attributes = [
 		name="GAMAL ITEM1",
 		addresses=[0x2f3a30],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="GAMAL ITEM2",
 		addresses=[0x2f3a32],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="GAMAL ITEM3",
 		addresses=[0x2f3a34],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 #plutos 0x2F3A4C
 	Attribute(
@@ -1316,19 +1326,19 @@ Attributes = [
 		name="PLUTOS ITEM1",
 		addresses=[0x2f3ae8],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="PLUTOS ITEM2",
 		addresses=[0x2f3aea],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="PLUTOS ITEM3",
 		addresses=[0x2f3aec],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 #tore 0x2F3B04
 	Attribute(
@@ -1370,19 +1380,19 @@ Attributes = [
 		name="TORE ITEM1",
 		addresses=[0x2f3ba0],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Sindain"),
+		possible_values=ChooseMonsterDrops("Sindain"),
 		is_little_endian=True, ),
 	Attribute(
 		name="TORE ITEM2",
 		addresses=[0x2f3ba2],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Sindain"),
+		possible_values=ChooseMonsterDrops("Sindain"),
 		is_little_endian=True, ),
 	Attribute(
 		name="TORE ITEM3",
 		addresses=[0x2f3ba4],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Sindain"),
+		possible_values=ChooseMonsterDrops("Sindain"),
 		is_little_endian=True, ),
 #steam tore 0x2F3BBC
 	Attribute(
@@ -1424,19 +1434,19 @@ Attributes = [
 		name="STEAM TORE ITEM1",
 		addresses=[0x2f3c58],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Heim"),
+		possible_values=ChooseMonsterDrops("Heim"),
 		is_little_endian=True, ),
 	Attribute(
 		name="STEAM TORE ITEM2",
 		addresses=[0x2f3c5a],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Heim"),
+		possible_values=ChooseMonsterDrops("Heim"),
 		is_little_endian=True, ),
 	Attribute(
 		name="STEAM TORE ITEM3",
 		addresses=[0x2f3c5c],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Heim"),
+		possible_values=ChooseMonsterDrops("Heim"),
 		is_little_endian=True, ),
 #mad tore 0x2F3C74
 	Attribute(
@@ -1478,19 +1488,19 @@ Attributes = [
 		name="MAD TORE ITEM1",
 		addresses=[0x2f3d10],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Star"),
+		possible_values=ChooseMonsterDrops("Star"),
 		is_little_endian=True, ),
 	Attribute(
 		name="MAD TORE ITEM2",
 		addresses=[0x2f3d12],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Star"),
+		possible_values=ChooseMonsterDrops("Star"),
 		is_little_endian=True, ),
 	Attribute(
 		name="MAD TORE ITEM3",
 		addresses=[0x2f3d14],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Star"),
+		possible_values=ChooseMonsterDrops("Star"),
 		is_little_endian=True, ),
 #great tree 0x2F3D2C
 	Attribute(
@@ -1532,19 +1542,19 @@ Attributes = [
 		name="GREAT TREE ITEM1",
 		addresses=[0x2f3dc8],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="GREAT TREE ITEM2",
 		addresses=[0x2f3dca],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="GREAT TREE ITEM3",
 		addresses=[0x2f3dcc],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 #kotore 0x2F3DE4
     Attribute(
@@ -1586,19 +1596,19 @@ Attributes = [
         name="KOTORE ITEM1",
         addresses=[0x2f3e80],
         number_of_bytes=2,
-        possible_values=ChooseItemDrops("Sindain"),
+        possible_values=ChooseMonsterDrops("Sindain"),
         is_little_endian=True, ),
     Attribute(
         name="KOTORE ITEM2",
         addresses=[0x2f3e82],
         number_of_bytes=2,
-        possible_values=ChooseItemDrops("Sindain"),
+        possible_values=ChooseMonsterDrops("Sindain"),
         is_little_endian=True, ),
     Attribute(
         name="KOTORE ITEM3",
         addresses=[0x2f3e84],
         number_of_bytes=2,
-        possible_values=ChooseItemDrops("Sindain"),
+        possible_values=ChooseMonsterDrops("Sindain"),
         is_little_endian=True, ),
 #steam kotore 0x2F3E9C
     Attribute(
@@ -1640,19 +1650,19 @@ Attributes = [
         name="STEAM KOTORE ITEM1",
         addresses=[0x2f3f38],
         number_of_bytes=2,
-        possible_values=ChooseItemDrops("Heim"),
+        possible_values=ChooseMonsterDrops("Heim"),
         is_little_endian=True, ),
     Attribute(
         name="STEAM KOTORE ITEM2",
         addresses=[0x2f3f3a],
         number_of_bytes=2,
-        possible_values=ChooseItemDrops("Heim"),
+        possible_values=ChooseMonsterDrops("Heim"),
         is_little_endian=True, ),
     Attribute(
         name="STEAM KOTORE ITEM3",
         addresses=[0x2f3f3c],
         number_of_bytes=2,
-        possible_values=ChooseItemDrops("Heim"),
+        possible_values=ChooseMonsterDrops("Heim"),
         is_little_endian=True, ),
 #dorone 0x2F3F54
     Attribute(
@@ -1694,19 +1704,19 @@ Attributes = [
         name="DORONE ITEM1",
         addresses=[0x2f3ff0],
         number_of_bytes=2,
-        possible_values=ChooseItemDrops("Star"),
+        possible_values=ChooseMonsterDrops("Star"),
         is_little_endian=True, ),
     Attribute(
         name="DORONE ITEM2",
         addresses=[0x2f3ff2],
         number_of_bytes=2,
-        possible_values=ChooseItemDrops("Star"),
+        possible_values=ChooseMonsterDrops("Star"),
         is_little_endian=True, ),
     Attribute(
         name="DORONE ITEM3",
         addresses=[0x2f3ff4],
         number_of_bytes=2,
-        possible_values=ChooseItemDrops("Star"),
+        possible_values=ChooseMonsterDrops("Star"),
         is_little_endian=True, ),
 #small tree 0x2F400C
     Attribute(
@@ -1748,19 +1758,19 @@ Attributes = [
         name="SMALL TREE ITEM1",
         addresses=[0x2f40a8],
         number_of_bytes=2,
-        possible_values=ChooseItemDrops("Zelmite"),
+        possible_values=ChooseMonsterDrops("Zelmite"),
         is_little_endian=True, ),
     Attribute(
         name="SMALL TREE ITEM2",
         addresses=[0x2f40aa],
         number_of_bytes=2,
-        possible_values=ChooseItemDrops("Zelmite"),
+        possible_values=ChooseMonsterDrops("Zelmite"),
         is_little_endian=True, ),
     Attribute(
         name="SMALL TREE ITEM3",
         addresses=[0x2f40ac],
         number_of_bytes=2,
-        possible_values=ChooseItemDrops("Zelmite"),
+        possible_values=ChooseMonsterDrops("Zelmite"),
         is_little_endian=True, ),
 #hunter fox 0x2F40C4
 	Attribute(
@@ -1802,19 +1812,19 @@ Attributes = [
 		name="HUNTER FOX ITEM1",
 		addresses=[0x2f4160],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Sindain"),
+		possible_values=ChooseMonsterDrops("Sindain"),
 		is_little_endian=True, ),
 	Attribute(
 		name="HUNTER FOX ITEM2",
 		addresses=[0x2f4162],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Sindain"),
+		possible_values=ChooseMonsterDrops("Sindain"),
 		is_little_endian=True, ),
 	Attribute(
 		name="HUNTER FOX ITEM3",
 		addresses=[0x2f4164],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Sindain"),
+		possible_values=ChooseMonsterDrops("Sindain"),
 		is_little_endian=True, ),
 #red fox 0x2F417C
 	Attribute(
@@ -1856,19 +1866,19 @@ Attributes = [
 		name="RED FOX ITEM1",
 		addresses=[0x2f4218],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Star"),
+		possible_values=ChooseMonsterDrops("Star"),
 		is_little_endian=True, ),
 	Attribute(
 		name="RED FOX ITEM2",
 		addresses=[0x2f421a],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Star"),
+		possible_values=ChooseMonsterDrops("Star"),
 		is_little_endian=True, ),
 	Attribute(
 		name="RED FOX ITEM3",
 		addresses=[0x2f421c],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Star"),
+		possible_values=ChooseMonsterDrops("Star"),
 		is_little_endian=True, ),
 #rifle wolf 0x2F4234
 	Attribute(
@@ -1910,19 +1920,19 @@ Attributes = [
 		name="RIFLE WOLF ITEM1",
 		addresses=[0x2f42d0],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Heim"),
+		possible_values=ChooseMonsterDrops("Heim"),
 		is_little_endian=True, ),
 	Attribute(
 		name="RIFLE WOLF ITEM2",
 		addresses=[0x2f42d2],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Heim"),
+		possible_values=ChooseMonsterDrops("Heim"),
 		is_little_endian=True, ),
 	Attribute(
 		name="RIFLE WOLF ITEM3",
 		addresses=[0x2f42d4],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Heim"),
+		possible_values=ChooseMonsterDrops("Heim"),
 		is_little_endian=True, ),
 #smiling wolf 0x2F42EC
 	Attribute(
@@ -1964,19 +1974,19 @@ Attributes = [
 		name="SMILING WOLF ITEM1",
 		addresses=[0x2f4388],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="SMILING WOLF ITEM2",
 		addresses=[0x2f438a],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="SMILING WOLF ITEM3",
 		addresses=[0x2f438c],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 #baron balloon 0x2F43A4
 	Attribute(
@@ -2018,19 +2028,19 @@ Attributes = [
 		name="BARON BALLOON ITEM1",
 		addresses=[0x2f4440],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Sewer"),
+		possible_values=ChooseMonsterDrops("Sewer"),
 		is_little_endian=True, ),
 	Attribute(
 		name="BARON BALLOON ITEM2",
 		addresses=[0x2f4442],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Sewer"),
+		possible_values=ChooseMonsterDrops("Sewer"),
 		is_little_endian=True, ),
 	Attribute(
 		name="BARON BALLOON ITEM3",
 		addresses=[0x2f4444],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Sewer"),
+		possible_values=ChooseMonsterDrops("Sewer"),
 		is_little_endian=True, ),
 #flotsam balloon 0x2F445C
 	Attribute(
@@ -2072,19 +2082,19 @@ Attributes = [
 		name="FLOTSAM BALLOON ITEM1",
 		addresses=[0x2f44f8],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Sewer"),
+		possible_values=ChooseMonsterDrops("Sewer"),
 		is_little_endian=True, ),
 	Attribute(
 		name="FLOTSAM BALLOON ITEM2",
 		addresses=[0x2f44fa],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Sewer"),
+		possible_values=ChooseMonsterDrops("Sewer"),
 		is_little_endian=True, ),
 	Attribute(
 		name="FLOTSAM BALLOON ITEM3",
 		addresses=[0x2f44fc],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Sewer"),
+		possible_values=ChooseMonsterDrops("Sewer"),
 		is_little_endian=True, ),
 #count balloon 0x2F4514
 	Attribute(
@@ -2126,19 +2136,19 @@ Attributes = [
 		name="COUNT BALLOON ITEM1",
 		addresses=[0x2f45b0],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Moon"),
+		possible_values=ChooseMonsterDrops("Moon"),
 		is_little_endian=True, ),
 	Attribute(
 		name="COUNT BALLOON ITEM2",
 		addresses=[0x2f45b2],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Moon"),
+		possible_values=ChooseMonsterDrops("Moon"),
 		is_little_endian=True, ),
 	Attribute(
 		name="COUNT BALLOON ITEM3",
 		addresses=[0x2f45b4],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Moon"),
+		possible_values=ChooseMonsterDrops("Moon"),
 		is_little_endian=True, ),
 #duke balloon 0x2F45CC
 	Attribute(
@@ -2180,19 +2190,19 @@ Attributes = [
 		name="DUKE BALLOON ITEM1",
 		addresses=[0x2f4668],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="DUKE BALLOON ITEM2",
 		addresses=[0x2f466a],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="DUKE BALLOON ITEM3",
 		addresses=[0x2f466c],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 #tortoise 0x2F4684
 	Attribute(
@@ -2234,19 +2244,19 @@ Attributes = [
 		name="TORTOISE ITEM1",
 		addresses=[0x2f4720],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Sindain"),
+		possible_values=ChooseMonsterDrops("Sindain"),
 		is_little_endian=True, ),
 	Attribute(
 		name="TORTOISE ITEM2",
 		addresses=[0x2f4722],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Sindain"),
+		possible_values=ChooseMonsterDrops("Sindain"),
 		is_little_endian=True, ),
 	Attribute(
 		name="TORTOISE ITEM3",
 		addresses=[0x2f4724],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Sindain"),
+		possible_values=ChooseMonsterDrops("Sindain"),
 		is_little_endian=True, ),
 #sea tortoise 0x2F473C
 	Attribute(
@@ -2288,19 +2298,19 @@ Attributes = [
 		name="SEA TORTOISE ITEM1",
 		addresses=[0x2f47d8],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Veniccio"),
+		possible_values=ChooseMonsterDrops("Veniccio"),
 		is_little_endian=True, ),
 	Attribute(
 		name="SEA TORTOISE ITEM2",
 		addresses=[0x2f47da],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Veniccio"),
+		possible_values=ChooseMonsterDrops("Veniccio"),
 		is_little_endian=True, ),
 	Attribute(
 		name="SEA TORTOISE ITEM3",
 		addresses=[0x2f47dc],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Veniccio"),
+		possible_values=ChooseMonsterDrops("Veniccio"),
 		is_little_endian=True, ),
 #star tortoise 0x2F47F4
 	Attribute(
@@ -2342,19 +2352,19 @@ Attributes = [
 		name="STAR TORTOISE ITEM1",
 		addresses=[0x2f4890],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Star"),
+		possible_values=ChooseMonsterDrops("Star"),
 		is_little_endian=True, ),
 	Attribute(
 		name="STAR TORTOISE ITEM2",
 		addresses=[0x2f4892],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Star"),
+		possible_values=ChooseMonsterDrops("Star"),
 		is_little_endian=True, ),
 	Attribute(
 		name="STAR TORTOISE ITEM3",
 		addresses=[0x2f4894],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Star"),
+		possible_values=ChooseMonsterDrops("Star"),
 		is_little_endian=True, ),
 #ebony tortoise 0x2F48AC
 	Attribute(
@@ -2396,19 +2406,19 @@ Attributes = [
 		name="EBONY TORTOISE ITEM1",
 		addresses=[0x2f4948],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="EBONY TORTOISE ITEM2",
 		addresses=[0x2f494a],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="EBONY TORTOISE ITEM3",
 		addresses=[0x2f494c],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 #turtle 0x2F4964
 	Attribute(
@@ -2450,19 +2460,19 @@ Attributes = [
 		name="TURTLE ITEM1",
 		addresses=[0x2f4a00],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Sewer"),
+		possible_values=ChooseMonsterDrops("Sewer"),
 		is_little_endian=True, ),
 	Attribute(
 		name="TURTLE ITEM2",
 		addresses=[0x2f4a02],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Sewer"),
+		possible_values=ChooseMonsterDrops("Sewer"),
 		is_little_endian=True, ),
 	Attribute(
 		name="TURTLE ITEM3",
 		addresses=[0x2f4a04],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Sewer"),
+		possible_values=ChooseMonsterDrops("Sewer"),
 		is_little_endian=True, ),
 #flintol 0x2F4A1C
 	Attribute(
@@ -2504,19 +2514,19 @@ Attributes = [
 		name="FLINTOL ITEM1",
 		addresses=[0x2f4ab8],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Veniccio"),
+		possible_values=ChooseMonsterDrops("Veniccio"),
 		is_little_endian=True, ),
 	Attribute(
 		name="FLINTOL ITEM2",
 		addresses=[0x2f4aba],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Veniccio"),
+		possible_values=ChooseMonsterDrops("Veniccio"),
 		is_little_endian=True, ),
 	Attribute(
 		name="FLINTOL ITEM3",
 		addresses=[0x2f4abc],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Veniccio"),
+		possible_values=ChooseMonsterDrops("Veniccio"),
 		is_little_endian=True, ),
 #arkerath 0x2F4AD4
 	Attribute(
@@ -2558,19 +2568,19 @@ Attributes = [
 		name="ARKERATH ITEM1",
 		addresses=[0x2f4b70],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Star"),
+		possible_values=ChooseMonsterDrops("Star"),
 		is_little_endian=True, ),
 	Attribute(
 		name="ARKERATH ITEM2",
 		addresses=[0x2f4b72],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Star"),
+		possible_values=ChooseMonsterDrops("Star"),
 		is_little_endian=True, ),
 	Attribute(
 		name="ARKERATH ITEM3",
 		addresses=[0x2f4b74],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Star"),
+		possible_values=ChooseMonsterDrops("Star"),
 		is_little_endian=True, ),
 #bolter 0x2F4B8C
 	Attribute(
@@ -2612,19 +2622,19 @@ Attributes = [
 		name="BOLTER ITEM1",
 		addresses=[0x2f4c28],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="BOLTER ITEM2",
 		addresses=[0x2f4c2a],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="BOLTER ITEM3",
 		addresses=[0x2f4c2c],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 #clown 0x2F4C44
 	Attribute(
@@ -2666,19 +2676,19 @@ Attributes = [
 		name="CLOWN ITEM1",
 		addresses=[0x2f4ce0],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Sewer"),
+		possible_values=ChooseMonsterDrops("Sewer"),
 		is_little_endian=True, ),
 	Attribute(
 		name="CLOWN ITEM2",
 		addresses=[0x2f4ce2],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Sewer"),
+		possible_values=ChooseMonsterDrops("Sewer"),
 		is_little_endian=True, ),
 	Attribute(
 		name="CLOWN ITEM3",
 		addresses=[0x2f4ce4],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Sewer"),
+		possible_values=ChooseMonsterDrops("Sewer"),
 		is_little_endian=True, ),
 #griffon soldier  0x2F4CFC
 	Attribute(
@@ -2720,19 +2730,19 @@ Attributes = [
 		name="GRIFFON SOLDIER ITEM1",
 		addresses=[0x2f4d98],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Heim"),
+		possible_values=ChooseMonsterDrops("Heim"),
 		is_little_endian=True, ),
 	Attribute(
 		name="GRIFFON SOLDIER ITEM2",
 		addresses=[0x2f4d9a],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Heim"),
+		possible_values=ChooseMonsterDrops("Heim"),
 		is_little_endian=True, ),
 	Attribute(
 		name="GRIFFON SOLDIER ITEM3",
 		addresses=[0x2f4d9c],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Heim"),
+		possible_values=ChooseMonsterDrops("Heim"),
 		is_little_endian=True, ),
 #evil performer 0x2F4DB4
 	Attribute(
@@ -2774,19 +2784,19 @@ Attributes = [
 		name="EVIL PERFORMER ITEM1",
 		addresses=[0x2f4e50],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Moon"),
+		possible_values=ChooseMonsterDrops("Moon"),
 		is_little_endian=True, ),
 	Attribute(
 		name="EVIL PERFORMER ITEM2",
 		addresses=[0x2f4e52],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Moon"),
+		possible_values=ChooseMonsterDrops("Moon"),
 		is_little_endian=True, ),
 	Attribute(
 		name="EVIL PERFORMER ITEM3",
 		addresses=[0x2f4e54],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Moon"),
+		possible_values=ChooseMonsterDrops("Moon"),
 		is_little_endian=True, ),
 #dark alchemist 0x2F4E6C
 	Attribute(
@@ -2828,19 +2838,19 @@ Attributes = [
 		name="DARK ALCHEMIST ITEM1",
 		addresses=[0x2f4f08],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="DARK ALCHEMIST ITEM2",
 		addresses=[0x2f4f0a],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="DARK ALCHEMIST ITEM3",
 		addresses=[0x2f4f0c],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 #tigriff 0x2F4F24
 	Attribute(
@@ -2882,19 +2892,19 @@ Attributes = [
 		name="TIGRIFF ITEM1",
 		addresses=[0x2f4fc0],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Sindain"),
+		possible_values=ChooseMonsterDrops("Sindain"),
 		is_little_endian=True, ),
 	Attribute(
 		name="TIGRIFF ITEM2",
 		addresses=[0x2f4fc2],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Sindain"),
+		possible_values=ChooseMonsterDrops("Sindain"),
 		is_little_endian=True, ),
 	Attribute(
 		name="TIGRIFF ITEM3",
 		addresses=[0x2f4fc4],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Sindain"),
+		possible_values=ChooseMonsterDrops("Sindain"),
 		is_little_endian=True, ),
 #chimera 0x2F4FDC
 	Attribute(
@@ -2936,19 +2946,19 @@ Attributes = [
 		name="CHIMERA ITEM1",
 		addresses=[0x2f5078],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Heim"),
+		possible_values=ChooseMonsterDrops("Heim"),
 		is_little_endian=True, ),
 	Attribute(
 		name="CHIMERA ITEM2",
 		addresses=[0x2f507a],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Heim"),
+		possible_values=ChooseMonsterDrops("Heim"),
 		is_little_endian=True, ),
 	Attribute(
 		name="CHIMERA ITEM3",
 		addresses=[0x2f507c],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Heim"),
+		possible_values=ChooseMonsterDrops("Heim"),
 		is_little_endian=True, ),
 #leogriff 0x2F5094
 	Attribute(
@@ -2990,19 +3000,19 @@ Attributes = [
 		name="LEOGRIFF ITEM1",
 		addresses=[0x2f5130],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Moon"),
+		possible_values=ChooseMonsterDrops("Moon"),
 		is_little_endian=True, ),
 	Attribute(
 		name="LEOGRIFF ITEM2",
 		addresses=[0x2f5132],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Moon"),
+		possible_values=ChooseMonsterDrops("Moon"),
 		is_little_endian=True, ),
 	Attribute(
 		name="LEOGRIFF ITEM3",
 		addresses=[0x2f5134],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Moon"),
+		possible_values=ChooseMonsterDrops("Moon"),
 		is_little_endian=True, ),
 #sphinx (boss) 0x2F514C
 	Attribute(
@@ -3044,19 +3054,19 @@ Attributes = [
 		name="SPHINX ITEM1",
 		addresses=[0x2f51e8],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="SPHINX ITEM2",
 		addresses=[0x2f51ea],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="SPHINX ITEM3",
 		addresses=[0x2f51ec],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 #pixie 0x2F5204
 	Attribute(
@@ -3098,19 +3108,19 @@ Attributes = [
 		name="PIXIE ITEM1",
 		addresses=[0x2f52a0],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Sindain"),
+		possible_values=ChooseMonsterDrops("Sindain"),
 		is_little_endian=True, ),
 	Attribute(
 		name="PIXIE ITEM2",
 		addresses=[0x2f52a2],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Sindain"),
+		possible_values=ChooseMonsterDrops("Sindain"),
 		is_little_endian=True, ),
 	Attribute(
 		name="PIXIE ITEM3",
 		addresses=[0x2f52a4],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Sindain"),
+		possible_values=ChooseMonsterDrops("Sindain"),
 		is_little_endian=True, ),
 #sylph 0x2F52BC
 	Attribute(
@@ -3152,19 +3162,19 @@ Attributes = [
 		name="SYLPH ITEM1",
 		addresses=[0x2f5358],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Star"),
+		possible_values=ChooseMonsterDrops("Star"),
 		is_little_endian=True, ),
 	Attribute(
 		name="SYLPH ITEM2",
 		addresses=[0x2f535a],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Star"),
+		possible_values=ChooseMonsterDrops("Star"),
 		is_little_endian=True, ),
 	Attribute(
 		name="SYLPH ITEM3",
 		addresses=[0x2f535c],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Star"),
+		possible_values=ChooseMonsterDrops("Star"),
 		is_little_endian=True, ),
 #faerie 0x2F5374
 	Attribute(
@@ -3206,19 +3216,19 @@ Attributes = [
 		name="FAERIE ITEM1",
 		addresses=[0x2f5410],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="FAERIE ITEM2",
 		addresses=[0x2f5412],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="FAERIE ITEM3",
 		addresses=[0x2f5414],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 #imp 0x2F542C
 	Attribute(
@@ -3260,19 +3270,19 @@ Attributes = [
 		name="IMP ITEM1",
 		addresses=[0x2f54c8],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="IMP ITEM2",
 		addresses=[0x2f54ca],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="IMP ITEM3",
 		addresses=[0x2f54cc],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 #linda (boss) 0x2F54E4
 	Attribute(
@@ -3314,19 +3324,19 @@ Attributes = [
 		name="LINDA ITEM1",
 		addresses=[0x2f5580],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Sewer"),
+		possible_values=ChooseMonsterDrops("Sewer"),
 		is_little_endian=True, ),
 	Attribute(
 		name="LINDA ITEM2",
 		addresses=[0x2f5582],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Sewer"),
+		possible_values=ChooseMonsterDrops("Sewer"),
 		is_little_endian=True, ),
 	Attribute(
 		name="LINDA ITEM3",
 		addresses=[0x2f5584],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Sewer"),
+		possible_values=ChooseMonsterDrops("Sewer"),
 		is_little_endian=True, ),
 #elfas 0x2F559C
 	Attribute(
@@ -3368,19 +3378,19 @@ Attributes = [
 		name="ELFAS ITEM1",
 		addresses=[0x2f5638],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Valley"),
+		possible_values=ChooseMonsterDrops("Valley"),
 		is_little_endian=True, ),
 	Attribute(
 		name="ELFAS ITEM2",
 		addresses=[0x2f563a],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Valley"),
+		possible_values=ChooseMonsterDrops("Valley"),
 		is_little_endian=True, ),
 	Attribute(
 		name="ELFAS ITEM3",
 		addresses=[0x2f563c],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Valley"),
+		possible_values=ChooseMonsterDrops("Valley"),
 		is_little_endian=True, ),
 #moonflowephant 0x2F5654
 	Attribute(
@@ -3422,19 +3432,19 @@ Attributes = [
 		name="MOONFLOWER ELEPHANT ITEM1",
 		addresses=[0x2f56f0],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Moon"),
+		possible_values=ChooseMonsterDrops("Moon"),
 		is_little_endian=True, ),
 	Attribute(
 		name="MOONFLOWER ELEPHANT ITEM2",
 		addresses=[0x2f56f2],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Moon"),
+		possible_values=ChooseMonsterDrops("Moon"),
 		is_little_endian=True, ),
 	Attribute(
 		name="MOONFLOWER ELEPHANT ITEM3",
 		addresses=[0x2f56f4],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Moon"),
+		possible_values=ChooseMonsterDrops("Moon"),
 		is_little_endian=True, ),
 #behemoth 0x2F570C
 	Attribute(
@@ -3476,19 +3486,19 @@ Attributes = [
 		name="BEHEMOTH ITEM1",
 		addresses=[0x2f57a8],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="BEHEMOTH ITEM2",
 		addresses=[0x2f57aa],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="BEHEMOTH ITEM3",
 		addresses=[0x2f57ac],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 #himarra 0x2F57C4
 	Attribute(
@@ -3530,19 +3540,19 @@ Attributes = [
 		name="HIMARRA ITEM1",
 		addresses=[0x2f5860],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Sindain"),
+		possible_values=ChooseMonsterDrops("Sindain"),
 		is_little_endian=True, ),
 	Attribute(
 		name="HIMARRA ITEM2",
 		addresses=[0x2f5862],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Sindain"),
+		possible_values=ChooseMonsterDrops("Sindain"),
 		is_little_endian=True, ),
 	Attribute(
 		name="HIMARRA ITEM3",
 		addresses=[0x2f5864],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Sindain"),
+		possible_values=ChooseMonsterDrops("Sindain"),
 		is_little_endian=True, ),
 #balalla 0x2F587C
 	Attribute(
@@ -3584,19 +3594,19 @@ Attributes = [
 		name="BALALLA ITEM1",
 		addresses=[0x2f5918],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Star"),
+		possible_values=ChooseMonsterDrops("Star"),
 		is_little_endian=True, ),
 	Attribute(
 		name="BALALLA ITEM2",
 		addresses=[0x2f591a],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Star"),
+		possible_values=ChooseMonsterDrops("Star"),
 		is_little_endian=True, ),
 	Attribute(
 		name="BALALLA ITEM3",
 		addresses=[0x2f591c],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Star"),
+		possible_values=ChooseMonsterDrops("Star"),
 		is_little_endian=True, ),
 #stormflower 0x2F5934
 	Attribute(
@@ -3638,19 +3648,19 @@ Attributes = [
 		name="STORMFLOWER ITEM1",
 		addresses=[0x2f59d0],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="STORMFLOWER ITEM2",
 		addresses=[0x2f59d2],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="STORMFLOWER ITEM3",
 		addresses=[0x2f59d4],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 #mandora (boss) 0x2F59EC
 	Attribute(
@@ -3692,19 +3702,19 @@ Attributes = [
 		name="MANDORA ITEM1",
 		addresses=[0x2f5a88],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="MANDORA ITEM2",
 		addresses=[0x2f5a8a],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="MANDORA ITEM3",
 		addresses=[0x2f5a8c],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 #gyumo 0x2F5AA4
 	Attribute(
@@ -3746,19 +3756,19 @@ Attributes = [
 		name="GYUMO ITEM1",
 		addresses=[0x2f5b40],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Sindain"),
+		possible_values=ChooseMonsterDrops("Sindain"),
 		is_little_endian=True, ),
 	Attribute(
 		name="GYUMO ITEM2",
 		addresses=[0x2f5b42],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Sindain"),
+		possible_values=ChooseMonsterDrops("Sindain"),
 		is_little_endian=True, ),
 	Attribute(
 		name="GYUMO ITEM3",
 		addresses=[0x2f5b44],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Sindain"),
+		possible_values=ChooseMonsterDrops("Sindain"),
 		is_little_endian=True, ),
 #blumo 0x2F5B5C
 	Attribute(
@@ -3800,19 +3810,19 @@ Attributes = [
 		name="BLUMO ITEM1",
 		addresses=[0x2f5bf8],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Star"),
+		possible_values=ChooseMonsterDrops("Star"),
 		is_little_endian=True, ),
 	Attribute(
 		name="BLUMO ITEM2",
 		addresses=[0x2f5bfa],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Star"),
+		possible_values=ChooseMonsterDrops("Star"),
 		is_little_endian=True, ),
 	Attribute(
 		name="BLUMO ITEM3",
 		addresses=[0x2f5bfc],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Star"),
+		possible_values=ChooseMonsterDrops("Star"),
 		is_little_endian=True, ),
 #cabuble 0x2F5C14
 	Attribute(
@@ -3854,19 +3864,19 @@ Attributes = [
 		name="CABUBLE ITEM1",
 		addresses=[0x2f5cb0],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="CABUBLE ITEM2",
 		addresses=[0x2f5cb2],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="CABUBLE ITEM3",
 		addresses=[0x2f5cb4],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 #minotaurus 0x2F5CCC
 	Attribute(
@@ -3908,19 +3918,19 @@ Attributes = [
 		name="MINOTAURUS ITEM1",
 		addresses=[0x2f5d68],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="MINOTAURUS ITEM2",
 		addresses=[0x2f5d6a],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="MINOTAURUS ITEM3",
 		addresses=[0x2f5d6c],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 #nightstalker 0x2F5D84
 	Attribute(
@@ -3962,19 +3972,19 @@ Attributes = [
 		name="NIGHTSTALKER ITEM1",
 		addresses=[0x2f5e20],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Sewer"),
+		possible_values=ChooseMonsterDrops("Sewer"),
 		is_little_endian=True, ),
 	Attribute(
 		name="NIGHTSTALKER ITEM2",
 		addresses=[0x2f5e22],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Sewer"),
+		possible_values=ChooseMonsterDrops("Sewer"),
 		is_little_endian=True, ),
 	Attribute(
 		name="NIGHTSTALKER ITEM3",
 		addresses=[0x2f5e24],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Sewer"),
+		possible_values=ChooseMonsterDrops("Sewer"),
 		is_little_endian=True, ),
 #ragstink 0x2F5E3C
 	Attribute(
@@ -4016,19 +4026,19 @@ Attributes = [
 		name="RAGSTINK ITEM1",
 		addresses=[0x2f5ed8],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Veniccio"),
+		possible_values=ChooseMonsterDrops("Veniccio"),
 		is_little_endian=True, ),
 	Attribute(
 		name="RAGSTINK ITEM2",
 		addresses=[0x2f5eda],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Veniccio"),
+		possible_values=ChooseMonsterDrops("Veniccio"),
 		is_little_endian=True, ),
 	Attribute(
 		name="RAGSTINK ITEM3",
 		addresses=[0x2f5edc],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Veniccio"),
+		possible_values=ChooseMonsterDrops("Veniccio"),
 		is_little_endian=True, ),
 #leech 0x2F5EF4
 	Attribute(
@@ -4070,19 +4080,19 @@ Attributes = [
 		name="LEECH ITEM1",
 		addresses=[0x2f5f90],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Moon"),
+		possible_values=ChooseMonsterDrops("Moon"),
 		is_little_endian=True, ),
 	Attribute(
 		name="LEECH ITEM2",
 		addresses=[0x2f5f92],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Moon"),
+		possible_values=ChooseMonsterDrops("Moon"),
 		is_little_endian=True, ),
 	Attribute(
 		name="LEECH ITEM3",
 		addresses=[0x2f5f94],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Moon"),
+		possible_values=ChooseMonsterDrops("Moon"),
 		is_little_endian=True, ),
 #wraith 0x2F5FAC
 	Attribute(
@@ -4124,19 +4134,19 @@ Attributes = [
 		name="WRAITH ITEM1",
 		addresses=[0x2f6048],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="WRAITH ITEM2",
 		addresses=[0x2f604a],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="WRAITH ITEM3",
 		addresses=[0x2f604c],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 #dragon 0x2F6064
 	Attribute(
@@ -4178,19 +4188,19 @@ Attributes = [
 		name="DRAGON ITEM1",
 		addresses=[0x2f6100],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Valley"),
+		possible_values=ChooseMonsterDrops("Valley"),
 		is_little_endian=True, ),
 	Attribute(
 		name="DRAGON ITEM2",
 		addresses=[0x2f6102],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Valley"),
+		possible_values=ChooseMonsterDrops("Valley"),
 		is_little_endian=True, ),
 	Attribute(
 		name="DRAGON ITEM3",
 		addresses=[0x2f6104],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Valley"),
+		possible_values=ChooseMonsterDrops("Valley"),
 		is_little_endian=True, ),
 #red dragon 0x2F611C
 	Attribute(
@@ -4232,19 +4242,19 @@ Attributes = [
 		name="RED DRAGON ITEM1",
 		addresses=[0x2f6180],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Heim"),
+		possible_values=ChooseMonsterDrops("Heim"),
 		is_little_endian=True, ),
 	Attribute(
 		name="RED DRAGON ITEM2",
 		addresses=[0x2f61ba],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Heim"),
+		possible_values=ChooseMonsterDrops("Heim"),
 		is_little_endian=True, ),
 	Attribute(
 		name="RED DRAGON ITEM3",
 		addresses=[0x2f61bc],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Heim"),
+		possible_values=ChooseMonsterDrops("Heim"),
 		is_little_endian=True, ),
 #earth dragon 0x2F61D4
 	Attribute(
@@ -4286,19 +4296,19 @@ Attributes = [
 		name="EARTH DRAGON ITEM1",
 		addresses=[0x2f6270],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Moon"),
+		possible_values=ChooseMonsterDrops("Moon"),
 		is_little_endian=True, ),
 	Attribute(
 		name="EARTH DRAGON ITEM2",
 		addresses=[0x2f6272],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Moon"),
+		possible_values=ChooseMonsterDrops("Moon"),
 		is_little_endian=True, ),
 	Attribute(
 		name="EARTH DRAGON ITEM3",
 		addresses=[0x2f6274],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Moon"),
+		possible_values=ChooseMonsterDrops("Moon"),
 		is_little_endian=True, ),
 #tiamat 0x2F628C
 	Attribute(
@@ -4340,19 +4350,19 @@ Attributes = [
 		name="TIAMAT ITEM1",
 		addresses=[0x2f6328],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="TIAMAT ITEM2",
 		addresses=[0x2f632a],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="TIAMAT ITEM3",
 		addresses=[0x2f632c],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 #memo eater (boss) 0x2F6344
 	Attribute(
@@ -4394,19 +4404,19 @@ Attributes = [
 		name="MEMO EATER ITEM1",
 		addresses=[0x2f63e0],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Valley"),
+		possible_values=ChooseMonsterDrops("Valley"),
 		is_little_endian=True, ),
 	Attribute(
 		name="MEMO EATER ITEM2",
 		addresses=[0x2f63e2],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Valley"),
+		possible_values=ChooseMonsterDrops("Valley"),
 		is_little_endian=True, ),
 	Attribute(
 		name="MEMO EATER ITEM3",
 		addresses=[0x2f63e4],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Valley"),
+		possible_values=ChooseMonsterDrops("Valley"),
 		is_little_endian=True, ),
 #burger 0x2F63FC
 	Attribute(
@@ -4448,19 +4458,19 @@ Attributes = [
 		name="BURGER ITEM1",
 		addresses=[0x2f6498],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Heim"),
+		possible_values=ChooseMonsterDrops("Heim"),
 		is_little_endian=True, ),
 	Attribute(
 		name="BURGER ITEM2",
 		addresses=[0x2f649a],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Heim"),
+		possible_values=ChooseMonsterDrops("Heim"),
 		is_little_endian=True, ),
 	Attribute(
 		name="BURGER ITEM3",
 		addresses=[0x2f649c],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Heim"),
+		possible_values=ChooseMonsterDrops("Heim"),
 		is_little_endian=True, ),
 #stormy 0x2F64B4
 	Attribute(
@@ -4502,19 +4512,19 @@ Attributes = [
 		name="STORMY ITEM1",
 		addresses=[0x2f6608],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Moon"),
+		possible_values=ChooseMonsterDrops("Moon"),
 		is_little_endian=True, ),
 	Attribute(
 		name="STORMY ITEM2",
 		addresses=[0x2f660a],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Moon"),
+		possible_values=ChooseMonsterDrops("Moon"),
 		is_little_endian=True, ),
 	Attribute(
 		name="STORMY ITEM3",
 		addresses=[0x2f660c],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Moon"),
+		possible_values=ChooseMonsterDrops("Moon"),
 		is_little_endian=True, ),
 #ladha 0x2F656C
 	Attribute(
@@ -4556,19 +4566,19 @@ Attributes = [
 		name="LADHA ITEM1",
 		addresses=[0x2f6608],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="LADHA ITEM2",
 		addresses=[0x2f660a],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="LADHA ITEM3",
 		addresses=[0x2f660c],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 #spider lady (RBW) 0x2F6624
 	Attribute(
@@ -4610,19 +4620,19 @@ Attributes = [
 		name="SPIDER LADY RBW ITEM1",
 		addresses=[0x2f66c0],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Sindain"),
+		possible_values=ChooseMonsterDrops("Sindain"),
 		is_little_endian=True, ),
 	Attribute(
 		name="SPIDER LADY RBW ITEM2",
 		addresses=[0x2f66c2],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Sindain"),
+		possible_values=ChooseMonsterDrops("Sindain"),
 		is_little_endian=True, ),
 	Attribute(
 		name="SPIDER LADY RBW ITEM3",
 		addresses=[0x2f66c4],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Sindain"),
+		possible_values=ChooseMonsterDrops("Sindain"),
 		is_little_endian=True, ),
 #shiva 0x2F66DC
 	Attribute(
@@ -4664,19 +4674,19 @@ Attributes = [
 		name="SHIVA ITEM1",
 		addresses=[0x2f6778],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Veniccio"),
+		possible_values=ChooseMonsterDrops("Veniccio"),
 		is_little_endian=True, ),
 	Attribute(
 		name="SHIVA ITEM2",
 		addresses=[0x2f677a],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Veniccio"),
+		possible_values=ChooseMonsterDrops("Veniccio"),
 		is_little_endian=True, ),
 	Attribute(
 		name="SHIVA ITEM3",
 		addresses=[0x2f677c],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Veniccio"),
+		possible_values=ChooseMonsterDrops("Veniccio"),
 		is_little_endian=True, ),
 #spider lady (zmm) 0x2F6624
 	Attribute(
@@ -4718,19 +4728,19 @@ Attributes = [
 		name="SPIDER LADY ZMM ITEM1",
 		addresses=[0x2f6830],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="SPIDER LADY ZMM ITEM2",
 		addresses=[0x2f6832],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="SPIDER LADY ZMM ITEM3",
 		addresses=[0x2f6834],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 #bambamchoo 0x2F684C
 	Attribute(
@@ -4772,19 +4782,19 @@ Attributes = [
 		name="BAMBAMCHOO ITEM1",
 		addresses=[0x2f68e8],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="BAMBAMCHOO ITEM2",
 		addresses=[0x2f68ea],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="BAMBAMCHOO ITEM3",
 		addresses=[0x2f68ec],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 #fire element 0x2F6904
 	Attribute(
@@ -4826,19 +4836,19 @@ Attributes = [
 		name="FIRE ELEMENT ITEM1",
 		addresses=[0x2f69a0],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Sindain"),
+		possible_values=ChooseMonsterDrops("Sindain"),
 		is_little_endian=True, ),
 	Attribute(
 		name="FIRE ELEMENT ITEM2",
 		addresses=[0x2f69a2],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Sindain"),
+		possible_values=ChooseMonsterDrops("Sindain"),
 		is_little_endian=True, ),
 	Attribute(
 		name="FIRE ELEMENT ITEM3",
 		addresses=[0x2f69a4],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Sindain"),
+		possible_values=ChooseMonsterDrops("Sindain"),
 		is_little_endian=True, ),
 #fire spirit 0x2F69BC
 	Attribute(
@@ -4880,19 +4890,19 @@ Attributes = [
 		name="FIRE SPIRIT ITEM1",
 		addresses=[0x2f6a58],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Star"),
+		possible_values=ChooseMonsterDrops("Star"),
 		is_little_endian=True, ),
 	Attribute(
 		name="FIRE SPIRIT ITEM2",
 		addresses=[0x2f6a5a],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Star"),
+		possible_values=ChooseMonsterDrops("Star"),
 		is_little_endian=True, ),
 	Attribute(
 		name="FIRE SPIRIT ITEM3",
 		addresses=[0x2f6a5c],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Star"),
+		possible_values=ChooseMonsterDrops("Star"),
 		is_little_endian=True, ),
 #fire ghost 0x2F6A74
 	Attribute(
@@ -4934,19 +4944,19 @@ Attributes = [
 		name="FIRE GHOST ITEM1",
 		addresses=[0x2f6b10],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="FIRE GHOST ITEM2",
 		addresses=[0x2f6b12],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="FIRE GHOST ITEM3",
 		addresses=[0x2f6b14],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 #magma servant 0x2F6B2C
 	Attribute(
@@ -4988,19 +4998,19 @@ Attributes = [
 		name="MAGMA SERVANT ITEM1",
 		addresses=[0x2f6bc8],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="MAGMA SERVANT ITEM2",
 		addresses=[0x2f6bca],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="MAGMA SERVANT ITEM3",
 		addresses=[0x2f6bcc],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 #ice element 0x2F6BE4
 	Attribute(
@@ -5042,19 +5052,19 @@ Attributes = [
 		name="ICE ELEMENT ITEM1",
 		addresses=[0x2f6c80],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Sindain"),
+		possible_values=ChooseMonsterDrops("Sindain"),
 		is_little_endian=True, ),
 	Attribute(
 		name="ICE ELEMENT ITEM2",
 		addresses=[0x2f6c82],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Sindain"),
+		possible_values=ChooseMonsterDrops("Sindain"),
 		is_little_endian=True, ),
 	Attribute(
 		name="ICE ELEMENT ITEM3",
 		addresses=[0x2f6c84],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Sindain"),
+		possible_values=ChooseMonsterDrops("Sindain"),
 		is_little_endian=True, ),
 #ice spirit 0x2F6C9C
 	Attribute(
@@ -5096,19 +5106,19 @@ Attributes = [
 		name="ICE SPIRIT ITEM1",
 		addresses=[0x2f6d38],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Star"),
+		possible_values=ChooseMonsterDrops("Star"),
 		is_little_endian=True, ),
 	Attribute(
 		name="ICE SPIRIT ITEM2",
 		addresses=[0x2f6d3a],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Star"),
+		possible_values=ChooseMonsterDrops("Star"),
 		is_little_endian=True, ),
 	Attribute(
 		name="ICE SPIRIT ITEM3",
 		addresses=[0x2f6d3c],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Star"),
+		possible_values=ChooseMonsterDrops("Star"),
 		is_little_endian=True, ),
 #snow ghost 0x2F6D54
 	Attribute(
@@ -5150,19 +5160,19 @@ Attributes = [
 		name="SNOW GHOST ITEM1",
 		addresses=[0x2f6df0],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="SNOW GHOST ITEM2",
 		addresses=[0x2f6df2],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="SNOW GHOST ITEM3",
 		addresses=[0x2f6df4],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 #snow servant 0x2F6E0C
 	Attribute(
@@ -5204,19 +5214,19 @@ Attributes = [
 		name="SNOW SERVANT ITEM1",
 		addresses=[0x2f6ea8],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="SNOW SERVANT ITEM2",
 		addresses=[0x2f6eaa],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="SNOW SERVANT ITEM3",
 		addresses=[0x2f6eac],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 #zappy 0x2F6EC4
 	Attribute(
@@ -5258,19 +5268,19 @@ Attributes = [
 		name="ZAPPY ITEM1",
 		addresses=[0x2f6f60],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Veniccio"),
+		possible_values=ChooseMonsterDrops("Veniccio"),
 		is_little_endian=True, ),
 	Attribute(
 		name="ZAPPY ITEM2",
 		addresses=[0x2f6f62],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Veniccio"),
+		possible_values=ChooseMonsterDrops("Veniccio"),
 		is_little_endian=True, ),
 	Attribute(
 		name="ZAPPY ITEM3",
 		addresses=[0x2f6f64],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Veniccio"),
+		possible_values=ChooseMonsterDrops("Veniccio"),
 		is_little_endian=True, ),
 #thunder spirit 0x2F6F7C
 	Attribute(
@@ -5312,19 +5322,19 @@ Attributes = [
 		name="THUNDER SPIRIT ITEM1",
 		addresses=[0x2f7018],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Star"),
+		possible_values=ChooseMonsterDrops("Star"),
 		is_little_endian=True, ),
 	Attribute(
 		name="THUNDER SPIRIT ITEM2",
 		addresses=[0x2f701a],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Star"),
+		possible_values=ChooseMonsterDrops("Star"),
 		is_little_endian=True, ),
 	Attribute(
 		name="THUNDER SPIRIT ITEM3",
 		addresses=[0x2f701c],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Star"),
+		possible_values=ChooseMonsterDrops("Star"),
 		is_little_endian=True, ),
 #thunder ghost 0x2F7034
 	Attribute(
@@ -5366,19 +5376,19 @@ Attributes = [
 		name="THUNDER GHOST ITEM1",
 		addresses=[0x2f70d0],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Moon"),
+		possible_values=ChooseMonsterDrops("Moon"),
 		is_little_endian=True, ),
 	Attribute(
 		name="THUNDER GHOST ITEM2",
 		addresses=[0x2f70d2],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Moon"),
+		possible_values=ChooseMonsterDrops("Moon"),
 		is_little_endian=True, ),
 	Attribute(
 		name="THUNDER GHOST ITEM3",
 		addresses=[0x2f70d4],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Moon"),
+		possible_values=ChooseMonsterDrops("Moon"),
 		is_little_endian=True, ),
 #thunder servant 0x2F70EC
 	Attribute(
@@ -5420,19 +5430,19 @@ Attributes = [
 		name="THUNDER SERVANT ITEM1",
 		addresses=[0x2f7188],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="THUNDER SERVANT ITEM2",
 		addresses=[0x2f718a],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="THUNDER SERVANT ITEM3",
 		addresses=[0x2f718c],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 #aqua element 0x2F71A4
 	Attribute(
@@ -5474,19 +5484,19 @@ Attributes = [
 		name="AQUA ELEMENT ITEM1",
 		addresses=[0x2f7240],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Veniccio"),
+		possible_values=ChooseMonsterDrops("Veniccio"),
 		is_little_endian=True, ),
 	Attribute(
 		name="AQUA ELEMENT ITEM2",
 		addresses=[0x2f7242],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Veniccio"),
+		possible_values=ChooseMonsterDrops("Veniccio"),
 		is_little_endian=True, ),
 	Attribute(
 		name="AQUA ELEMENT ITEM3",
 		addresses=[0x2f7244],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Veniccio"),
+		possible_values=ChooseMonsterDrops("Veniccio"),
 		is_little_endian=True, ),
 #water spirit 0x2F725C
 	Attribute(
@@ -5528,19 +5538,19 @@ Attributes = [
 		name="WATER SPIRIT ITEM1",
 		addresses=[0x2f72f8],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Star"),
+		possible_values=ChooseMonsterDrops("Star"),
 		is_little_endian=True, ),
 	Attribute(
 		name="WATER SPIRIT ITEM2",
 		addresses=[0x2f72fa],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Star"),
+		possible_values=ChooseMonsterDrops("Star"),
 		is_little_endian=True, ),
 	Attribute(
 		name="WATER SPIRIT ITEM3",
 		addresses=[0x2f72fc],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Star"),
+		possible_values=ChooseMonsterDrops("Star"),
 		is_little_endian=True, ),
 #rain ghost 0x2F7314
 	Attribute(
@@ -5582,19 +5592,19 @@ Attributes = [
 		name="RAIN GHOST ITEM1",
 		addresses=[0x2f73b0],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Moon"),
+		possible_values=ChooseMonsterDrops("Moon"),
 		is_little_endian=True, ),
 	Attribute(
 		name="RAIN GHOST ITEM2",
 		addresses=[0x2f73b2],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Moon"),
+		possible_values=ChooseMonsterDrops("Moon"),
 		is_little_endian=True, ),
 	Attribute(
 		name="RAIN GHOST ITEM3",
 		addresses=[0x2f73b4],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Moon"),
+		possible_values=ChooseMonsterDrops("Moon"),
 		is_little_endian=True, ),
 #tempest servant 0x2F73CC
 	Attribute(
@@ -5636,19 +5646,19 @@ Attributes = [
 		name="TEMPEST SERVANT ITEM1",
 		addresses=[0x2f7468],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="TEMPEST SERVANT ITEM2",
 		addresses=[0x2f746a],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="TEMPEST SERVANT ITEM3",
 		addresses=[0x2f746c],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 #wind element 0x2F7484
 	Attribute(
@@ -5690,19 +5700,19 @@ Attributes = [
 		name="WIND ELEMENT ITEM1",
 		addresses=[0x2f7520],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Valley"),
+		possible_values=ChooseMonsterDrops("Valley"),
 		is_little_endian=True, ),
 	Attribute(
 		name="WIND ELEMENT ITEM2",
 		addresses=[0x2f7522],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Valley"),
+		possible_values=ChooseMonsterDrops("Valley"),
 		is_little_endian=True, ),
 	Attribute(
 		name="WIND ELEMENT ITEM3",
 		addresses=[0x2f7524],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Valley"),
+		possible_values=ChooseMonsterDrops("Valley"),
 		is_little_endian=True, ),
 #spirit flyer 0x2F753C
 	Attribute(
@@ -5744,19 +5754,19 @@ Attributes = [
 		name="SPIRIT FLYER ITEM1",
 		addresses=[0x2f75d8],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Star"),
+		possible_values=ChooseMonsterDrops("Star"),
 		is_little_endian=True, ),
 	Attribute(
 		name="SPIRIT FLYER ITEM2",
 		addresses=[0x2f75da],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Star"),
+		possible_values=ChooseMonsterDrops("Star"),
 		is_little_endian=True, ),
 	Attribute(
 		name="SPIRIT FLYER ITEM3",
 		addresses=[0x2f75dc],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Star"),
+		possible_values=ChooseMonsterDrops("Star"),
 		is_little_endian=True, ),
 #storm ghost 0x2F75F4
 	Attribute(
@@ -5798,19 +5808,19 @@ Attributes = [
 		name="STORM GHOST ITEM1",
 		addresses=[0x2f7690],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Moon"),
+		possible_values=ChooseMonsterDrops("Moon"),
 		is_little_endian=True, ),
 	Attribute(
 		name="STORM GHOST ITEM2",
 		addresses=[0x2f7692],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Moon"),
+		possible_values=ChooseMonsterDrops("Moon"),
 		is_little_endian=True, ),
 	Attribute(
 		name="STORM GHOST ITEM3",
 		addresses=[0x2f7694],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Moon"),
+		possible_values=ChooseMonsterDrops("Moon"),
 		is_little_endian=True, ),
 #wind servant 0x2F76AC
 	Attribute(
@@ -5852,19 +5862,19 @@ Attributes = [
 		name="WIND SERVANT ITEM1",
 		addresses=[0x2f7748],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="WIND SERVANT ITEM2",
 		addresses=[0x2f774a],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="WIND SERVANT ITEM3",
 		addresses=[0x2f774c],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 #masked tribesman 0x2F7764
 	Attribute(
@@ -5906,19 +5916,19 @@ Attributes = [
 		name="MASKED TRIBESMAN ITEM1",
 		addresses=[0x2f7800],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Valley"),
+		possible_values=ChooseMonsterDrops("Valley"),
 		is_little_endian=True, ),
 	Attribute(
 		name="MASKED TRIBESMAN ITEM2",
 		addresses=[0x2f7802],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Valley"),
+		possible_values=ChooseMonsterDrops("Valley"),
 		is_little_endian=True, ),
 	Attribute(
 		name="MASKED TRIBESMAN ITEM3",
 		addresses=[0x2f7804],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Valley"),
+		possible_values=ChooseMonsterDrops("Valley"),
 		is_little_endian=True, ),
 #lava runner 0x2F781C
 	Attribute(
@@ -5960,19 +5970,19 @@ Attributes = [
 		name="LAVA RUNNER ITEM1",
 		addresses=[0x2f78b8],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Heim"),
+		possible_values=ChooseMonsterDrops("Heim"),
 		is_little_endian=True, ),
 	Attribute(
 		name="LAVA RUNNER ITEM2",
 		addresses=[0x2f78ba],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Heim"),
+		possible_values=ChooseMonsterDrops("Heim"),
 		is_little_endian=True, ),
 	Attribute(
 		name="LAVA RUNNER ITEM3",
 		addresses=[0x2f78bc],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Heim"),
+		possible_values=ChooseMonsterDrops("Heim"),
 		is_little_endian=True, ),
 #stone guard 0x2F78D4
 	Attribute(
@@ -6014,19 +6024,19 @@ Attributes = [
 		name="STONE GUARD ITEM1",
 		addresses=[0x2f7970],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="STONE GUARD ITEM2",
 		addresses=[0x2f7972],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="STONE GUARD ITEM3",
 		addresses=[0x2f7974],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 #last guardian 0x2F798C
 	Attribute(
@@ -6068,19 +6078,19 @@ Attributes = [
 		name="LAST GUARDIAN ITEM1",
 		addresses=[0x2f7a28],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="LAST GUARDIAN ITEM2",
 		addresses=[0x2f7a2a],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="LAST GUARDIAN ITEM3",
 		addresses=[0x2f7a2c],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 #pumpkinhead 0x2F7A44
 	Attribute(
@@ -6122,19 +6132,19 @@ Attributes = [
 		name="PUMPKIN HEAD ITEM1",
 		addresses=[0x2f7ae0],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Sindain"),
+		possible_values=ChooseMonsterDrops("Sindain"),
 		is_little_endian=True, ),
 	Attribute(
 		name="PUMPKIN HEAD ITEM2",
 		addresses=[0x2f7ae2],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Sindain"),
+		possible_values=ChooseMonsterDrops("Sindain"),
 		is_little_endian=True, ),
 	Attribute(
 		name="PUMPKIN HEAD ITEM3",
 		addresses=[0x2f7ae4],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Sindain"),
+		possible_values=ChooseMonsterDrops("Sindain"),
 		is_little_endian=True, ),
 #zucky 0x2F7AFC
 	Attribute(
@@ -6176,19 +6186,19 @@ Attributes = [
 		name="ZUCKY ITEM1",
 		addresses=[0x2f7b98],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Star"),
+		possible_values=ChooseMonsterDrops("Star"),
 		is_little_endian=True, ),
 	Attribute(
 		name="ZUCKY ITEM2",
 		addresses=[0x2f7b9a],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Star"),
+		possible_values=ChooseMonsterDrops("Star"),
 		is_little_endian=True, ),
 	Attribute(
 		name="ZUCKY ITEM3",
 		addresses=[0x2f7b9c],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Star"),
+		possible_values=ChooseMonsterDrops("Star"),
 		is_little_endian=True, ),
 #mallone 0x2F7BB4
 	Attribute(
@@ -6230,19 +6240,19 @@ Attributes = [
 		name="MALLONE ITEM1",
 		addresses=[0x2f7c50],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="MALLONE ITEM2",
 		addresses=[0x2f7c52],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="MALLONE ITEM3",
 		addresses=[0x2f7c54],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 #scarecrow 0x2F7C6C
 	Attribute(
@@ -6284,19 +6294,19 @@ Attributes = [
 		name="SCARECROW ITEM1",
 		addresses=[0x2f7d08],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="SCARECROW ITEM2",
 		addresses=[0x2f7d0a],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="SCARECROW ITEM3",
 		addresses=[0x2f7d0c],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 #mummy 0x2F7D24
 	Attribute(
@@ -6338,19 +6348,19 @@ Attributes = [
 		name="MUMMY ITEM1",
 		addresses=[0x2f7dc0],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Star"),
+		possible_values=ChooseMonsterDrops("Star"),
 		is_little_endian=True, ),
 	Attribute(
 		name="MUMMY ITEM2",
 		addresses=[0x2f7dc2],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Star"),
+		possible_values=ChooseMonsterDrops("Star"),
 		is_little_endian=True, ),
 	Attribute(
 		name="MUMMY ITEM3",
 		addresses=[0x2f7dc4],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Star"),
+		possible_values=ChooseMonsterDrops("Star"),
 		is_little_endian=True, ),
 #bundy 0x2F7DDC
 	Attribute(
@@ -6392,19 +6402,19 @@ Attributes = [
 		name="BUNDY ITEM1",
 		addresses=[0x2f7e78],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Moon"),
+		possible_values=ChooseMonsterDrops("Moon"),
 		is_little_endian=True, ),
 	Attribute(
 		name="BUNDY ITEM2",
 		addresses=[0x2f7e7a],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Moon"),
+		possible_values=ChooseMonsterDrops("Moon"),
 		is_little_endian=True, ),
 	Attribute(
 		name="BUNDY ITEM3",
 		addresses=[0x2f7e7c],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Moon"),
+		possible_values=ChooseMonsterDrops("Moon"),
 		is_little_endian=True, ),
 #ghoul 0x2F7E94
 	Attribute(
@@ -6446,19 +6456,19 @@ Attributes = [
 		name="GHOUL ITEM1",
 		addresses=[0x2f7f30],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="GHOUL ITEM2",
 		addresses=[0x2f7f32],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="GHOUL ITEM3",
 		addresses=[0x2f7f34],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 #revenant 0x2F7F4C
 	Attribute(
@@ -6500,19 +6510,19 @@ Attributes = [
 		name="REVENANT ITEM1",
 		addresses=[0x2f7fe8],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="REVENANT ITEM2",
 		addresses=[0x2f7fe8],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="REVENANT ITEM3",
 		addresses=[0x2f7fec],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 #man eating grass 0x2F8004
 	Attribute(
@@ -6554,19 +6564,19 @@ Attributes = [
 		name="MAN EATING GRASS ITEM1",
 		addresses=[0x2f80a0],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Sindain"),
+		possible_values=ChooseMonsterDrops("Sindain"),
 		is_little_endian=True, ),
 	Attribute(
 		name="MAN EATING GRASS ITEM2",
 		addresses=[0x2f80a2],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Sindain"),
+		possible_values=ChooseMonsterDrops("Sindain"),
 		is_little_endian=True, ),
 	Attribute(
 		name="MAN EATING GRASS ITEM3",
 		addresses=[0x2f80a4],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Sindain"),
+		possible_values=ChooseMonsterDrops("Sindain"),
 		is_little_endian=True, ),
 #cursed rose 0x2F80BC
 	Attribute(
@@ -6608,19 +6618,19 @@ Attributes = [
 		name="CURSED ROSE ITEM1",
 		addresses=[0x2f8158],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Star"),
+		possible_values=ChooseMonsterDrops("Star"),
 		is_little_endian=True, ),
 	Attribute(
 		name="CURSED ROSE ITEM2",
 		addresses=[0x2f815a],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Star"),
+		possible_values=ChooseMonsterDrops("Star"),
 		is_little_endian=True, ),
 	Attribute(
 		name="CURSED ROSE ITEM3",
 		addresses=[0x2f815c],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Star"),
+		possible_values=ChooseMonsterDrops("Star"),
 		is_little_endian=True, ),
 #dark flower 0x2F8174
 	Attribute(
@@ -6662,19 +6672,19 @@ Attributes = [
 		name="DARK FLOWER ITEM1",
 		addresses=[0x2f8210],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="DARK FLOWER ITEM2",
 		addresses=[0x2f8212],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="DARK FLOWER ITEM3",
 		addresses=[0x2f8214],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 #mystery plant 0x2F822C
 	Attribute(
@@ -6716,19 +6726,19 @@ Attributes = [
 		name="MYSTERY PLANT ITEM1",
 		addresses=[0x2f82c8],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="MYSTERY PLANT ITEM2",
 		addresses=[0x2f82ca],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="MYSTERY PLANT ITEM3",
 		addresses=[0x2f82cc],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 #fire gemron 0x2F82E4
 	Attribute(
@@ -6770,19 +6780,19 @@ Attributes = [
 		name="FIRE GEMRON ITEM1",
 		addresses=[0x2f8380],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Valley"),
+		possible_values=ChooseMonsterDrops("Valley"),
 		is_little_endian=True, ),
 	Attribute(
 		name="FIRE GEMRON ITEM2",
 		addresses=[0x2f8382],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Valley"),
+		possible_values=ChooseMonsterDrops("Valley"),
 		is_little_endian=True, ),
 	Attribute(
 		name="FIRE GEMRON ITEM3",
 		addresses=[0x2f8384],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Valley"),
+		possible_values=ChooseMonsterDrops("Valley"),
 		is_little_endian=True, ),
 #fire gundron 0x2F839C
 	Attribute(
@@ -6824,19 +6834,19 @@ Attributes = [
 		name="FIRE GUNDRON ITEM1",
 		addresses=[0x2f8438],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Heim"),
+		possible_values=ChooseMonsterDrops("Heim"),
 		is_little_endian=True, ),
 	Attribute(
 		name="FIRE GUNDRON ITEM2",
 		addresses=[0x2f843a],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Heim"),
+		possible_values=ChooseMonsterDrops("Heim"),
 		is_little_endian=True, ),
 	Attribute(
 		name="FIRE GUNDRON ITEM3",
 		addresses=[0x2f843c],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Heim"),
+		possible_values=ChooseMonsterDrops("Heim"),
 		is_little_endian=True, ),
 #fire drake 0x2F8454
 	Attribute(
@@ -6878,19 +6888,19 @@ Attributes = [
 		name="FIRE DRAKE ITEM1",
 		addresses=[0x2f84f0],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Moon"),
+		possible_values=ChooseMonsterDrops("Moon"),
 		is_little_endian=True, ),
 	Attribute(
 		name="FIRE DRAKE ITEM2",
 		addresses=[0x2f84f2],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Moon"),
+		possible_values=ChooseMonsterDrops("Moon"),
 		is_little_endian=True, ),
 	Attribute(
 		name="FIRE DRAKE ITEM3",
 		addresses=[0x2f84f4],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Moon"),
+		possible_values=ChooseMonsterDrops("Moon"),
 		is_little_endian=True, ),
 #fire wywrm 0x2F850C
 	Attribute(
@@ -6932,19 +6942,19 @@ Attributes = [
 		name="FIRE WYRM ITEM1",
 		addresses=[0x2f85a8],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="FIRE WYRM ITEM2",
 		addresses=[0x2f85aa],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="FIRE WYRM ITEM3",
 		addresses=[0x2f85ac],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 #ice gemron 0x2F85C4
 	Attribute(
@@ -6986,19 +6996,19 @@ Attributes = [
 		name="ICE GEMRON ITEM1",
 		addresses=[0x2f8660],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Valley"),
+		possible_values=ChooseMonsterDrops("Valley"),
 		is_little_endian=True, ),
 	Attribute(
 		name="ICE GEMRON ITEM2",
 		addresses=[0x2f8662],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Valley"),
+		possible_values=ChooseMonsterDrops("Valley"),
 		is_little_endian=True, ),
 	Attribute(
 		name="ICE GEMRON ITEM3",
 		addresses=[0x2f8664],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Valley"),
+		possible_values=ChooseMonsterDrops("Valley"),
 		is_little_endian=True, ),
 #ice gundron 0x2F867C
 	Attribute(
@@ -7040,19 +7050,19 @@ Attributes = [
 		name="ICE GUNDRON ITEM1",
 		addresses=[0x2f8718],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Heim"),
+		possible_values=ChooseMonsterDrops("Heim"),
 		is_little_endian=True, ),
 	Attribute(
 		name="ICE GUNDRON ITEM2",
 		addresses=[0x2f871a],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Heim"),
+		possible_values=ChooseMonsterDrops("Heim"),
 		is_little_endian=True, ),
 	Attribute(
 		name="ICE GUNDRON ITEM3",
 		addresses=[0x2f871c],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Heim"),
+		possible_values=ChooseMonsterDrops("Heim"),
 		is_little_endian=True, ),
 #ice drake 0x2F8734
 	Attribute(
@@ -7094,19 +7104,19 @@ Attributes = [
 		name="ICE DRAKE ITEM1",
 		addresses=[0x2f87d0],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Moon"),
+		possible_values=ChooseMonsterDrops("Moon"),
 		is_little_endian=True, ),
 	Attribute(
 		name="ICE DRAKE ITEM2",
 		addresses=[0x2f87d2],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Moon"),
+		possible_values=ChooseMonsterDrops("Moon"),
 		is_little_endian=True, ),
 	Attribute(
 		name="ICE DRAKE ITEM3",
 		addresses=[0x2f87d4],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Moon"),
+		possible_values=ChooseMonsterDrops("Moon"),
 		is_little_endian=True, ),
 #ice wyrm 0x2F87EC
 	Attribute(
@@ -7148,19 +7158,19 @@ Attributes = [
 		name="ICE WYRM ITEM1",
 		addresses=[0x2f8888],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="ICE WYRM ITEM2",
 		addresses=[0x2f888a],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="ICE WYRM ITEM3",
 		addresses=[0x2f888c],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 #thunder gemron 0x2F88A4
 	Attribute(
@@ -7202,19 +7212,19 @@ Attributes = [
 		name="THUNDER GEMRON ITEM1",
 		addresses=[0x2f8940],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Valley"),
+		possible_values=ChooseMonsterDrops("Valley"),
 		is_little_endian=True, ),
 	Attribute(
 		name="THUNDER GEMRON ITEM2",
 		addresses=[0x2f8942],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Valley"),
+		possible_values=ChooseMonsterDrops("Valley"),
 		is_little_endian=True, ),
 	Attribute(
 		name="THUNDER GEMRON ITEM3",
 		addresses=[0x2f8944],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Valley"),
+		possible_values=ChooseMonsterDrops("Valley"),
 		is_little_endian=True, ),
 #thunder gundron 0x2F895C
 	Attribute(
@@ -7256,19 +7266,19 @@ Attributes = [
 		name="THUNDER GUNDRON ITEM1",
 		addresses=[0x2f89f8],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Heim"),
+		possible_values=ChooseMonsterDrops("Heim"),
 		is_little_endian=True, ),
 	Attribute(
 		name="THUNDER GUNDRON ITEM2",
 		addresses=[0x2f89fa],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Heim"),
+		possible_values=ChooseMonsterDrops("Heim"),
 		is_little_endian=True, ),
 	Attribute(
 		name="THUNDER GUNDRON ITEM3",
 		addresses=[0x2f89fc],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Heim"),
+		possible_values=ChooseMonsterDrops("Heim"),
 		is_little_endian=True, ),
 #thunder drake 0x2F8A14
 	Attribute(
@@ -7310,19 +7320,19 @@ Attributes = [
 		name="THUNDER DRAKE ITEM1",
 		addresses=[0x2f8ab0],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="THUNDER DRAKE ITEM2",
 		addresses=[0x2f8ab2],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="THUNDER DRAKE ITEM3",
 		addresses=[0x2f8ab4],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 #thunder wyrm 0x2F8ACC
 	Attribute(
@@ -7364,19 +7374,19 @@ Attributes = [
 		name="THUNDER WYRM ITEM1",
 		addresses=[0x2f8b68],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="THUNDER WYRM ITEM2",
 		addresses=[0x2f8b6a],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="THUNDER WYRM ITEM3",
 		addresses=[0x2f8b6c],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 #wind gemron 0x2F8B84
 	Attribute(
@@ -7418,19 +7428,19 @@ Attributes = [
 		name="WIND GEMRON ITEM1",
 		addresses=[0x2f8c20],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Valley"),
+		possible_values=ChooseMonsterDrops("Valley"),
 		is_little_endian=True, ),
 	Attribute(
 		name="WIND GEMRON ITEM2",
 		addresses=[0x2f8c22],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Valley"),
+		possible_values=ChooseMonsterDrops("Valley"),
 		is_little_endian=True, ),
 	Attribute(
 		name="WIND GEMRON ITEM3",
 		addresses=[0x2f8c24],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Valley"),
+		possible_values=ChooseMonsterDrops("Valley"),
 		is_little_endian=True, ),
 #wind gundron 0x2F8C3C
 	Attribute(
@@ -7472,19 +7482,19 @@ Attributes = [
 		name="WIND GUNDRON ITEM1",
 		addresses=[0x2f8cd8],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Heim"),
+		possible_values=ChooseMonsterDrops("Heim"),
 		is_little_endian=True, ),
 	Attribute(
 		name="WIND GUNDRON ITEM2",
 		addresses=[0x2f8cda],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Heim"),
+		possible_values=ChooseMonsterDrops("Heim"),
 		is_little_endian=True, ),
 	Attribute(
 		name="WIND GUNDRON ITEM3",
 		addresses=[0x2f8cdc],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Heim"),
+		possible_values=ChooseMonsterDrops("Heim"),
 		is_little_endian=True, ),
 #wind drake 0x2F8CF4
 	Attribute(
@@ -7526,19 +7536,19 @@ Attributes = [
 		name="WIND DRAKE ITEM1",
 		addresses=[0x2f8d90],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="WIND DRAKE ITEM2",
 		addresses=[0x2f8d92],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="WIND DRAKE ITEM3",
 		addresses=[0x2f8d94],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 #wind wyrm 0x2F8DAC
 	Attribute(
@@ -7580,19 +7590,19 @@ Attributes = [
 		name="WIND WYRM ITEM1",
 		addresses=[0x2f8e48],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="WIND WYRM ITEM2",
 		addresses=[0x2f8e4a],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="WIND WYRM ITEM3",
 		addresses=[0x2f8e4c],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 #holy gemron 0x2F8E64
 	Attribute(
@@ -7634,19 +7644,19 @@ Attributes = [
 		name="HOLY GEMRON ITEM1",
 		addresses=[0x2f8f00],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Valley"),
+		possible_values=ChooseMonsterDrops("Valley"),
 		is_little_endian=True, ),
 	Attribute(
 		name="HOLY GEMRON ITEM2",
 		addresses=[0x2f8f02],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Valley"),
+		possible_values=ChooseMonsterDrops("Valley"),
 		is_little_endian=True, ),
 	Attribute(
 		name="HOLY GEMRON ITEM3",
 		addresses=[0x2f8f04],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Valley"),
+		possible_values=ChooseMonsterDrops("Valley"),
 		is_little_endian=True, ),
 #holy gundron 0x2F8F1C
 	Attribute(
@@ -7688,19 +7698,19 @@ Attributes = [
 		name="HOLY GUNDRON ITEM1",
 		addresses=[0x2f8fb8],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Heim"),
+		possible_values=ChooseMonsterDrops("Heim"),
 		is_little_endian=True, ),
 	Attribute(
 		name="HOLY GUNDRON ITEM2",
 		addresses=[0x2f8fba],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Heim"),
+		possible_values=ChooseMonsterDrops("Heim"),
 		is_little_endian=True, ),
 	Attribute(
 		name="HOLY GUNDRON ITEM3",
 		addresses=[0x2f8fbc],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Heim"),
+		possible_values=ChooseMonsterDrops("Heim"),
 		is_little_endian=True, ),
 #holy drake 0x2F8FD4
 	Attribute(
@@ -7742,19 +7752,19 @@ Attributes = [
 		name="HOLY DRAKE ITEM1",
 		addresses=[0x2f9070],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="HOLY DRAKE ITEM2",
 		addresses=[0x2f9072],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="HOLY DRAKE ITEM3",
 		addresses=[0x2f9074],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 #holy wyrm 0x2F908C
 	Attribute(
@@ -7796,19 +7806,19 @@ Attributes = [
 		name="HOLY WYRM ITEM1",
 		addresses=[0x2f9128],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="HOLY WYRM ITEM2",
 		addresses=[0x2f912a],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="HOLY WYRM ITEM3",
 		addresses=[0x2f912c],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 #nikapous 0x2F9144
 	Attribute(
@@ -7850,19 +7860,19 @@ Attributes = [
 		name="NIKAPOUS ITEM1",
 		addresses=[0x2f91e0],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Valley"),
+		possible_values=ChooseMonsterDrops("Valley"),
 		is_little_endian=True, ),
 	Attribute(
 		name="NIKAPOUS ITEM2",
 		addresses=[0x2f91e2],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Valley"),
+		possible_values=ChooseMonsterDrops("Valley"),
 		is_little_endian=True, ),
 	Attribute(
 		name="NIKAPOUS ITEM3",
 		addresses=[0x2f91e4],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Valley"),
+		possible_values=ChooseMonsterDrops("Valley"),
 		is_little_endian=True, ),
 #iron mask 0x2F91FC
 	Attribute(
@@ -7904,19 +7914,19 @@ Attributes = [
 		name="IRON MASK ITEM1",
 		addresses=[0x2f9298],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Star"),
+		possible_values=ChooseMonsterDrops("Star"),
 		is_little_endian=True, ),
 	Attribute(
 		name="IRON MASK ITEM2",
 		addresses=[0x2f929a],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Star"),
+		possible_values=ChooseMonsterDrops("Star"),
 		is_little_endian=True, ),
 	Attribute(
 		name="IRON MASK ITEM3",
 		addresses=[0x2f929c],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Star"),
+		possible_values=ChooseMonsterDrops("Star"),
 		is_little_endian=True, ),
 #ummagumma 0x2F92B4
 	Attribute(
@@ -7958,19 +7968,19 @@ Attributes = [
 		name="UMAGUMMA ITEM1",
 		addresses=[0x2f9350],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="UMAGUMMA ITEM2",
 		addresses=[0x2f9352],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="UMAGUMMA ITEM3",
 		addresses=[0x2f9354],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 #incuder 0x2F936C
 	Attribute(
@@ -8012,19 +8022,19 @@ Attributes = [
 		name="INCUDER ITEM1",
 		addresses=[0x2f9408],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="INCUDER ITEM2",
 		addresses=[0x2f940a],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="INCUDER ITEM3",
 		addresses=[0x2f940c],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 #ram 0x2F9424
 	Attribute(
@@ -8066,19 +8076,19 @@ Attributes = [
 		name="RAM ITEM1",
 		addresses=[0x2f94c0],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Valley"),
+		possible_values=ChooseMonsterDrops("Valley"),
 		is_little_endian=True, ),
 	Attribute(
 		name="RAM ITEM2",
 		addresses=[0x2f94c2],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Valley"),
+		possible_values=ChooseMonsterDrops("Valley"),
 		is_little_endian=True, ),
 	Attribute(
 		name="RAM ITEM3",
 		addresses=[0x2f94c4],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Valley"),
+		possible_values=ChooseMonsterDrops("Valley"),
 		is_little_endian=True, ),
 #savage ram 0x2F94DC
 	Attribute(
@@ -8120,19 +8130,19 @@ Attributes = [
 		name="SAVAGE RAM ITEM1",
 		addresses=[0x2f9578],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Heim"),
+		possible_values=ChooseMonsterDrops("Heim"),
 		is_little_endian=True, ),
 	Attribute(
 		name="SAVAGE RAM ITEM2",
 		addresses=[0x2f957a],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Heim"),
+		possible_values=ChooseMonsterDrops("Heim"),
 		is_little_endian=True, ),
 	Attribute(
 		name="SAVAGE RAM ITEM3",
 		addresses=[0x2f957c],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Heim"),
+		possible_values=ChooseMonsterDrops("Heim"),
 		is_little_endian=True, ),
 #ram z 0x2F9594
 	Attribute(
@@ -8174,19 +8184,19 @@ Attributes = [
 		name="RAM Z ITEM1",
 		addresses=[0x2f9630],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="RAM Z ITEM2",
 		addresses=[0x2f9632],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="RAM Z ITEM3",
 		addresses=[0x2f9634],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 #bandou 0x2F964C
 	Attribute(
@@ -8228,19 +8238,19 @@ Attributes = [
 		name="BANDOU ITEM1",
 		addresses=[0x2f96e8],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="BANDOU ITEM2",
 		addresses=[0x2f96ea],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="BANDOU ITEM3",
 		addresses=[0x2f96ec],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 #moler 0x2F9704
 	Attribute(
@@ -8282,19 +8292,19 @@ Attributes = [
 		name="MOLER ITEM1",
 		addresses=[0x2f97a0],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Sindain"),
+		possible_values=ChooseMonsterDrops("Sindain"),
 		is_little_endian=True, ),
 	Attribute(
 		name="MOLER ITEM2",
 		addresses=[0x2f97a2],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Sindain"),
+		possible_values=ChooseMonsterDrops("Sindain"),
 		is_little_endian=True, ),
 	Attribute(
 		name="MOLER ITEM3",
 		addresses=[0x2f97a4],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Sindain"),
+		possible_values=ChooseMonsterDrops("Sindain"),
 		is_little_endian=True, ),
 #sand moler 0x2F97BC
 	Attribute(
@@ -8336,19 +8346,19 @@ Attributes = [
 		name="SAND MOLER ITEM1",
 		addresses=[0x2f9858],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Veniccio"),
+		possible_values=ChooseMonsterDrops("Veniccio"),
 		is_little_endian=True, ),
 	Attribute(
 		name="SAND MOLER ITEM2",
 		addresses=[0x2f985a],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Veniccio"),
+		possible_values=ChooseMonsterDrops("Veniccio"),
 		is_little_endian=True, ),
 	Attribute(
 		name="SAND MOLER ITEM3",
 		addresses=[0x2f985c],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Veniccio"),
+		possible_values=ChooseMonsterDrops("Veniccio"),
 		is_little_endian=True, ),
 #mine moler 0x2F9874
 	Attribute(
@@ -8390,19 +8400,19 @@ Attributes = [
 		name="MINE MOLER ITEM1",
 		addresses=[0x2f9910],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="MINE MOLER ITEM2",
 		addresses=[0x2f9912],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="MINE MOLER ITEM3",
 		addresses=[0x2f9914],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 #busy moler 0x2F992C
 	Attribute(
@@ -8444,19 +8454,19 @@ Attributes = [
 		name="BUSY MOLER ITEM1",
 		addresses=[0x2f99c8],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="BUSY MOLER ITEM2",
 		addresses=[0x2f99ca],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="BUSY MOLER ITEM3",
 		addresses=[0x2f99cc],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 #killer snake 0x2F99E4
 	Attribute(
@@ -8498,19 +8508,19 @@ Attributes = [
 		name="KILLER SNAKE ITEM1",
 		addresses=[0x2f9a80],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Sindain"),
+		possible_values=ChooseMonsterDrops("Sindain"),
 		is_little_endian=True, ),
 	Attribute(
 		name="KILLER SNAKE ITEM2",
 		addresses=[0x2f9a82],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Sindain"),
+		possible_values=ChooseMonsterDrops("Sindain"),
 		is_little_endian=True, ),
 	Attribute(
 		name="KILLER SNAKE ITEM3",
 		addresses=[0x2f9a84],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Sindain"),
+		possible_values=ChooseMonsterDrops("Sindain"),
 		is_little_endian=True, ),
 #sea serpent 0x2F9A9C
 	Attribute(
@@ -8552,19 +8562,19 @@ Attributes = [
 		name="SEA SERPENT ITEM1",
 		addresses=[0x2f9b38],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Veniccio"),
+		possible_values=ChooseMonsterDrops("Veniccio"),
 		is_little_endian=True, ),
 	Attribute(
 		name="SEA SERPENT ITEM2",
 		addresses=[0x2f9b3a],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Veniccio"),
+		possible_values=ChooseMonsterDrops("Veniccio"),
 		is_little_endian=True, ),
 	Attribute(
 		name="SEA SERPENT ITEM3",
 		addresses=[0x2f9b3c],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Veniccio"),
+		possible_values=ChooseMonsterDrops("Veniccio"),
 		is_little_endian=True, ),
 #sand dragon 0x2F9B54
 	Attribute(
@@ -8606,19 +8616,19 @@ Attributes = [
 		name="SAND DRAGON ITEM1",
 		addresses=[0x2f9bf0],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="SAND DRAGON ITEM2",
 		addresses=[0x2f9bf2],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="SAND DRAGON ITEM3",
 		addresses=[0x2f9bf4],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 #dead rope 0x2F9C0C
 	Attribute(
@@ -8660,19 +8670,19 @@ Attributes = [
 		name="DEAD ROPE ITEM1",
 		addresses=[0x2f9ca8],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="DEAD ROPE ITEM2",
 		addresses=[0x2f9caa],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="DEAD ROPE ITEM3",
 		addresses=[0x2f9cac],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 #goyone 0x2F9CC4
 	Attribute(
@@ -8714,19 +8724,19 @@ Attributes = [
 		name="GOYONE ITEM1",
 		addresses=[0x2f9d60],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Veniccio"),
+		possible_values=ChooseMonsterDrops("Veniccio"),
 		is_little_endian=True, ),
 	Attribute(
 		name="GOYONE ITEM2",
 		addresses=[0x2f9d62],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Veniccio"),
+		possible_values=ChooseMonsterDrops("Veniccio"),
 		is_little_endian=True, ),
 	Attribute(
 		name="GOYONE ITEM3",
 		addresses=[0x2f9d64],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Veniccio"),
+		possible_values=ChooseMonsterDrops("Veniccio"),
 		is_little_endian=True, ),
 #steam goyone 0x2F9D7C
 	Attribute(
@@ -8768,19 +8778,19 @@ Attributes = [
 		name="STEAM GOYONE ITEM1",
 		addresses=[0x2f9e18],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Heim"),
+		possible_values=ChooseMonsterDrops("Heim"),
 		is_little_endian=True, ),
 	Attribute(
 		name="STEAM GOYONE ITEM2",
 		addresses=[0x2f9e1a],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Heim"),
+		possible_values=ChooseMonsterDrops("Heim"),
 		is_little_endian=True, ),
 	Attribute(
 		name="STEAM GOYONE ITEM3",
 		addresses=[0x2f9e1c],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Heim"),
+		possible_values=ChooseMonsterDrops("Heim"),
 		is_little_endian=True, ),
 #moon goyone 0x2F9E34
 	Attribute(
@@ -8822,19 +8832,19 @@ Attributes = [
 		name="MOON GOYONE ITEM1",
 		addresses=[0x2f9ed0],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Moon"),
+		possible_values=ChooseMonsterDrops("Moon"),
 		is_little_endian=True, ),
 	Attribute(
 		name="MOON GOYONE ITEM2",
 		addresses=[0x2f9ed2],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Moon"),
+		possible_values=ChooseMonsterDrops("Moon"),
 		is_little_endian=True, ),
 	Attribute(
 		name="MOON GOYONE ITEM3",
 		addresses=[0x2f9ed4],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Moon"),
+		possible_values=ChooseMonsterDrops("Moon"),
 		is_little_endian=True, ),
 #mariner 0x2F9EEC
 	Attribute(
@@ -8876,19 +8886,19 @@ Attributes = [
 		name="MARINER ITEM1",
 		addresses=[0x2f9f88],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="MARINER ITEM2",
 		addresses=[0x2f9f8a],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="MARINER ITEM3",
 		addresses=[0x2f9f8c],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 #auntie medusa 0x2F9FA4
 	Attribute(
@@ -8930,19 +8940,19 @@ Attributes = [
 		name="AUNTIE MEDUSA ITEM1",
 		addresses=[0x2fa040],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Veniccio"),
+		possible_values=ChooseMonsterDrops("Veniccio"),
 		is_little_endian=True, ),
 	Attribute(
 		name="AUNTIE MEDUSA ITEM2",
 		addresses=[0x2fa042],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Veniccio"),
+		possible_values=ChooseMonsterDrops("Veniccio"),
 		is_little_endian=True, ),
 	Attribute(
 		name="AUNTIE MEDUSA ITEM3",
 		addresses=[0x2fa044],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Veniccio"),
+		possible_values=ChooseMonsterDrops("Veniccio"),
 		is_little_endian=True, ),
 #fat naga 0x2FA05C
 	Attribute(
@@ -8984,19 +8994,19 @@ Attributes = [
 		name="FAT NAGA ITEM1",
 		addresses=[0x2fa0f8],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Star"),
+		possible_values=ChooseMonsterDrops("Star"),
 		is_little_endian=True, ),
 	Attribute(
 		name="FAT NAGA ITEM2",
 		addresses=[0x2fa0fa],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Star"),
+		possible_values=ChooseMonsterDrops("Star"),
 		is_little_endian=True, ),
 	Attribute(
 		name="FAT NAGA ITEM3",
 		addresses=[0x2fa0fc],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Star"),
+		possible_values=ChooseMonsterDrops("Star"),
 		is_little_endian=True, ),
 #miss gourgon 0x2FA114
 	Attribute(
@@ -9038,19 +9048,19 @@ Attributes = [
 		name="MISS GOURGON ITEM1",
 		addresses=[0x2fa1b0],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Moon"),
+		possible_values=ChooseMonsterDrops("Moon"),
 		is_little_endian=True, ),
 	Attribute(
 		name="MISS GOURGON ITEM2",
 		addresses=[0x2fa1b2],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Moon"),
+		possible_values=ChooseMonsterDrops("Moon"),
 		is_little_endian=True, ),
 	Attribute(
 		name="MISS GOURGON ITEM3",
 		addresses=[0x2fa1b4],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Moon"),
+		possible_values=ChooseMonsterDrops("Moon"),
 		is_little_endian=True, ),
 #mrs gourgon 0x2FA1CC
 	Attribute(
@@ -9092,19 +9102,19 @@ Attributes = [
 		name="MRS GOURGON ITEM1",
 		addresses=[0x2fa268],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="MRS GOURGON ITEM2",
 		addresses=[0x2fa26a],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="MRS GOURGON ITEM3",
 		addresses=[0x2fa26c],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 #dog statue 0x2FA284
 	Attribute(
@@ -9146,19 +9156,19 @@ Attributes = [
 		name="DOG STATUE ITEM1",
 		addresses=[0x2fa320],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Valley"),
+		possible_values=ChooseMonsterDrops("Valley"),
 		is_little_endian=True, ),
 	Attribute(
 		name="DOG STATUE ITEM2",
 		addresses=[0x2fa322],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Valley"),
+		possible_values=ChooseMonsterDrops("Valley"),
 		is_little_endian=True, ),
 	Attribute(
 		name="DOG STATUE ITEM3",
 		addresses=[0x2fa324],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Valley"),
+		possible_values=ChooseMonsterDrops("Valley"),
 		is_little_endian=True, ),
 #coral dog 0x2FA33C
 	Attribute(
@@ -9200,19 +9210,19 @@ Attributes = [
 		name="CORAL DOG ITEM1",
 		addresses=[0x2fa3d8],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Star"),
+		possible_values=ChooseMonsterDrops("Star"),
 		is_little_endian=True, ),
 	Attribute(
 		name="CORAL DOG ITEM2",
 		addresses=[0x2fa3da],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Star"),
+		possible_values=ChooseMonsterDrops("Star"),
 		is_little_endian=True, ),
 	Attribute(
 		name="CORAL DOG ITEM3",
 		addresses=[0x2fa3dc],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Star"),
+		possible_values=ChooseMonsterDrops("Star"),
 		is_little_endian=True, ),
 #toy rock 0x2FA3F4
 	Attribute(
@@ -9254,19 +9264,19 @@ Attributes = [
 		name="TOY ROCK ITEM1",
 		addresses=[0x2fa490],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Moon"),
+		possible_values=ChooseMonsterDrops("Moon"),
 		is_little_endian=True, ),
 	Attribute(
 		name="TOY ROCK ITEM2",
 		addresses=[0x2fa492],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Moon"),
+		possible_values=ChooseMonsterDrops("Moon"),
 		is_little_endian=True, ),
 	Attribute(
 		name="TOY ROCK ITEM3",
 		addresses=[0x2fa494],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Moon"),
+		possible_values=ChooseMonsterDrops("Moon"),
 		is_little_endian=True, ),
 #cerberus 0x2FA4AC
 	Attribute(
@@ -9308,19 +9318,19 @@ Attributes = [
 		name="CERBERUS ITEM1",
 		addresses=[0x2fa548],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="CERBERUS ITEM2",
 		addresses=[0x2fa54a],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="CERBERUS ITEM3",
 		addresses=[0x2fa54c],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 #ivanoff 0x2FA564
 	Attribute(
@@ -9362,19 +9372,19 @@ Attributes = [
 		name="IVANOFF ITEM1",
 		addresses=[0x2fa600],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Valley"),
+		possible_values=ChooseMonsterDrops("Valley"),
 		is_little_endian=True, ),
 	Attribute(
 		name="IVANOFF ITEM2",
 		addresses=[0x2fa602],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Valley"),
+		possible_values=ChooseMonsterDrops("Valley"),
 		is_little_endian=True, ),
 	Attribute(
 		name="IVANOFF ITEM3",
 		addresses=[0x2fa604],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Valley"),
+		possible_values=ChooseMonsterDrops("Valley"),
 		is_little_endian=True, ),
 #magmanoff 0x2FA61C
 	Attribute(
@@ -9416,19 +9426,19 @@ Attributes = [
 		name="MAGMANOFF ITEM1",
 		addresses=[0x2fa6b8],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Heim"),
+		possible_values=ChooseMonsterDrops("Heim"),
 		is_little_endian=True, ),
 	Attribute(
 		name="MAGMANOFF ITEM2",
 		addresses=[0x2fa6ba],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Heim"),
+		possible_values=ChooseMonsterDrops("Heim"),
 		is_little_endian=True, ),
 	Attribute(
 		name="MAGMANOFF ITEM3",
 		addresses=[0x2fa6bc],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Heim"),
+		possible_values=ChooseMonsterDrops("Heim"),
 		is_little_endian=True, ),
 #rock face 0x2FA6D4
 	Attribute(
@@ -9470,19 +9480,19 @@ Attributes = [
 		name="ROCK FACE ITEM1",
 		addresses=[0x2fa770],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="ROCK FACE ITEM2",
 		addresses=[0x2fa772],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="ROCK FACE ITEM3",
 		addresses=[0x2fa774],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 #iwanosuke 0x2FA78C
 	Attribute(
@@ -9524,19 +9534,19 @@ Attributes = [
 		name="IWANOSUKE ITEM1",
 		addresses=[0x2fa828],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="IWANOSUKE ITEM2",
 		addresses=[0x2fa82a],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="IWANOSUKE ITEM3",
 		addresses=[0x2fa82c],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 #statue 0x2FA844
 	Attribute(
@@ -9578,19 +9588,19 @@ Attributes = [
 		name="STATUE ITEM1",
 		addresses=[0x2fa8e0],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Veniccio"),
+		possible_values=ChooseMonsterDrops("Veniccio"),
 		is_little_endian=True, ),
 	Attribute(
 		name="STATUE ITEM2",
 		addresses=[0x2fa8e2],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Veniccio"),
+		possible_values=ChooseMonsterDrops("Veniccio"),
 		is_little_endian=True, ),
 	Attribute(
 		name="STATUE ITEM3",
 		addresses=[0x2fa8e4],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Veniccio"),
+		possible_values=ChooseMonsterDrops("Veniccio"),
 		is_little_endian=True, ),
 #living armour 0x2FA8FC
 	Attribute(
@@ -9632,19 +9642,19 @@ Attributes = [
 		name="LIVING ARMOUR ITEM1",
 		addresses=[0x2fa998],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Star"),
+		possible_values=ChooseMonsterDrops("Star"),
 		is_little_endian=True, ),
 	Attribute(
 		name="LIVING ARMOUR ITEM2",
 		addresses=[0x2fa99a],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Star"),
+		possible_values=ChooseMonsterDrops("Star"),
 		is_little_endian=True, ),
 	Attribute(
 		name="LIVING ARMOUR ITEM3",
 		addresses=[0x2fa99c],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Star"),
+		possible_values=ChooseMonsterDrops("Star"),
 		is_little_endian=True, ),
 #guardia 0x2FA9B4
 	Attribute(
@@ -9686,19 +9696,19 @@ Attributes = [
 		name="GUARDIA ITEM1",
 		addresses=[0x2faa50],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Moon"),
+		possible_values=ChooseMonsterDrops("Moon"),
 		is_little_endian=True, ),
 	Attribute(
 		name="GUARDIA ITEM2",
 		addresses=[0x2faa52],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Moon"),
+		possible_values=ChooseMonsterDrops("Moon"),
 		is_little_endian=True, ),
 	Attribute(
 		name="GUARDIA ITEM3",
 		addresses=[0x2faa54],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Moon"),
+		possible_values=ChooseMonsterDrops("Moon"),
 		is_little_endian=True, ),
 #dark keeper 0x2FAA6C
 	Attribute(
@@ -9740,19 +9750,19 @@ Attributes = [
 		name="DARK KEEPER ITEM1",
 		addresses=[0x2fab08],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="DARK KEEPER ITEM2",
 		addresses=[0x2fab0a],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="DARK KEEPER ITEM3",
 		addresses=[0x2fab0c],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 #golem 0x2FAB24
 	Attribute(
@@ -9794,19 +9804,19 @@ Attributes = [
 		name="GOLEM ITEM1",
 		addresses=[0x2fabc0],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Valley"),
+		possible_values=ChooseMonsterDrops("Valley"),
 		is_little_endian=True, ),
 	Attribute(
 		name="GOLEM ITEM2",
 		addresses=[0x2fabc2],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Valley"),
+		possible_values=ChooseMonsterDrops("Valley"),
 		is_little_endian=True, ),
 	Attribute(
 		name="GOLEM ITEM3",
 		addresses=[0x2fabc4],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Valley"),
+		possible_values=ChooseMonsterDrops("Valley"),
 		is_little_endian=True, ),
 #rave golem (lava golem) 0x2FABDC
 	Attribute(
@@ -9848,19 +9858,19 @@ Attributes = [
 		name="RAVE GOLEM ITEM1",
 		addresses=[0x2fac78],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Heim"),
+		possible_values=ChooseMonsterDrops("Heim"),
 		is_little_endian=True, ),
 	Attribute(
 		name="RAVE GOLEM ITEM2",
 		addresses=[0x2fac7a],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Heim"),
+		possible_values=ChooseMonsterDrops("Heim"),
 		is_little_endian=True, ),
 	Attribute(
 		name="RAVE GOLEM ITEM3",
 		addresses=[0x2fac7c],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Heim"),
+		possible_values=ChooseMonsterDrops("Heim"),
 		is_little_endian=True, ),
 #rock taster 0x2FAC94
 	Attribute(
@@ -9902,19 +9912,19 @@ Attributes = [
 		name="ROCK TASTER ITEM1",
 		addresses=[0x2fad30],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Moon"),
+		possible_values=ChooseMonsterDrops("Moon"),
 		is_little_endian=True, ),
 	Attribute(
 		name="ROCK TASTER ITEM2",
 		addresses=[0x2fad32],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Moon"),
+		possible_values=ChooseMonsterDrops("Moon"),
 		is_little_endian=True, ),
 	Attribute(
 		name="ROCK TASTER ITEM3",
 		addresses=[0x2fad34],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Moon"),
+		possible_values=ChooseMonsterDrops("Moon"),
 		is_little_endian=True, ),
 #titan 0x2FAD4C
 	Attribute(
@@ -9956,19 +9966,19 @@ Attributes = [
 		name="TITAN ITEM1",
 		addresses=[0x2fade8],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="TITAN ITEM2",
 		addresses=[0x2fadea],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="TITAN ITEM3",
 		addresses=[0x2fadec],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 #bone lord 0x2FAE04
 	Attribute(
@@ -10010,19 +10020,19 @@ Attributes = [
 		name="BONE LORD ITEM1",
 		addresses=[0x2faea0],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Heim"),
+		possible_values=ChooseMonsterDrops("Heim"),
 		is_little_endian=True, ),
 	Attribute(
 		name="BONE LORD ITEM2",
 		addresses=[0x2faea2],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Heim"),
+		possible_values=ChooseMonsterDrops("Heim"),
 		is_little_endian=True, ),
 	Attribute(
 		name="BONE LORD ITEM3",
 		addresses=[0x2faea4],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Heim"),
+		possible_values=ChooseMonsterDrops("Heim"),
 		is_little_endian=True, ),
 #flaming nail 0x2FAEBC
 	Attribute(
@@ -10064,19 +10074,19 @@ Attributes = [
 		name="FLAMING NAIL ITEM1",
 		addresses=[0x2faf58],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Star"),
+		possible_values=ChooseMonsterDrops("Star"),
 		is_little_endian=True, ),
 	Attribute(
 		name="FLAMING NAIL ITEM2",
 		addresses=[0x2faf5a],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Star"),
+		possible_values=ChooseMonsterDrops("Star"),
 		is_little_endian=True, ),
 	Attribute(
 		name="FLAMING NAIL ITEM3",
 		addresses=[0x2faf5c],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Star"),
+		possible_values=ChooseMonsterDrops("Star"),
 		is_little_endian=True, ),
 #evil nail 0x2FAF74
 	Attribute(
@@ -10118,19 +10128,19 @@ Attributes = [
 		name="EVIL NAIL ITEM1",
 		addresses=[0x2fb010],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Moon"),
+		possible_values=ChooseMonsterDrops("Moon"),
 		is_little_endian=True, ),
 	Attribute(
 		name="EVIL NAIL ITEM2",
 		addresses=[0x2fb012],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Moon"),
+		possible_values=ChooseMonsterDrops("Moon"),
 		is_little_endian=True, ),
 	Attribute(
 		name="EVIL NAIL ITEM3",
 		addresses=[0x2fb014],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Moon"),
+		possible_values=ChooseMonsterDrops("Moon"),
 		is_little_endian=True, ),
 #bone king 0x2FB02C
 	Attribute(
@@ -10172,19 +10182,19 @@ Attributes = [
 		name="BONE KING ITEM1",
 		addresses=[0x2fb0c8],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="BONE KING ITEM2",
 		addresses=[0x2fb0ca],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="BONE KING ITEM3",
 		addresses=[0x2fb0cc],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 #skeleton soldier 0x2FB0E4
 	Attribute(
@@ -10226,19 +10236,19 @@ Attributes = [
 		name="SKELETON SOLDIER ITEM1",
 		addresses=[0x2fb180],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Sindain"),
+		possible_values=ChooseMonsterDrops("Sindain"),
 		is_little_endian=True, ),
 	Attribute(
 		name="SKELETON SOLDIER ITEM2",
 		addresses=[0x2fb182],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Sindain"),
+		possible_values=ChooseMonsterDrops("Sindain"),
 		is_little_endian=True, ),
 	Attribute(
 		name="SKELETON SOLDIER ITEM3",
 		addresses=[0x2fb184],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Sindain"),
+		possible_values=ChooseMonsterDrops("Sindain"),
 		is_little_endian=True, ),
 #horn head 0x2FB19C
 	Attribute(
@@ -10280,19 +10290,19 @@ Attributes = [
 		name="HORN HEAD ITEM1",
 		addresses=[0x2fb238],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Veniccio"),
+		possible_values=ChooseMonsterDrops("Veniccio"),
 		is_little_endian=True, ),
 	Attribute(
 		name="HORN HEAD ITEM2",
 		addresses=[0x2fb23a],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Veniccio"),
+		possible_values=ChooseMonsterDrops("Veniccio"),
 		is_little_endian=True, ),
 	Attribute(
 		name="HORN HEAD ITEM3",
 		addresses=[0x2fb23c],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Veniccio"),
+		possible_values=ChooseMonsterDrops("Veniccio"),
 		is_little_endian=True, ),
 #silver gear 0x2FB254
 	Attribute(
@@ -10334,19 +10344,19 @@ Attributes = [
 		name="SILVER GEAR ITEM1",
 		addresses=[0x2fb2f0],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Moon"),
+		possible_values=ChooseMonsterDrops("Moon"),
 		is_little_endian=True, ),
 	Attribute(
 		name="SILVER GEAR ITEM2",
 		addresses=[0x2fb2f2],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Moon"),
+		possible_values=ChooseMonsterDrops("Moon"),
 		is_little_endian=True, ),
 	Attribute(
 		name="SILVER GEAR ITEM3",
 		addresses=[0x2fb2f4],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Moon"),
+		possible_values=ChooseMonsterDrops("Moon"),
 		is_little_endian=True, ),
 #platinum gear 0x2FB30C
 	Attribute(
@@ -10388,19 +10398,19 @@ Attributes = [
 		name="PLATINUM GEAR ITEM1",
 		addresses=[0x2fb3a8],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="PLATINUM GEAR ITEM2",
 		addresses=[0x2fb3aa],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="PLATINUM GEAR ITEM3",
 		addresses=[0x2fb3ac],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 #master jacket 0x2FB3C4
 	Attribute(
@@ -10442,19 +10452,19 @@ Attributes = [
 		name="MASTER JACKET ITEM1",
 		addresses=[0x2fb460],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Veniccio"),
+		possible_values=ChooseMonsterDrops("Veniccio"),
 		is_little_endian=True, ),
 	Attribute(
 		name="MASTER JACKET ITEM2",
 		addresses=[0x2fb462],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Veniccio"),
+		possible_values=ChooseMonsterDrops("Veniccio"),
 		is_little_endian=True, ),
 	Attribute(
 		name="MASTER JACKET ITEM3",
 		addresses=[0x2fb464],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Veniccio"),
+		possible_values=ChooseMonsterDrops("Veniccio"),
 		is_little_endian=True, ),
 #heat wear 0x2FB47C
 	Attribute(
@@ -10496,19 +10506,19 @@ Attributes = [
 		name="HEAT WEAR ITEM1",
 		addresses=[0x2fb518],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Star"),
+		possible_values=ChooseMonsterDrops("Star"),
 		is_little_endian=True, ),
 	Attribute(
 		name="HEAT WEAR ITEM2",
 		addresses=[0x2fb51a],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Star"),
+		possible_values=ChooseMonsterDrops("Star"),
 		is_little_endian=True, ),
 	Attribute(
 		name="HEAT WEAR ITEM3",
 		addresses=[0x2fb51c],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Star"),
+		possible_values=ChooseMonsterDrops("Star"),
 		is_little_endian=True, ),
 #skull chief 0x2FB534
 	Attribute(
@@ -10550,19 +10560,19 @@ Attributes = [
 		name="SKULL CHIEF ITEM1",
 		addresses=[0x2fb5d0],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Moon"),
+		possible_values=ChooseMonsterDrops("Moon"),
 		is_little_endian=True, ),
 	Attribute(
 		name="SKULL CHIEF ITEM2",
 		addresses=[0x2fb5d2],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Moon"),
+		possible_values=ChooseMonsterDrops("Moon"),
 		is_little_endian=True, ),
 	Attribute(
 		name="SKULL CHIEF ITEM3",
 		addresses=[0x2fb5d4],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Moon"),
+		possible_values=ChooseMonsterDrops("Moon"),
 		is_little_endian=True, ),
 #rare jacket (boss)  0x2FB5EC
 	Attribute(
@@ -10604,19 +10614,19 @@ Attributes = [
 		name="RARE JACKET ITEM1",
 		addresses=[0x2fb688],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="RARE JACKET ITEM2",
 		addresses=[0x2fb68a],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="RARE JACKET ITEM3",
 		addresses=[0x2fb68c],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 #captain 0x2FB6A4
 	Attribute(
@@ -10658,19 +10668,19 @@ Attributes = [
 		name="CAPTAIN ITEM1",
 		addresses=[0x2fb740],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Veniccio"),
+		possible_values=ChooseMonsterDrops("Veniccio"),
 		is_little_endian=True, ),
 	Attribute(
 		name="CAPTAIN ITEM2",
 		addresses=[0x2fb742],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Veniccio"),
+		possible_values=ChooseMonsterDrops("Veniccio"),
 		is_little_endian=True, ),
 	Attribute(
 		name="CAPTAIN ITEM3",
 		addresses=[0x2fb744],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Veniccio"),
+		possible_values=ChooseMonsterDrops("Veniccio"),
 		is_little_endian=True, ),
 #blackbeard 0x2FB75C
 	Attribute(
@@ -10712,19 +10722,19 @@ Attributes = [
 		name="BLACKBEARD ITEM1",
 		addresses=[0x2fb7f8],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Star"),
+		possible_values=ChooseMonsterDrops("Star"),
 		is_little_endian=True, ),
 	Attribute(
 		name="BLACKBEARD ITEM2",
 		addresses=[0x2fb7fa],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Star"),
+		possible_values=ChooseMonsterDrops("Star"),
 		is_little_endian=True, ),
 	Attribute(
 		name="BLACKBEARD ITEM3",
 		addresses=[0x2fb7fc],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Star"),
+		possible_values=ChooseMonsterDrops("Star"),
 		is_little_endian=True, ),
 #whitebeard 0x2FB814
 	Attribute(
@@ -10766,19 +10776,19 @@ Attributes = [
 		name="WHITEBEARD ITEM1",
 		addresses=[0x2fb8b0],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="WHITEBEARD ITEM2",
 		addresses=[0x2fb8b2],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="WHITEBEARD ITEM3",
 		addresses=[0x2fb8b4],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 #oyakata 0x2FB8CC
 	Attribute(
@@ -10820,19 +10830,19 @@ Attributes = [
 		name="OYAKATA ITEM1",
 		addresses=[0x2fb968],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="OYAKATA ITEM2",
 		addresses=[0x2fb96a],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="OYAKATA ITEM3",
 		addresses=[0x2fb96c],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 #corsair 0x2FB984
 	Attribute(
@@ -10874,19 +10884,19 @@ Attributes = [
 		name="CORSAIR ITEM1",
 		addresses=[0x2fba20],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Veniccio"),
+		possible_values=ChooseMonsterDrops("Veniccio"),
 		is_little_endian=True, ),
 	Attribute(
 		name="CORSAIR ITEM2",
 		addresses=[0x2fba22],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Veniccio"),
+		possible_values=ChooseMonsterDrops("Veniccio"),
 		is_little_endian=True, ),
 	Attribute(
 		name="CORSAIR ITEM3",
 		addresses=[0x2fba24],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Veniccio"),
+		possible_values=ChooseMonsterDrops("Veniccio"),
 		is_little_endian=True, ),
 #zombie pirate 0x2FBA3C
 	Attribute(
@@ -10928,19 +10938,19 @@ Attributes = [
 		name="ZOMBIE PIRATE ITEM1",
 		addresses=[0x2fbad8],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Star"),
+		possible_values=ChooseMonsterDrops("Star"),
 		is_little_endian=True, ),
 	Attribute(
 		name="ZOMBIE PIRATE ITEM2",
 		addresses=[0x2fbada],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Star"),
+		possible_values=ChooseMonsterDrops("Star"),
 		is_little_endian=True, ),
 	Attribute(
 		name="ZOMBIE PIRATE ITEM3",
 		addresses=[0x2fbadc],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Star"),
+		possible_values=ChooseMonsterDrops("Star"),
 		is_little_endian=True, ),
 #ore robber 0x2FBAF4
 	Attribute(
@@ -10982,19 +10992,19 @@ Attributes = [
 		name="ORE ROBBER ITEM1",
 		addresses=[0x2fbb90],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="ORE ROBBER ITEM2",
 		addresses=[0x2fbb92],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="ORE ROBBER ITEM3",
 		addresses=[0x2fbb94],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 #elite corsair 0x2FBBAC
 	Attribute(
@@ -11036,19 +11046,19 @@ Attributes = [
 		name="ELITE CORSAIR ITEM1",
 		addresses=[0x2fbc48],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="ELITE CORSAIR ITEM2",
 		addresses=[0x2fbc4a],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="ELITE CORSAIR ITEM3",
 		addresses=[0x2fbc4c],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 #face of prajna 0x2FBC64
 	Attribute(
@@ -11090,19 +11100,19 @@ Attributes = [
 		name="FACE OF PRAJNA ITEM1",
 		addresses=[0x2fbd00],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Sindain"),
+		possible_values=ChooseMonsterDrops("Sindain"),
 		is_little_endian=True, ),
 	Attribute(
 		name="FACE OF PRAJNA ITEM2",
 		addresses=[0x2fbd02],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Sindain"),
+		possible_values=ChooseMonsterDrops("Sindain"),
 		is_little_endian=True, ),
 	Attribute(
 		name="FACE OF PRAJNA ITEM3",
 		addresses=[0x2fbd04],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Sindain"),
+		possible_values=ChooseMonsterDrops("Sindain"),
 		is_little_endian=True, ),
 #alexander 0x2FBD1C
 	Attribute(
@@ -11144,19 +11154,19 @@ Attributes = [
 		name="ALEXANDER ITEM1",
 		addresses=[0x2fbdb8],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Heim"),
+		possible_values=ChooseMonsterDrops("Heim"),
 		is_little_endian=True, ),
 	Attribute(
 		name="ALEXANDER ITEM2",
 		addresses=[0x2fbdba],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Heim"),
+		possible_values=ChooseMonsterDrops("Heim"),
 		is_little_endian=True, ),
 	Attribute(
 		name="ALEXANDER ITEM3",
 		addresses=[0x2fbdbc],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Heim"),
+		possible_values=ChooseMonsterDrops("Heim"),
 		is_little_endian=True, ),
 #face of yaska 0x2FBDD4
 	Attribute(
@@ -11198,19 +11208,19 @@ Attributes = [
 		name="FACE OF YASKA ITEM1",
 		addresses=[0x2fbe70],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="FACE OF YASKA ITEM2",
 		addresses=[0x2fbe72],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="FACE OF YASKA ITEM3",
 		addresses=[0x2fbe74],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 #demon puppet 0x2FBE8C
 	Attribute(
@@ -11252,19 +11262,19 @@ Attributes = [
 		name="DEMON PUPPET ITEM1",
 		addresses=[0x2fbf28],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="DEMON PUPPET ITEM2",
 		addresses=[0x2fbf2a],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="DEMON PUPPET ITEM3",
 		addresses=[0x2fbf2c],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 #smiling fairy 0x2FBF44
 	Attribute(
@@ -11306,19 +11316,19 @@ Attributes = [
 		name="SMILING FAIRY ITEM1",
 		addresses=[0x2fbfe0],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Valley"),
+		possible_values=ChooseMonsterDrops("Valley"),
 		is_little_endian=True, ),
 	Attribute(
 		name="SMILING FAIRY ITEM2",
 		addresses=[0x2fbfe2],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Valley"),
+		possible_values=ChooseMonsterDrops("Valley"),
 		is_little_endian=True, ),
 	Attribute(
 		name="SMILING FAIRY ITEM3",
 		addresses=[0x2fbfe4],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Valley"),
+		possible_values=ChooseMonsterDrops("Valley"),
 		is_little_endian=True, ),
 #heat fairy 0x2FBFFC
 	Attribute(
@@ -11360,19 +11370,19 @@ Attributes = [
 		name="HEAT FAIRY ITEM1",
 		addresses=[0x2fc098],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Star"),
+		possible_values=ChooseMonsterDrops("Star"),
 		is_little_endian=True, ),
 	Attribute(
 		name="HEAT FAIRY ITEM2",
 		addresses=[0x2fc09a],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Star"),
+		possible_values=ChooseMonsterDrops("Star"),
 		is_little_endian=True, ),
 	Attribute(
 		name="HEAT FAIRY ITEM3",
 		addresses=[0x2fc09c],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Star"),
+		possible_values=ChooseMonsterDrops("Star"),
 		is_little_endian=True, ),
 #fairy helper 0x2FC0B4
 	Attribute(
@@ -11414,19 +11424,19 @@ Attributes = [
 		name="FAIRY HELPER ITEM1",
 		addresses=[0x2fc150],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="FAIRY HELPER ITEM2",
 		addresses=[0x2fc152],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="FAIRY HELPER ITEM3",
 		addresses=[0x2fc154],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 #hell fairy 0x2FC16C
 	Attribute(
@@ -11468,19 +11478,19 @@ Attributes = [
 		name="HELL FAIRY ITEM1",
 		addresses=[0x2fc208],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="HELL FAIRY ITEM2",
 		addresses=[0x2fc20a],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="HELL FAIRY ITEM3",
 		addresses=[0x2fc20c],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 #crecent baron 0x2FC224
 	Attribute(
@@ -11522,19 +11532,19 @@ Attributes = [
 		name="CRECENT BARON ITEM1",
 		addresses=[0x2fc2c0],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Valley"),
+		possible_values=ChooseMonsterDrops("Valley"),
 		is_little_endian=True, ),
 	Attribute(
 		name="CRECENT BARON ITEM2",
 		addresses=[0x2fc2c2],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Valley"),
+		possible_values=ChooseMonsterDrops("Valley"),
 		is_little_endian=True, ),
 	Attribute(
 		name="CRECENT BARON ITEM3",
 		addresses=[0x2fc2c4],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Valley"),
+		possible_values=ChooseMonsterDrops("Valley"),
 		is_little_endian=True, ),
 #stick joe 0x2FC2DC
 	Attribute(
@@ -11576,19 +11586,19 @@ Attributes = [
 		name="STICK JOE ITEM1",
 		addresses=[0x2fc378],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Heim"),
+		possible_values=ChooseMonsterDrops("Heim"),
 		is_little_endian=True, ),
 	Attribute(
 		name="STICK JOE ITEM2",
 		addresses=[0x2fc37a],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Heim"),
+		possible_values=ChooseMonsterDrops("Heim"),
 		is_little_endian=True, ),
 	Attribute(
 		name="STICK JOE ITEM3",
 		addresses=[0x2fc37c],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Heim"),
+		possible_values=ChooseMonsterDrops("Heim"),
 		is_little_endian=True, ),
 #moon joe 0x2FC394
 	Attribute(
@@ -11630,19 +11640,19 @@ Attributes = [
 		name="MOON JOE ITEM1",
 		addresses=[0x2fc430],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Moon"),
+		possible_values=ChooseMonsterDrops("Moon"),
 		is_little_endian=True, ),
 	Attribute(
 		name="MOON JOE ITEM2",
 		addresses=[0x2fc432],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Moon"),
+		possible_values=ChooseMonsterDrops("Moon"),
 		is_little_endian=True, ),
 	Attribute(
 		name="MOON JOE ITEM3",
 		addresses=[0x2fc434],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Moon"),
+		possible_values=ChooseMonsterDrops("Moon"),
 		is_little_endian=True, ),
 #moonlight hulk 0x2FC44C
 	Attribute(
@@ -11684,19 +11694,19 @@ Attributes = [
 		name="MOONLIGHT HULK ITEM1",
 		addresses=[0x2fc4e8],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="MOONLIGHT HULK ITEM2",
 		addresses=[0x2fc4ea],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="MOONLIGHT HULK ITEM3",
 		addresses=[0x2fc4ec],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 #darkness 0x2FC504
 	Attribute(
@@ -11738,19 +11748,19 @@ Attributes = [
 		name="DARKNESS ITEM1",
 		addresses=[0x2fc5a0],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Sewer"),
+		possible_values=ChooseMonsterDrops("Sewer"),
 		is_little_endian=True, ),
 	Attribute(
 		name="DARKNESS ITEM2",
 		addresses=[0x2fc5a2],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Sewer"),
+		possible_values=ChooseMonsterDrops("Sewer"),
 		is_little_endian=True, ),
 	Attribute(
 		name="DARKNESS ITEM3",
 		addresses=[0x2fc5a4],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Sewer"),
+		possible_values=ChooseMonsterDrops("Sewer"),
 		is_little_endian=True, ),
 #sooty 0x2FC5BC
 	Attribute(
@@ -11792,19 +11802,19 @@ Attributes = [
 		name="SOOTY ITEM1",
 		addresses=[0x2fc658],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Veniccio"),
+		possible_values=ChooseMonsterDrops("Veniccio"),
 		is_little_endian=True, ),
 	Attribute(
 		name="SOOTY ITEM2",
 		addresses=[0x2fc65a],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Veniccio"),
+		possible_values=ChooseMonsterDrops("Veniccio"),
 		is_little_endian=True, ),
 	Attribute(
 		name="SOOTY ITEM3",
 		addresses=[0x2fc65c],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Veniccio"),
+		possible_values=ChooseMonsterDrops("Veniccio"),
 		is_little_endian=True, ),
 #darker 0x2FC674
 	Attribute(
@@ -11846,19 +11856,19 @@ Attributes = [
 		name="DARKER ITEM1",
 		addresses=[0x2fc710],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="DARKER ITEM2",
 		addresses=[0x2fc712],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="DARKER ITEM3",
 		addresses=[0x2fc714],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 #shadow 0x2FC72C
 	Attribute(
@@ -11900,19 +11910,19 @@ Attributes = [
 		name="SHADOW ITEM1",
 		addresses=[0x2fc7c8],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="SHADOW ITEM2",
 		addresses=[0x2fc7ca],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="SHADOW ITEM3",
 		addresses=[0x2fc7cc],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 #priest of rama 0x2FC7E4
 	Attribute(
@@ -11954,19 +11964,19 @@ Attributes = [
 		name="PRIEST OF RAMA ITEM1",
 		addresses=[0x2fc880],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Valley"),
+		possible_values=ChooseMonsterDrops("Valley"),
 		is_little_endian=True, ),
 	Attribute(
 		name="PRIEST OF RAMA ITEM2",
 		addresses=[0x2fc882],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Valley"),
+		possible_values=ChooseMonsterDrops("Valley"),
 		is_little_endian=True, ),
 	Attribute(
 		name="PRIEST OF RAMA ITEM3",
 		addresses=[0x2fc884],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Valley"),
+		possible_values=ChooseMonsterDrops("Valley"),
 		is_little_endian=True, ),
 #sleeber 0x2FC89C
 	Attribute(
@@ -12008,19 +12018,19 @@ Attributes = [
 		name="SLEEBER ITEM1",
 		addresses=[0x2fc938],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Star"),
+		possible_values=ChooseMonsterDrops("Star"),
 		is_little_endian=True, ),
 	Attribute(
 		name="SLEEBER ITEM2",
 		addresses=[0x2fc93a],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Star"),
+		possible_values=ChooseMonsterDrops("Star"),
 		is_little_endian=True, ),
 	Attribute(
 		name="SLEEBER ITEM3",
 		addresses=[0x2fc93c],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Star"),
+		possible_values=ChooseMonsterDrops("Star"),
 		is_little_endian=True, ),
 #crow priest 0x2FC954
 	Attribute(
@@ -12062,19 +12072,19 @@ Attributes = [
 		name="CROW PRIEST ITEM1",
 		addresses=[0x2fc9f0],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Moon"),
+		possible_values=ChooseMonsterDrops("Moon"),
 		is_little_endian=True, ),
 	Attribute(
 		name="CROW PRIEST ITEM2",
 		addresses=[0x2fc9f2],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Moon"),
+		possible_values=ChooseMonsterDrops("Moon"),
 		is_little_endian=True, ),
 	Attribute(
 		name="CROW PRIEST ITEM3",
 		addresses=[0x2fc9f4],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Moon"),
+		possible_values=ChooseMonsterDrops("Moon"),
 		is_little_endian=True, ),
 #garuda 0x2FCA0C
 	Attribute(
@@ -12116,19 +12126,19 @@ Attributes = [
 		name="GARUDA ITEM1",
 		addresses=[0x2fcaa8],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="GARUDA ITEM2",
 		addresses=[0x2fcaaa],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="GARUDA ITEM3",
 		addresses=[0x2fcaac],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 #arthur 0x2FCAC4
 	Attribute(
@@ -12170,19 +12180,19 @@ Attributes = [
 		name="ARTHUR ITEM1",
 		addresses=[0x2fcb60],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Star"),
+		possible_values=ChooseMonsterDrops("Star"),
 		is_little_endian=True, ),
 	Attribute(
 		name="ARTHUR ITEM2",
 		addresses=[0x2fcb62],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Star"),
+		possible_values=ChooseMonsterDrops("Star"),
 		is_little_endian=True, ),
 	Attribute(
 		name="ARTHUR ITEM3",
 		addresses=[0x2fcb64],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Star"),
+		possible_values=ChooseMonsterDrops("Star"),
 		is_little_endian=True, ),
 #lancer 0x2FCB7C
 	Attribute(
@@ -12224,19 +12234,19 @@ Attributes = [
 		name="LANCER ITEM1",
 		addresses=[0x2fcc18],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Moon"),
+		possible_values=ChooseMonsterDrops("Moon"),
 		is_little_endian=True, ),
 	Attribute(
 		name="LANCER ITEM2",
 		addresses=[0x2fcc1a],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Moon"),
+		possible_values=ChooseMonsterDrops("Moon"),
 		is_little_endian=True, ),
 	Attribute(
 		name="LANCER ITEM3",
 		addresses=[0x2fcc1c],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Moon"),
+		possible_values=ChooseMonsterDrops("Moon"),
 		is_little_endian=True, ),
 #iron spear 0x2FCC34
 	Attribute(
@@ -12278,19 +12288,19 @@ Attributes = [
 		name="IRON SPEAR ITEM1",
 		addresses=[0x2fccd0],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="IRON SPEAR ITEM2",
 		addresses=[0x2fccd2],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="IRON SPEAR ITEM3",
 		addresses=[0x2fccd4],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 #flying steel 0x2FCCEC
 	Attribute(
@@ -12332,19 +12342,19 @@ Attributes = [
 		name="FLYING STEEL ITEM1",
 		addresses=[0x2fcd88],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="FLYING STEEL ITEM2",
 		addresses=[0x2fcd8a],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="FLYING STEEL ITEM3",
 		addresses=[0x2fcd8c],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 #pirate tank 0x2FCDA4
 	Attribute(
@@ -12386,19 +12396,19 @@ Attributes = [
 		name="PIRATE TANK ITEM1",
 		addresses=[0x2fce40],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Veniccio"),
+		possible_values=ChooseMonsterDrops("Veniccio"),
 		is_little_endian=True, ),
 	Attribute(
 		name="PIRATE TANK ITEM2",
 		addresses=[0x2fce42],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Veniccio"),
+		possible_values=ChooseMonsterDrops("Veniccio"),
 		is_little_endian=True, ),
 	Attribute(
 		name="PIRATE TANK ITEM3",
 		addresses=[0x2fce44],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Veniccio"),
+		possible_values=ChooseMonsterDrops("Veniccio"),
 		is_little_endian=True, ),
 #pirate eye 0x2FCE5C
 	Attribute(
@@ -12440,19 +12450,19 @@ Attributes = [
 		name="PIRATE EYE ITEM1",
 		addresses=[0x2fcef8],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Star"),
+		possible_values=ChooseMonsterDrops("Star"),
 		is_little_endian=True, ),
 	Attribute(
 		name="PIRATE EYE ITEM2",
 		addresses=[0x2fcefa],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Star"),
+		possible_values=ChooseMonsterDrops("Star"),
 		is_little_endian=True, ),
 	Attribute(
 		name="PIRATE EYE ITEM3",
 		addresses=[0x2fcefc],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Star"),
+		possible_values=ChooseMonsterDrops("Star"),
 		is_little_endian=True, ),
 #angry canon 0x2FCF14
 	Attribute(
@@ -12494,19 +12504,19 @@ Attributes = [
 		name="ANGRY CANON ITEM1",
 		addresses=[0x2fcfb0],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="ANGRY CANON ITEM2",
 		addresses=[0x2fcfb2],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="ANGRY CANON ITEM3",
 		addresses=[0x2fcfb4],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 #iron ghost 0x2FCFCC
 	Attribute(
@@ -12548,19 +12558,19 @@ Attributes = [
 		name="IRON GHOST ITEM1",
 		addresses=[0x2fd068],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="IRON GHOST ITEM2",
 		addresses=[0x2fd06a],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="IRON GHOST ITEM3",
 		addresses=[0x2fd06c],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 #bomber head 0x2FD084
 	Attribute(
@@ -12602,19 +12612,19 @@ Attributes = [
 		name="BOMBER HEAD ITEM1",
 		addresses=[0x2fd120],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Heim"),
+		possible_values=ChooseMonsterDrops("Heim"),
 		is_little_endian=True, ),
 	Attribute(
 		name="BOMBER HEAD ITEM2",
 		addresses=[0x2fd122],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Heim"),
+		possible_values=ChooseMonsterDrops("Heim"),
 		is_little_endian=True, ),
 	Attribute(
 		name="BOMBER HEAD ITEM3",
 		addresses=[0x2fd124],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Heim"),
+		possible_values=ChooseMonsterDrops("Heim"),
 		is_little_endian=True, ),
 #triple cracker 0x2FD13C
 	Attribute(
@@ -12656,19 +12666,19 @@ Attributes = [
 		name="TRIPLE CRACKER ITEM1",
 		addresses=[0x2fd1d8],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Star"),
+		possible_values=ChooseMonsterDrops("Star"),
 		is_little_endian=True, ),
 	Attribute(
 		name="TRIPLE CRACKER ITEM2",
 		addresses=[0x2fd1da],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Star"),
+		possible_values=ChooseMonsterDrops("Star"),
 		is_little_endian=True, ),
 	Attribute(
 		name="TRIPLE CRACKER ITEM3",
 		addresses=[0x2fd1dc],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Star"),
+		possible_values=ChooseMonsterDrops("Star"),
 		is_little_endian=True, ),
 #danger bomb 0x2FD1F4
 	Attribute(
@@ -12710,19 +12720,19 @@ Attributes = [
 		name="DANGER BOMB ITEM1",
 		addresses=[0x2fd290],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="DANGER BOMB ITEM2",
 		addresses=[0x2fd292],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="DANGER BOMB ITEM3",
 		addresses=[0x2fd294],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 #sweet dynamite 0x2FD2AC
 	Attribute(
@@ -12764,19 +12774,19 @@ Attributes = [
 		name="SWEET DYNAMITE ITEM1",
 		addresses=[0x2fd348],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="SWEET DYNAMITE ITEM2",
 		addresses=[0x2fd34a],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="SWEET DYNAMITE ITEM3",
 		addresses=[0x2fd34c],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 #club 0x2FD364
 	Attribute(
@@ -12818,19 +12828,19 @@ Attributes = [
 		name="CLUB ITEM1",
 		addresses=[0x2fd400],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Moon"),
+		possible_values=ChooseMonsterDrops("Moon"),
 		is_little_endian=True, ),
 	Attribute(
 		name="CLUB ITEM2",
 		addresses=[0x2fd402],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Moon"),
+		possible_values=ChooseMonsterDrops("Moon"),
 		is_little_endian=True, ),
 	Attribute(
 		name="CLUB ITEM3",
 		addresses=[0x2fd404],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Moon"),
+		possible_values=ChooseMonsterDrops("Moon"),
 		is_little_endian=True, ),
 #s club 0x2FD41C
 	Attribute(
@@ -12872,19 +12882,19 @@ Attributes = [
 		name="S CLUB ITEM1",
 		addresses=[0x2fd4b8],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Moon"),
+		possible_values=ChooseMonsterDrops("Moon"),
 		is_little_endian=True, ),
 	Attribute(
 		name="S CLUB ITEM2",
 		addresses=[0x2fd4ba],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Moon"),
+		possible_values=ChooseMonsterDrops("Moon"),
 		is_little_endian=True, ),
 	Attribute(
 		name="S CLUB ITEM3",
 		addresses=[0x2fd4bc],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Moon"),
+		possible_values=ChooseMonsterDrops("Moon"),
 		is_little_endian=True, ),
 #r club 0x2FD4D4
 	Attribute(
@@ -12926,19 +12936,19 @@ Attributes = [
 		name="R CLUB ITEM1",
 		addresses=[0x2fd570],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="R CLUB ITEM2",
 		addresses=[0x2fd572],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="R CLUB ITEM3",
 		addresses=[0x2fd574],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 #rsf club 0x2FD58C
 	Attribute(
@@ -12980,19 +12990,19 @@ Attributes = [
 		name="RSF CLUB ITEM1",
 		addresses=[0x2fd628],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="RSF CLUB ITEM2",
 		addresses=[0x2fd62a],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="RSF CLUB ITEM3",
 		addresses=[0x2fd62c],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 #heart 0x2FD644
 	Attribute(
@@ -13034,19 +13044,19 @@ Attributes = [
 		name="HEART ITEM1",
 		addresses=[0x2fd6e0],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Moon"),
+		possible_values=ChooseMonsterDrops("Moon"),
 		is_little_endian=True, ),
 	Attribute(
 		name="HEART ITEM2",
 		addresses=[0x2fd6e2],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Moon"),
+		possible_values=ChooseMonsterDrops("Moon"),
 		is_little_endian=True, ),
 	Attribute(
 		name="HEART ITEM3",
 		addresses=[0x2fd6e4],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Moon"),
+		possible_values=ChooseMonsterDrops("Moon"),
 		is_little_endian=True, ),
 #s heart 0x2FD6FC
 	Attribute(
@@ -13088,19 +13098,19 @@ Attributes = [
 		name="S HEART ITEM1",
 		addresses=[0x2fd798],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Moon"),
+		possible_values=ChooseMonsterDrops("Moon"),
 		is_little_endian=True, ),
 	Attribute(
 		name="S HEART ITEM2",
 		addresses=[0x2fd79a],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Moon"),
+		possible_values=ChooseMonsterDrops("Moon"),
 		is_little_endian=True, ),
 	Attribute(
 		name="S HEART ITEM3",
 		addresses=[0x2fd79c],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Moon"),
+		possible_values=ChooseMonsterDrops("Moon"),
 		is_little_endian=True, ),
 #r heart 0x2FD7B4
 	Attribute(
@@ -13142,19 +13152,19 @@ Attributes = [
 		name="R HEART ITEM1",
 		addresses=[0x2fd850],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="R HEART ITEM2",
 		addresses=[0x2fd852],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="R HEART ITEM3",
 		addresses=[0x2fd854],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 #rsf heart 0x2FD86C
 	Attribute(
@@ -13196,19 +13206,19 @@ Attributes = [
 		name="RSF HEART ITEM1",
 		addresses=[0x2fd908],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="RSF HEART ITEM2",
 		addresses=[0x2fd90a],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="RSF HEART ITEM3",
 		addresses=[0x2fd90c],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 #spade 0x2FD924
 	Attribute(
@@ -13250,19 +13260,19 @@ Attributes = [
 		name="SPADE ITEM1",
 		addresses=[0x2fd9c0],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Moon"),
+		possible_values=ChooseMonsterDrops("Moon"),
 		is_little_endian=True, ),
 	Attribute(
 		name="SPADE ITEM2",
 		addresses=[0x2fd9c2],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Moon"),
+		possible_values=ChooseMonsterDrops("Moon"),
 		is_little_endian=True, ),
 	Attribute(
 		name="SPADE ITEM3",
 		addresses=[0x2fd9c4],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Moon"),
+		possible_values=ChooseMonsterDrops("Moon"),
 		is_little_endian=True, ),
 #s spade 0x2FD9DC
 	Attribute(
@@ -13304,19 +13314,19 @@ Attributes = [
 		name="S SPADE ITEM1",
 		addresses=[0x2fda78],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Moon"),
+		possible_values=ChooseMonsterDrops("Moon"),
 		is_little_endian=True, ),
 	Attribute(
 		name="S SPADE ITEM2",
 		addresses=[0x2fda7a],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Moon"),
+		possible_values=ChooseMonsterDrops("Moon"),
 		is_little_endian=True, ),
 	Attribute(
 		name="S SPADE ITEM3",
 		addresses=[0x2fda7c],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Moon"),
+		possible_values=ChooseMonsterDrops("Moon"),
 		is_little_endian=True, ),
 #r spade 0x2FDA94
 	Attribute(
@@ -13358,19 +13368,19 @@ Attributes = [
 		name="R SPADE ITEM1",
 		addresses=[0x2fdb30],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="R SPADE ITEM2",
 		addresses=[0x2fdb32],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="R SPADE ITEM3",
 		addresses=[0x2fdb34],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 #rsf spade 0x2FDB4C
 	Attribute(
@@ -13412,19 +13422,19 @@ Attributes = [
 		name="RSF SPADE ITEM1",
 		addresses=[0x2fdbe8],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="RSF SPADE ITEM2",
 		addresses=[0x2fdbea],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="RSF SPADE ITEM3",
 		addresses=[0x2fdbec],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 #diamond 0x2FDC04
 	Attribute(
@@ -13466,19 +13476,19 @@ Attributes = [
 		name="DIAMOND ITEM1",
 		addresses=[0x2fdca0],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Moon"),
+		possible_values=ChooseMonsterDrops("Moon"),
 		is_little_endian=True, ),
 	Attribute(
 		name="DIAMOND ITEM2",
 		addresses=[0x2fdca2],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Moon"),
+		possible_values=ChooseMonsterDrops("Moon"),
 		is_little_endian=True, ),
 	Attribute(
 		name="DIAMOND ITEM3",
 		addresses=[0x2fdca4],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Moon"),
+		possible_values=ChooseMonsterDrops("Moon"),
 		is_little_endian=True, ),
 #s diamond 0x2FDCBC
 	Attribute(
@@ -13520,19 +13530,19 @@ Attributes = [
 		name="S DIAMOND ITEM1",
 		addresses=[0x2fdd58],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Moon"),
+		possible_values=ChooseMonsterDrops("Moon"),
 		is_little_endian=True, ),
 	Attribute(
 		name="S DIAMOND ITEM2",
 		addresses=[0x2fdd5a],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Moon"),
+		possible_values=ChooseMonsterDrops("Moon"),
 		is_little_endian=True, ),
 	Attribute(
 		name="S DIAMOND ITEM3",
 		addresses=[0x2fdd5c],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Moon"),
+		possible_values=ChooseMonsterDrops("Moon"),
 		is_little_endian=True, ),
 #r diamond 0x2FDD74
 	Attribute(
@@ -13574,19 +13584,19 @@ Attributes = [
 		name="R DIAMOND ITEM1",
 		addresses=[0x2fde10],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="R DIAMOND ITEM2",
 		addresses=[0x2fde12],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="R DIAMOND ITEM3",
 		addresses=[0x2fde14],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 #rsf diamond 0x2FDE2C
 	Attribute(
@@ -13628,19 +13638,19 @@ Attributes = [
 		name="RSF DIAMOND ITEM1",
 		addresses=[0x2fdec8],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="RSF DIAMOND ITEM2",
 		addresses=[0x2fdeca],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="RSF DIAMOND ITEM3",
 		addresses=[0x2fdecc],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 #joker 0x2FDEE4
 	Attribute(
@@ -13682,19 +13692,19 @@ Attributes = [
 		name="JOKER ITEM1",
 		addresses=[0x2fdf80],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Moon"),
+		possible_values=ChooseMonsterDrops("Moon"),
 		is_little_endian=True, ),
 	Attribute(
 		name="JOKER ITEM2",
 		addresses=[0x2fdf82],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Moon"),
+		possible_values=ChooseMonsterDrops("Moon"),
 		is_little_endian=True, ),
 	Attribute(
 		name="JOKER ITEM3",
 		addresses=[0x2fdf84],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Moon"),
+		possible_values=ChooseMonsterDrops("Moon"),
 		is_little_endian=True, ),
 #s joker 0x2FDF9C
 	Attribute(
@@ -13736,19 +13746,19 @@ Attributes = [
 		name="S JOKER ITEM1",
 		addresses=[0x2fe038],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Moon"),
+		possible_values=ChooseMonsterDrops("Moon"),
 		is_little_endian=True, ),
 	Attribute(
 		name="S JOKER ITEM2",
 		addresses=[0x2fe03a],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Moon"),
+		possible_values=ChooseMonsterDrops("Moon"),
 		is_little_endian=True, ),
 	Attribute(
 		name="S JOKER ITEM3",
 		addresses=[0x2fe03c],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Moon"),
+		possible_values=ChooseMonsterDrops("Moon"),
 		is_little_endian=True, ),
 #r joker 0x2FE054
 	Attribute(
@@ -13790,19 +13800,19 @@ Attributes = [
 		name="R JOKER ITEM1",
 		addresses=[0x2fe0f0],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="R JOKER ITEM2",
 		addresses=[0x2fe0f2],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="R JOKER ITEM3",
 		addresses=[0x2fe0f4],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 #rsf joker 0x2FE10C
 	Attribute(
@@ -13844,19 +13854,19 @@ Attributes = [
 		name="RSF JOKER ITEM1",
 		addresses=[0x2fe1a8],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="RSF JOKER ITEM2",
 		addresses=[0x2fe1aa],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="RSF JOKER ITEM3",
 		addresses=[0x2fe1ac],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 #mimic (uwc) 0x2FE1C4
 	Attribute(
@@ -13898,19 +13908,19 @@ Attributes = [
 		name="MIMIC ITEM1",
 		addresses=[0x2fe260],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Sewer"),
+		possible_values=ChooseMonsterDrops("Sewer"),
 		is_little_endian=True, ),
 	Attribute(
 		name="MIMIC ITEM2",
 		addresses=[0x2fe262],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Sewer"),
+		possible_values=ChooseMonsterDrops("Sewer"),
 		is_little_endian=True, ),
 	Attribute(
 		name="MIMIC ITEM3",
 		addresses=[0x2fe264],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Sewer"),
+		possible_values=ChooseMonsterDrops("Sewer"),
 		is_little_endian=True, ),
 #king mimic (uwc) 0x2FE27C
 	Attribute(
@@ -13952,19 +13962,19 @@ Attributes = [
 		name="KING MIMIC ITEM1",
 		addresses=[0x2fe318],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Sewer"),
+		possible_values=ChooseMonsterDrops("Sewer"),
 		is_little_endian=True, ),
 	Attribute(
 		name="KING MIMIC ITEM2",
 		addresses=[0x2fe31a],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Sewer"),
+		possible_values=ChooseMonsterDrops("Sewer"),
 		is_little_endian=True, ),
 	Attribute(
 		name="KING MIMIC ITEM3",
 		addresses=[0x2fe31c],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Sewer"),
+		possible_values=ChooseMonsterDrops("Sewer"),
 		is_little_endian=True, ),
 #mimic (rbw) 0x2FE334
 		Attribute(
@@ -14006,19 +14016,19 @@ Attributes = [
 		name="MIMIC ITEM1",
 		addresses=[0x2fe3d0],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Sindain"),
+		possible_values=ChooseMonsterDrops("Sindain"),
 		is_little_endian=True, ),
 	Attribute(
 		name="MIMIC ITEM2",
 		addresses=[0x2fe3d2],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Sindain"),
+		possible_values=ChooseMonsterDrops("Sindain"),
 		is_little_endian=True, ),
 	Attribute(
 		name="MIMIC ITEM3",
 		addresses=[0x2fe3d4],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Sindain"),
+		possible_values=ChooseMonsterDrops("Sindain"),
 		is_little_endian=True, ),
 #king mimic (rbw) 0x2FE3EC
 	Attribute(
@@ -14060,19 +14070,19 @@ Attributes = [
 		name="KING MIMIC ITEM1",
 		addresses=[0x2fe488],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Sindain"),
+		possible_values=ChooseMonsterDrops("Sindain"),
 		is_little_endian=True, ),
 	Attribute(
 		name="KING MIMIC ITEM2",
 		addresses=[0x2fe48a],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Sindain"),
+		possible_values=ChooseMonsterDrops("Sindain"),
 		is_little_endian=True, ),
 	Attribute(
 		name="KING MIMIC ITEM3",
 		addresses=[0x2fe48c],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Sindain"),
+		possible_values=ChooseMonsterDrops("Sindain"),
 		is_little_endian=True, ),
 #mimic (slc) 0x2FE4A4
 	Attribute(
@@ -14114,19 +14124,19 @@ Attributes = [
 		name="MIMIC ITEM1",
 		addresses=[0x2fe540],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Valley"),
+		possible_values=ChooseMonsterDrops("Valley"),
 		is_little_endian=True, ),
 	Attribute(
 		name="MIMIC ITEM2",
 		addresses=[0x2fe542],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Valley"),
+		possible_values=ChooseMonsterDrops("Valley"),
 		is_little_endian=True, ),
 	Attribute(
 		name="MIMIC ITEM3",
 		addresses=[0x2fe544],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Valley"),
+		possible_values=ChooseMonsterDrops("Valley"),
 		is_little_endian=True, ),
 #king mimic (slc) 0x2FE55C
 		Attribute(
@@ -14168,19 +14178,19 @@ Attributes = [
 		name="KING MIMIC ITEM1",
 		addresses=[0x2fe5f8],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Valley"),
+		possible_values=ChooseMonsterDrops("Valley"),
 		is_little_endian=True, ),
 	Attribute(
 		name="KING MIMIC ITEM2",
 		addresses=[0x2fe5fa],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Valley"),
+		possible_values=ChooseMonsterDrops("Valley"),
 		is_little_endian=True, ),
 	Attribute(
 		name="KING MIMIC ITEM3",
 		addresses=[0x2fe5fc],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Valley"),
+		possible_values=ChooseMonsterDrops("Valley"),
 		is_little_endian=True, ),
 #mimic (orc) 0x2FE614
 	Attribute(
@@ -14222,19 +14232,19 @@ Attributes = [
 		name="MIMIC ITEM1",
 		addresses=[0x2fe6b0],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Veniccio"),
+		possible_values=ChooseMonsterDrops("Veniccio"),
 		is_little_endian=True, ),
 	Attribute(
 		name="MIMIC ITEM2",
 		addresses=[0x2fe6b2],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Veniccio"),
+		possible_values=ChooseMonsterDrops("Veniccio"),
 		is_little_endian=True, ),
 	Attribute(
 		name="MIMIC ITEM3",
 		addresses=[0x2fe6b4],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Veniccio"),
+		possible_values=ChooseMonsterDrops("Veniccio"),
 		is_little_endian=True, ),
 #king mimic (orc) 0x2FE6CC
 	Attribute(
@@ -14276,19 +14286,19 @@ Attributes = [
 		name="KING MIMIC ITEM1",
 		addresses=[0x2fe768],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Veniccio"),
+		possible_values=ChooseMonsterDrops("Veniccio"),
 		is_little_endian=True, ),
 	Attribute(
 		name="KING MIMIC ITEM2",
 		addresses=[0x2fe76a],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Veniccio"),
+		possible_values=ChooseMonsterDrops("Veniccio"),
 		is_little_endian=True, ),
 	Attribute(
 		name="KING MIMIC ITEM3",
 		addresses=[0x2fe76c],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Veniccio"),
+		possible_values=ChooseMonsterDrops("Veniccio"),
 		is_little_endian=True, ),
 #mimic (mgd) 0x2FE784
 	Attribute(
@@ -14330,19 +14340,19 @@ Attributes = [
 		name="MIMIC ITEM1",
 		addresses=[0x2fe820],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Heim"),
+		possible_values=ChooseMonsterDrops("Heim"),
 		is_little_endian=True, ),
 	Attribute(
 		name="MIMIC ITEM2",
 		addresses=[0x2fe822],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Heim"),
+		possible_values=ChooseMonsterDrops("Heim"),
 		is_little_endian=True, ),
 	Attribute(
 		name="MIMIC ITEM3",
 		addresses=[0x2fe824],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Heim"),
+		possible_values=ChooseMonsterDrops("Heim"),
 		is_little_endian=True, ),
 #king mimic (mgd) 0x2FE83C
 	Attribute(
@@ -14384,19 +14394,19 @@ Attributes = [
 		name="KING MIMIC ITEM1",
 		addresses=[0x2fe8d8],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Heim"),
+		possible_values=ChooseMonsterDrops("Heim"),
 		is_little_endian=True, ),
 	Attribute(
 		name="KING MIMIC ITEM2",
 		addresses=[0x2fe8da],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Heim"),
+		possible_values=ChooseMonsterDrops("Heim"),
 		is_little_endian=True, ),
 	Attribute(
 		name="KING MIMIC ITEM3",
 		addresses=[0x2fe8dc],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Heim"),
+		possible_values=ChooseMonsterDrops("Heim"),
 		is_little_endian=True, ),
 #mimic (rbw) (star) 0x2FE8F4
 	Attribute(
@@ -14438,19 +14448,19 @@ Attributes = [
 		name="MIMIC ITEM1",
 		addresses=[0x2fe990],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Star"),
+		possible_values=ChooseMonsterDrops("Star"),
 		is_little_endian=True, ),
 	Attribute(
 		name="MIMIC ITEM2",
 		addresses=[0x2fe992],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Star"),
+		possible_values=ChooseMonsterDrops("Star"),
 		is_little_endian=True, ),
 	Attribute(
 		name="MIMIC ITEM3",
 		addresses=[0x2fe994],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Star"),
+		possible_values=ChooseMonsterDrops("Star"),
 		is_little_endian=True, ),
 #king mimic (rbw) (star) 0x2FE9AC
 	Attribute(
@@ -14492,19 +14502,19 @@ Attributes = [
 		name="KING MIMIC ITEM1",
 		addresses=[0x2fea10],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Star"),
+		possible_values=ChooseMonsterDrops("Star"),
 		is_little_endian=True, ),
 	Attribute(
 		name="KING MIMIC ITEM2",
 		addresses=[0x2fea48],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Star"),
+		possible_values=ChooseMonsterDrops("Star"),
 		is_little_endian=True, ),
 	Attribute(
 		name="KING MIMIC ITEM3",
 		addresses=[0x2fea4c],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Star"),
+		possible_values=ChooseMonsterDrops("Star"),
 		is_little_endian=True, ),
 #mimic (slc) (star) 0x2FEA64
 	Attribute(
@@ -14546,19 +14556,19 @@ Attributes = [
 		name="MIMIC ITEM1",
 		addresses=[0x2feb00],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Star"),
+		possible_values=ChooseMonsterDrops("Star"),
 		is_little_endian=True, ),
 	Attribute(
 		name="MIMIC ITEM2",
 		addresses=[0x2feb02],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Star"),
+		possible_values=ChooseMonsterDrops("Star"),
 		is_little_endian=True, ),
 	Attribute(
 		name="MIMIC ITEM3",
 		addresses=[0x2feb04],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Star"),
+		possible_values=ChooseMonsterDrops("Star"),
 		is_little_endian=True, ),
 #king mimic (slc) (star) 0x2FEB1C
 	Attribute(
@@ -14600,19 +14610,19 @@ Attributes = [
 		name="KING MIMIC ITEM1",
 		addresses=[0x2febb8],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Star"),
+		possible_values=ChooseMonsterDrops("Star"),
 		is_little_endian=True, ),
 	Attribute(
 		name="KING MIMIC ITEM2",
 		addresses=[0x2febba],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Star"),
+		possible_values=ChooseMonsterDrops("Star"),
 		is_little_endian=True, ),
 	Attribute(
 		name="KING MIMIC ITEM3",
 		addresses=[0x2febbc],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Star"),
+		possible_values=ChooseMonsterDrops("Star"),
 		is_little_endian=True, ),
 #mimic (orc) (star) 0x2FEBD4
 	Attribute(
@@ -14654,19 +14664,19 @@ Attributes = [
 		name="MIMIC ITEM1",
 		addresses=[0x2fec70],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Star"),
+		possible_values=ChooseMonsterDrops("Star"),
 		is_little_endian=True, ),
 	Attribute(
 		name="MIMIC ITEM2",
 		addresses=[0x2fec72],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Star"),
+		possible_values=ChooseMonsterDrops("Star"),
 		is_little_endian=True, ),
 	Attribute(
 		name="MIMIC ITEM3",
 		addresses=[0x2fec74],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Star"),
+		possible_values=ChooseMonsterDrops("Star"),
 		is_little_endian=True, ),
 #king mimic (orc) (star) 0x2FEC8C
 	Attribute(
@@ -14708,19 +14718,19 @@ Attributes = [
 		name="KING MIMIC ITEM1",
 		addresses=[0x2fed28],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Star"),
+		possible_values=ChooseMonsterDrops("Star"),
 		is_little_endian=True, ),
 	Attribute(
 		name="KING MIMIC ITEM2",
 		addresses=[0x2fed2a],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Star"),
+		possible_values=ChooseMonsterDrops("Star"),
 		is_little_endian=True, ),
 	Attribute(
 		name="KING MIMIC ITEM3",
 		addresses=[0x2fed2c],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Star"),
+		possible_values=ChooseMonsterDrops("Star"),
 		is_little_endian=True, ),
 #mimic (mfp) 0x2FED44
 	Attribute(
@@ -14762,19 +14772,19 @@ Attributes = [
 		name="MIMIC ITEM1",
 		addresses=[0x2fede0],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Moon"),
+		possible_values=ChooseMonsterDrops("Moon"),
 		is_little_endian=True, ),
 	Attribute(
 		name="MIMIC ITEM2",
 		addresses=[0x2fede2],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Moon"),
+		possible_values=ChooseMonsterDrops("Moon"),
 		is_little_endian=True, ),
 	Attribute(
 		name="MIMIC ITEM3",
 		addresses=[0x2fede4],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Moon"),
+		possible_values=ChooseMonsterDrops("Moon"),
 		is_little_endian=True, ),
 #king mimic (mfp) 0x2FEDFC
 	Attribute(
@@ -14816,19 +14826,19 @@ Attributes = [
 		name="KING MIMIC ITEM1",
 		addresses=[0x2fee98],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Moon"),
+		possible_values=ChooseMonsterDrops("Moon"),
 		is_little_endian=True, ),
 	Attribute(
 		name="KING MIMIC ITEM2",
 		addresses=[0x2fee9a],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Moon"),
+		possible_values=ChooseMonsterDrops("Moon"),
 		is_little_endian=True, ),
 	Attribute(
 		name="KING MIMIC ITEM3",
 		addresses=[0x2fee9c],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Moon"),
+		possible_values=ChooseMonsterDrops("Moon"),
 		is_little_endian=True, ),
 #mimic (zmm) 0x2FEEB4
 	Attribute(
@@ -14870,19 +14880,19 @@ Attributes = [
 		name="MIMIC ITEM1",
 		addresses=[0x2fef50],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="MIMIC ITEM2",
 		addresses=[0x2fef52],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="MIMIC ITEM3",
 		addresses=[0x2fef54],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 #king mimic (zmm) 0x2FEF6C
 	Attribute(
@@ -14924,19 +14934,19 @@ Attributes = [
 		name="KING MIMIC ITEM1",
 		addresses=[0x2ff008],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="KING MIMIC ITEM2",
 		addresses=[0x2ff00a],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="KING MIMIC ITEM3",
 		addresses=[0x2ff00c],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 #mimic (zmm) (depths) 0x2FF024
 	Attribute(
@@ -14978,19 +14988,19 @@ Attributes = [
 		name="MIMIC ITEM1",
 		addresses=[0x2ff0c0],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="MIMIC ITEM2",
 		addresses=[0x2ff0c2],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="MIMIC ITEM3",
 		addresses=[0x2ff0c4],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 #king mimic (zmm) (depths) 0x2FF0DC
 	Attribute(
@@ -15032,19 +15042,19 @@ Attributes = [
 		name="KING MIMIC ITEM1",
 		addresses=[0x2ff178],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="KING MIMIC ITEM2",
 		addresses=[0x2ff17a],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="KING MIMIC ITEM3",
 		addresses=[0x2ff17c],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 #mimic (mgd) (star) 0x2FF194
 	Attribute(
@@ -15086,19 +15096,19 @@ Attributes = [
 		name="MIMIC ITEM1",
 		addresses=[0x2ff230],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Star"),
+		possible_values=ChooseMonsterDrops("Star"),
 		is_little_endian=True, ),
 	Attribute(
 		name="MIMIC ITEM2",
 		addresses=[0x2ff232],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Star"),
+		possible_values=ChooseMonsterDrops("Star"),
 		is_little_endian=True, ),
 	Attribute(
 		name="MIMIC ITEM3",
 		addresses=[0x2ff234],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Star"),
+		possible_values=ChooseMonsterDrops("Star"),
 		is_little_endian=True, ),
 #king mimic (mgd) star) 0x2FF24C
 	Attribute(
@@ -15140,19 +15150,19 @@ Attributes = [
 		name="KING MIMIC ITEM1",
 		addresses=[0x2ff2e8],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Star"),
+		possible_values=ChooseMonsterDrops("Star"),
 		is_little_endian=True, ),
 	Attribute(
 		name="KING MIMIC ITEM2",
 		addresses=[0x2ff2ea],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Star"),
+		possible_values=ChooseMonsterDrops("Star"),
 		is_little_endian=True, ),
 	Attribute(
 		name="KING MIMIC ITEM3",
 		addresses=[0x2ff2ec],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Star"),
+		possible_values=ChooseMonsterDrops("Star"),
 		is_little_endian=True, ),
 #sonic bomber 0x2FF304
 	Attribute(
@@ -15194,19 +15204,19 @@ Attributes = [
 		name="SONIC BOMBER ITEM1",
 		addresses=[0x2ff3a0],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Sindain"),
+		possible_values=ChooseMonsterDrops("Sindain"),
 		is_little_endian=True, ),
 	Attribute(
 		name="SONIC BOMBER ITEM2",
 		addresses=[0x2ff3a2],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Sindain"),
+		possible_values=ChooseMonsterDrops("Sindain"),
 		is_little_endian=True, ),
 	Attribute(
 		name="SONIC BOMBER ITEM3",
 		addresses=[0x2ff3a4],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Sindain"),
+		possible_values=ChooseMonsterDrops("Sindain"),
 		is_little_endian=True, ),
 #ultrasonic bomb 0x2FF3BC
 	Attribute(
@@ -15248,19 +15258,19 @@ Attributes = [
 		name="ULTRASONIC BOMB ITEM1",
 		addresses=[0x2ff458],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Heim"),
+		possible_values=ChooseMonsterDrops("Heim"),
 		is_little_endian=True, ),
 	Attribute(
 		name="ULTRASONIC BOMB ITEM2",
 		addresses=[0x2ff45a],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Heim"),
+		possible_values=ChooseMonsterDrops("Heim"),
 		is_little_endian=True, ),
 	Attribute(
 		name="ULTRASONIC BOMB ITEM3",
 		addresses=[0x2ff45c],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Heim"),
+		possible_values=ChooseMonsterDrops("Heim"),
 		is_little_endian=True, ),
 #metal bomber 0x2FF474
 	Attribute(
@@ -15302,19 +15312,19 @@ Attributes = [
 		name="METAL BOMBER ITEM1",
 		addresses=[0x2ff510],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Star"),
+		possible_values=ChooseMonsterDrops("Star"),
 		is_little_endian=True, ),
 	Attribute(
 		name="METAL BOMBER ITEM2",
 		addresses=[0x2ff512],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Star"),
+		possible_values=ChooseMonsterDrops("Star"),
 		is_little_endian=True, ),
 	Attribute(
 		name="METAL BOMBER ITEM3",
 		addresses=[0x2ff514],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Star"),
+		possible_values=ChooseMonsterDrops("Star"),
 		is_little_endian=True, ),
 #krau mauness 0x2FF52C
 	Attribute(
@@ -15356,19 +15366,19 @@ Attributes = [
 		name="KRAU MAUNESS ITEM1",
 		addresses=[0x2ff5c8],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="KRAU MAUNESS ITEM2",
 		addresses=[0x2ff5ca],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="KRAU MAUNESS ITEM3",
 		addresses=[0x2ff5cc],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 #yoyo barrel 0x2FF5E4
 	Attribute(
@@ -15410,19 +15420,19 @@ Attributes = [
 		name="YOYO BARREL ITEM1",
 		addresses=[0x2ff680],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Valley"),
+		possible_values=ChooseMonsterDrops("Valley"),
 		is_little_endian=True, ),
 	Attribute(
 		name="YOYO BARREL ITEM2",
 		addresses=[0x2ff682],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Valley"),
+		possible_values=ChooseMonsterDrops("Valley"),
 		is_little_endian=True, ),
 	Attribute(
 		name="YOYO BARREL ITEM3",
 		addresses=[0x2ff684],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Valley"),
+		possible_values=ChooseMonsterDrops("Valley"),
 		is_little_endian=True, ),
 #rolling rocks 0x2FF69C
 	Attribute(
@@ -15464,19 +15474,19 @@ Attributes = [
 		name="ROLLING ROCKS ITEM1",
 		addresses=[0x2ff738],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Star"),
+		possible_values=ChooseMonsterDrops("Star"),
 		is_little_endian=True, ),
 	Attribute(
 		name="ROLLING ROCKS ITEM2",
 		addresses=[0x2ff73a],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Star"),
+		possible_values=ChooseMonsterDrops("Star"),
 		is_little_endian=True, ),
 	Attribute(
 		name="ROLLING ROCKS ITEM3",
 		addresses=[0x2ff73c],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Star"),
+		possible_values=ChooseMonsterDrops("Star"),
 		is_little_endian=True, ),
 #clock knight 0x2FF754
 	Attribute(
@@ -15518,19 +15528,19 @@ Attributes = [
 		name="CLOCK KNIGHT ITEM1",
 		addresses=[0x2ff7f0],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Moon"),
+		possible_values=ChooseMonsterDrops("Moon"),
 		is_little_endian=True, ),
 	Attribute(
 		name="CLOCK KNIGHT ITEM2",
 		addresses=[0x2ff7f2],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Moon"),
+		possible_values=ChooseMonsterDrops("Moon"),
 		is_little_endian=True, ),
 	Attribute(
 		name="CLOCK KNIGHT ITEM3",
 		addresses=[0x2ff7f4],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Moon"),
+		possible_values=ChooseMonsterDrops("Moon"),
 		is_little_endian=True, ),
 #spinning saucer 0x2FF80C
 	Attribute(
@@ -15572,19 +15582,19 @@ Attributes = [
 		name="SPINNING SAUCER ITEM1",
 		addresses=[0x2ff8a8],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="SPINNING SAUCER ITEM2",
 		addresses=[0x2ff8aa],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="SPINNING SAUCER ITEM3",
 		addresses=[0x2ff8ac],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 #bat 0x2FF8C4
 	Attribute(
@@ -15626,19 +15636,19 @@ Attributes = [
 		name="BAT ITEM1",
 		addresses=[0x2ff960],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Sewer"),
+		possible_values=ChooseMonsterDrops("Sewer"),
 		is_little_endian=True, ),
 	Attribute(
 		name="BAT ITEM2",
 		addresses=[0x2ff962],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Sewer"),
+		possible_values=ChooseMonsterDrops("Sewer"),
 		is_little_endian=True, ),
 	Attribute(
 		name="BAT ITEM3",
 		addresses=[0x2ff964],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Sewer"),
+		possible_values=ChooseMonsterDrops("Sewer"),
 		is_little_endian=True, ),
 #sea bat 0x2FF97C
 	Attribute(
@@ -15680,19 +15690,19 @@ Attributes = [
 		name="SEA BAT ITEM1",
 		addresses=[0x2ffa18],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Veniccio"),
+		possible_values=ChooseMonsterDrops("Veniccio"),
 		is_little_endian=True, ),
 	Attribute(
 		name="SEA BAT ITEM2",
 		addresses=[0x2ffa1a],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Veniccio"),
+		possible_values=ChooseMonsterDrops("Veniccio"),
 		is_little_endian=True, ),
 	Attribute(
 		name="SEA BAT ITEM3",
 		addresses=[0x2ffa1c],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Veniccio"),
+		possible_values=ChooseMonsterDrops("Veniccio"),
 		is_little_endian=True, ),
 #lava bat 0x2FFA34
 	Attribute(
@@ -15734,19 +15744,19 @@ Attributes = [
 		name="LAVA BAT ITEM1",
 		addresses=[0x2ffad0],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Heim"),
+		possible_values=ChooseMonsterDrops("Heim"),
 		is_little_endian=True, ),
 	Attribute(
 		name="LAVA BAT ITEM2",
 		addresses=[0x2ffad2],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Heim"),
+		possible_values=ChooseMonsterDrops("Heim"),
 		is_little_endian=True, ),
 	Attribute(
 		name="LAVA BAT ITEM3",
 		addresses=[0x2ffad4],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Heim"),
+		possible_values=ChooseMonsterDrops("Heim"),
 		is_little_endian=True, ),
 #evil bat 0x2FFAEC
 	Attribute(
@@ -15788,19 +15798,19 @@ Attributes = [
 		name="EVIL BAT ITEM1",
 		addresses=[0x2ffb88],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="EVIL BAT ITEM2",
 		addresses=[0x2ffb8a],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 	Attribute(
 		name="EVIL BAT ITEM3",
 		addresses=[0x2ffb8c],
 		number_of_bytes=2,
-		possible_values=ChooseItemDrops("Zelmite"),
+		possible_values=ChooseMonsterDrops("Zelmite"),
 		is_little_endian=True, ),
 # END OF MONSTERS
 
