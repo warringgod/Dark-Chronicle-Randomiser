@@ -491,6 +491,61 @@ def ChooseShopItems(Shop):
 
 	return [y]
 
+#temporary copy, changing to stop dupe items in shops
+def ChooseShopItem(Shop):
+	item_number = 0
+	x = random.randint(0, 100)
+
+	if 0 <= x <= 29:
+		item_number = random.choice(tier1drops)
+	elif 30 <= x <= 34:
+		item_number = random.choice(tierattachments)
+	elif 35 <= x <= 36:
+		item_number = random.choice(tierfish)
+	elif 37 <= x <= 39:
+		item_number = random.choice(tiergems)
+	elif 40 <= x <= 64:
+		item_number = random.choice(tier2drops)
+	elif 65 <= x <= 69:
+		item_number = random.choice(tiercoins)
+	elif 70 <= x <= 74:
+		item_number = random.choice(tierclothes)
+	elif 75 <= x <= 80:
+		item_number = random.choice(tier3drops)
+	elif 81 <= x <= 82:
+		item_number = random.choice(tierraregems)
+	elif 83 <= x <= 85:
+		item_number = random.choice(tier1chests)
+	elif 86 <= x <= 88:
+		item_number = random.choice(tier2chests)
+	elif 89 <= x <= 92:
+		item_number = random.choice(tier3chests)
+	elif 93 <= x <= 100:
+		item_number = random.choice(tier4chests)
+
+	return item_number
+
+def GenerateShopList(MaxNumberof3ByteItems):
+	shoplist = []
+	actualshoplist = []
+	item_number = 0
+
+	while len(shoplist) <= MaxNumberof3ByteItems:
+
+		item_number = ChooseShopItem("x")
+
+		while item_number in shoplist:
+			item_number = ChooseShopItem("x")
+
+		shoplist.append(item_number)
+		print(item_number)
+
+		y = concat3(fdig(item_number, 1), fdig(item_number, 2), fdig(item_number, 3))
+		actualshoplist.append(y)
+
+	return actualshoplist
+
+	######
 def Change5DigitItemPrice(Price):
 
 	item_number = Price
@@ -688,8 +743,36 @@ def ChooseZelmiteChestDrops():
 	return [y]
 
 ####################################################### ChooseZelmiteChestDrops
+#Generate Shops List
 
+PollyShopList = GenerateShopList(5)
+DellShopList = GenerateShopList(1)
+FerdinandShopList = GenerateShopList(1)
+MortonShopList = GenerateShopList(38)
+StarlightItemShopList = GenerateShopList(18)
+DonnyShopList = GenerateShopList(11)
+BorneoShopList = GenerateShopList(4)
+GordonShopList = GenerateShopList(4)
+ParnShopList = GenerateShopList(8)
+ClaireShopList = GenerateShopList(1)
+StewartShopList = GenerateShopList(4)
+AdelShopList = GenerateShopList(6)
+ErikShoplist = GenerateShopList(1)
+BrunoItemList = GenerateShopList(4)
+RufioItemList = GenerateShopList(19)
+FlavinItemList = GenerateShopList(8)
+OliveItemList = GenerateShopList(5)
+JuliaItemList = [] #Don't do Julia atm because she sells weapons
+MenaItemList = GenerateShopList(7)
+CorrineItemList = GenerateShopList(4)
+RosaItemList = GenerateShopList(5)
+WoodysItemList = GenerateShopList(11) # currently only changing 5? why?
+MushroomEateryItemList = GenerateShopList(14)
+GPartsShopList = [] #dont do ridepod stuff?
+GToolsShopList = GenerateShopList(5)
+PollyPostShopList = GenerateShopList(5)
 
+#Generate Shop Lists
 # START RANDO
 Attributes = [
 #SEWER RAT 0x2F3264
@@ -15822,31 +15905,31 @@ Attributes = [
 		name="POLLY ITEM 1",
 		addresses=[0x9b3a7d7,0x9b3cfe0,0x9b3f7e7,0x9b42010,0x9b447f0,0x9b477f0,0x9b4a7f0,0x9b4d7fc,0x9b507d7,0x9b52fe0,0x9b557e7,0x9b57ff0,0x9b5a7f0,0x9b5cff0,0x9b5fff0,0x9b62ffc],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("POLLY"),
+		possible_values=[PollyShopList[0]],
 		is_little_endian=False, ),
 	Attribute(
 		name="POLLY ITEM 2",
 		addresses=[0x9b3a7db,0x9b3cfe4,0x9b3f7eb,0x9b42014,0x9b447f4,0x9b477f4,0x9b4a7f4,0x9b4d800,0x9b507db,0x9b52fe4,0x9b557eb,0x9b57ff4,0x9b5a7f4,0x9b5cff4,0x9b5fff4,0x9b63000],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("POLLY"),
+		possible_values=[PollyShopList[1]],
 		is_little_endian=False, ),
 	Attribute(
 		name="POLLY ITEM 3",
 		addresses=[0x9b3a7df,0x9b3cfe8,0x9b3f7ef,0x9b42018,0x9b447f8,0x9b477f8,0x9b4a7f8,0x9b4d804,0x9b507df,0x9b52fe8,0x9b557ef,0x9b57ff8,0x9b5a7f8,0x9b5cff8,0x9b5fff8,0x9b63004],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("POLLY"),
+		possible_values=[PollyShopList[2]],
 		is_little_endian=False, ),
 	Attribute(
 		name="POLLY ITEM 4",
 		addresses=[0x9b3a7e3,0x9b3cfec,0x9b3f7f3,0x9b4201c,0x9b447fc,0x9b477fc,0x9b4a7fc,0x9b4d808,0x9b507e3,0x9b52fec,0x9b557f3,0x9b57ffc,0x9b5a7fc,0x9b5cffc,0x9b5fffc,0x9b63008],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("POLLY"),
+		possible_values=[PollyShopList[3]],
 		is_little_endian=False, ),
 	Attribute(
 		name="POLLY ITEM 5",
 		addresses=[0x9b3a7e7,0x9b3cff0,0x9b3f7f7,0x9b42020,0x9b44800,0x9b47800,0x9b4a800,0x9b4d80c,0x9b507e7,0x9b52ff0,0x9b557f7,0x9b58000,0x9b5a800,0x9b5d000,0x9b60000,0x9b6300c],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("POLLY"),
+		possible_values=[PollyShopList[4]],
 		is_little_endian=False, ),
 
 # 02 DELL SHOP
@@ -15855,7 +15938,7 @@ Attributes = [
 		name="DELL ITEM 1",
 		addresses=[0x9b3a80c,0x9b3d015,0x9b3f81c,0x9b42025,0x9b44825,0x9b47825,0x9b4a825,0x9b4d831,0x9b5080c,0x9b53015,0x9b5581c,0x9b58025,0x9b5a825,0x9b5d025,0x9b60025,0x9b63031],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("DELL"),
+		possible_values=[DellShopList[0]],
 		is_little_endian=False, ),
 
 # 03 FERDINAND SHOP
@@ -15864,7 +15947,7 @@ Attributes = [
 		name="FERDINAND ITEM 1",
 		addresses=[0x9b3a82d,0x9b3d036,0x9b3f83d,0x9b42046,0x9b44846,0x9b47846,0x9b4a846,0x9b4d852,0x9b5082d,0x9b53036,0x9b5583d,0x9b58046,0x9b5a846,0x9b5d046,0x9b60046,0x9b63052],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("FERDINAND"),
+		possible_values=[FerdinandShopList[0]],
 		is_little_endian=False, ),
 
 # 04 MORTONS SHOP
@@ -15876,230 +15959,230 @@ Attributes = [
 		name="MORTON ITEM 1",
 		addresses=[0x9b50852,0x9b5305b,0x9b55862,0x9b3a852,0x9b3d05b,0x9b5806b,0x9b3f862,0x9b5a86b,0x9b4206b,0x9b5d06b,0x9b6006b,0x9b4486b,0x9b4786b,0x9b4a86b,0x9b63077,0x9b4d877],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("MORTON"),
+		possible_values=[MortonShopList[0]],
 		is_little_endian=False, ),
 	Attribute(
 		name="MORTON ITEM 2",
 		addresses=[0x9b5305f,0x9b55866,0x9b3a856,0x9b3d05f,0x9b5806f,0x9b3f866,0x9b5a86f,0x9b4206f,0x9b5d06f,0x9b6006f,0x9b4486f,0x9b4786f,0x9b4a86f,0x9b6307b,0x9b4d87b],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("MORTON"),
+		possible_values=[MortonShopList[1]],
 		is_little_endian=False, ),
 	Attribute(
 		name="MORTON ITEM 3",
 		addresses=[0x9b53063,0x9b5586a,0x9b3a85a,0x9b3d063,0x9b58073,0x9b3f86a,0x9b5a873,0x9b42073,0x9b5d073,0x9b60073,0x9b44873,0x9b47873,0x9b4a873,0x9b6307f,0x9b4d87f],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("MORTON"),
+		possible_values=[MortonShopList[2]],
 		is_little_endian=False, ),
 	Attribute(
 		name="MORTON ITEM 4",
 		addresses=[0x9b53067,0x9b5586e,0x9b3a85e,0x9b3d067,0x9b58077,0x9b3f86e,0x9b5a877,0x9b42077,0x9b5d077,0x9b60077,0x9b44877,0x9b47877,0x9b4a877,0x9b63083,0x9b4d883],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("MORTON"),
+		possible_values=[MortonShopList[3]],
 		is_little_endian=False, ),
 	Attribute(
 		name="MORTON ITEM 5",
 		addresses=[0x9b50862,0x9b5306b,0x9b55872,0x9b3a862,0x9b3d06b,0x9b5807b,0x9b3f872,0x9b5a87b,0x9b4207b,0x9b5d07b,0x9b6007b,0x9b4487b,0x9b4787b,0x9b4a87b,0x9b63087,0x9b4d887],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("MORTON"),
+		possible_values=[MortonShopList[4]],
 		is_little_endian=False, ),
 	Attribute(
 		name="MORTON ITEM 6",
 		addresses=[0x9b50866,0x9b5306f,0x9b55876,0x9b3a866,0x9b3d06f,0x9b5807f,0x9b3f876,0x9b5a87f,0x9b4207f,0x9b5d07f,0x9b6007f,0x9b4487f,0x9b4787f,0x9b4a87f,0x9b6308b,0x9b4d88b],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("MORTON"),
+		possible_values=[MortonShopList[5]],
 		is_little_endian=False, ),
 	Attribute(
 		name="MORTON ITEM 7",
 		addresses=[0x9b5086a,0x9b53073,0x9b5587a,0x9b3a86a,0x9b3d073,0x9b58083,0x9b3f87a,0x9b5a883,0x9b42083,0x9b5d083,0x9b60083,0x9b44883,0x9b47883,0x9b4a883,0x9b6308f,0x9b4d88f],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("MORTON"),
+		possible_values=[MortonShopList[6]],
 		is_little_endian=False, ),
 	Attribute(
 		name="MORTON ITEM 8",
 		addresses=[0x9b5086e,0x9b53077,0x9b5587e,0x9b3a86e,0x9b3d077,0x9b58087,0x9b3f87e,0x9b5a887,0x9b42087,0x9b5d087,0x9b60087,0x9b44887,0x9b47887,0x9b4a887,0x9b63093,0x9b4d893],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("MORTON"),
+		possible_values=[MortonShopList[7]],
 		is_little_endian=False, ),
 	Attribute(
 		name="MORTON ITEM 9",
 		addresses=[0x9b50872,0x9b5307b,0x9b55882,0x9b3a872,0x9b3d07b,0x9b5808b,0x9b3f882,0x9b5a88b,0x9b4208b,0x9b5d08b,0x9b6008b,0x9b4488b,0x9b4788b,0x9b4a88b,0x9b63097,0x9b4d897],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("MORTON"),
+		possible_values=[MortonShopList[8]],
 		is_little_endian=False, ),
 	Attribute(
 		name="MORTON ITEM 10",
 		addresses=[0x9b50876,0x9b5307f,0x9b55886,0x9b3a876,0x9b3d07f,0x9b5808f,0x9b3f886,0x9b5a88f,0x9b4208f,0x9b5d08f,0x9b6008f,0x9b4488f,0x9b4788f,0x9b4a88f,0x9b6309b,0x9b4d89b],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("MORTON"),
+		possible_values=[MortonShopList[9]],
 		is_little_endian=False, ),
 	Attribute(
 		name="MORTON ITEM 11",
 		addresses=[0x9b5588a,0x9b3a87a,0x9b3d083,0x9b58093,0x9b3f88a,0x9b5a893,0x9b42093,0x9b5d093,0x9b60093,0x9b44893,0x9b47893,0x9b4a893,0x9b6309f,0x9b4d89f],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("MORTON"),
+		possible_values=[MortonShopList[10]],
 		is_little_endian=False, ),
 	Attribute(
 		name="MORTON ITEM 12",
 		addresses=[0x9b58097,0x9b3f88e,0x9b5a897,0x9b42097,0x9b5d097,0x9b60097,0x9b44897,0x9b47897,0x9b4a897,0x9b630a3,0x9b4d8a3],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("MORTON"),
+		possible_values=[MortonShopList[11]],
 		is_little_endian=False, ),
 	Attribute(
 		name="MORTON ITEM 13",
 		addresses=[0x9b5a89b,0x9b4209b,0x9b5d09b,0x9b6009b,0x9b4489b,0x9b4789b,0x9b4a89b,0x9b630a7,0x9b4d8a7],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("MORTON"),
+		possible_values=[MortonShopList[12]],
 		is_little_endian=False, ),
 	Attribute(
 		name="MORTON ITEM 14",
 		addresses=[0x9b5d09f,0x9b6009f,0x9b4489f,0x9b4789f,0x9b4a89f,0x9b630ab,0x9b4d8ab],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("MORTON"),
+		possible_values=[MortonShopList[13]],
 		is_little_endian=False, ),
 	Attribute(
 		name="MORTON ITEM 15",
 		addresses=[0x9b478a3,0x9b4a8a3,0x9b630af,0x9b4d8af],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("MORTON"),
+		possible_values=[MortonShopList[14]],
 		is_little_endian=False, ),
 
 	Attribute(
 		name="MORTON ITEM 16",
 		addresses=[0x9b630b3,0x9b4d8b3],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("MORTON"),
+		possible_values=[MortonShopList[15]],
 		is_little_endian=False, ),
 	Attribute(
 		name="MORTON ITEM 17",
 		addresses=[0x9b630b7,0x9b4d8b7],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("MORTON"),
+		possible_values=[MortonShopList[16]],
 		is_little_endian=False, ),
 	Attribute(
 		name="MORTON ITEM 18",
 		addresses=[0x9b630bb,0x9b4d8bb],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("MORTON"),
+		possible_values=[MortonShopList[17]],
 		is_little_endian=False, ),
 	Attribute(
 		name="MORTON ITEM 19",
 		addresses=[0x9b630bf,0x9b4d8bf],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("MORTON"),
+		possible_values=[MortonShopList[18]],
 		is_little_endian=False, ),
 	Attribute(
 		name="MORTON ITEM 20",
 		addresses=[0x9b630c3,0x9b4d8c3],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("MORTON"),
+		possible_values=[MortonShopList[19]],
 		is_little_endian=False, ),
 	Attribute(
 		name="MORTON ITEM 21",
 		addresses=[0x9b630c7,0x9b4d8c7],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("MORTON"),
+		possible_values=[MortonShopList[20]],
 		is_little_endian=False, ),
 	Attribute(
 		name="MORTON ITEM 22",
 		addresses=[0x9b630cb,0x9b4d8cb],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("MORTON"),
+		possible_values=[MortonShopList[21]],
 		is_little_endian=False, ),
 	Attribute(
 		name="MORTON ITEM 23",
 		addresses=[0x9b630cf,0x9b4d8cf],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("MORTON"),
+		possible_values=[MortonShopList[22]],
 		is_little_endian=False, ),
 	Attribute(
 		name="MORTON ITEM 24",
 		addresses=[0x9b630d3,0x9b4d8d3],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("MORTON"),
+		possible_values=[MortonShopList[23]],
 		is_little_endian=False, ),
 	Attribute(
 		name="MORTON ITEM 25",
 		addresses=[0x9b630d7,0x9b4d8d7],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("MORTON"),
+		possible_values=[MortonShopList[24]],
 		is_little_endian=False, ),
 	Attribute(
 		name="MORTON ITEM 26",
 		addresses=[0x9b630db,0x9b4d8db],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("MORTON"),
+		possible_values=[MortonShopList[25]],
 		is_little_endian=False, ),
 	Attribute(
 		name="MORTON ITEM 27",
 		addresses=[0x9b630df,0x9b4d8df],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("MORTON"),
+		possible_values=[MortonShopList[26]],
 		is_little_endian=False, ),
 	Attribute(
 		name="MORTON ITEM 28",
 		addresses=[0x9b630e3,0x9b4d8e3],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("MORTON"),
+		possible_values=[MortonShopList[27]],
 		is_little_endian=False, ),
 	Attribute(
 		name="MORTON ITEM 29",
 		addresses=[0x9b630e7,0x9b4d8e7],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("MORTON"),
+		possible_values=[MortonShopList[28]],
 		is_little_endian=False, ),
 	Attribute(
 		name="MORTON ITEM 30",
 		addresses=[0x9b630eb,0x9b4d8eb],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("MORTON"),
+		possible_values=[MortonShopList[29]],
 		is_little_endian=False, ),
 	Attribute(
 		name="MORTON ITEM 31",
 		addresses=[0x9b630ef,0x9b4d8ef],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("MORTON"),
+		possible_values=[MortonShopList[30]],
 		is_little_endian=False, ),
 	Attribute(
 		name="MORTON ITEM 32",
 		addresses=[0x9b630f3,0x9b4d8f3],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("MORTON"),
+		possible_values=[MortonShopList[31]],
 		is_little_endian=False, ),
 	Attribute(
 		name="MORTON ITEM 33",
 		addresses=[0x9b630f7,0x9b4d8f7],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("MORTON"),
+		possible_values=[MortonShopList[32]],
 		is_little_endian=False, ),
 	Attribute(
 		name="MORTON ITEM 34",
 		addresses=[0x9b630fb,0x9b4d8fb],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("MORTON"),
+		possible_values=[MortonShopList[33]],
 		is_little_endian=False, ),
 	Attribute(
 		name="MORTON ITEM 35",
 		addresses=[0x9b630ff,0x9b4d8ff],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("MORTON"),
+		possible_values=[MortonShopList[34]],
 		is_little_endian=False, ),
 	Attribute(
 		name="MORTON ITEM 36",
 		addresses=[0x9b63103,0x9b4d903],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("MORTON"),
+		possible_values=[MortonShopList[35]],
 		is_little_endian=False, ),
 	Attribute(
 		name="MORTON ITEM 36",
 		addresses=[0x9b63107,0x9b4d907],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("MORTON"),
+		possible_values=[MortonShopList[36]],
 		is_little_endian=False, ),
 	Attribute(
 		name="MORTON ITEM 37",
 		addresses=[0x9b4d90b],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("MORTON"),
+		possible_values=[MortonShopList[37]],
 		is_little_endian=False, ),
 
 # 05 STARLIGHT TEMPLE SHOP
@@ -16109,103 +16192,103 @@ Attributes = [
 		name="STARLIGHT TEMPLE ITEM 1",
 		addresses=[0x9b3a89b,0x9b3d0a4,0x9b3f8af,0x9b420bc,0x9b448c0,0x9b478c4,0x9b4a8c4,0x9b4d92c,0x9b50897,0x9b530a0,0x9b558ab,0x9b580b8,0x9b5a8bc,0x9b5d0c0,0x9b600c0,0x9b63128],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("STARLIGHT TEMPLE"),
+		possible_values=[StarlightItemShopList[0]],
 		is_little_endian=False, ),
 	Attribute(
 		name="STARLIGHT TEMPLE ITEM 2",
 		addresses=[0x9b3a89f,0x9b3d0a8,0x9b3f8b3,0x9b420c0,0x9b448c4,0x9b478c8,0x9b4a8c8,0x9b4d930,0x9b5089b,0x9b530a4,0x9b558af,0x9b580bc,0x9b5a8c0,0x9b5d0c4,0x9b600c4,0x9b6312c],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("STARLIGHT TEMPLE"),
+		possible_values=[StarlightItemShopList[1]],
 		is_little_endian=False, ),
 	Attribute(
 		name="STARLIGHT TEMPLE ITEM 3",
 		addresses=[0x9b3a8a3,0x9b3d0ac,0x9b3f8b7,0x9b420c4,0x9b448c8,0x9b478cc,0x9b4a8cc,0x9b4d934,0x9b5089f,0x9b530a8,0x9b558b3,0x9b580c0,0x9b5a8c4,0x9b5d0c8,0x9b600c8,0x9b63130],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("STARLIGHT TEMPLE"),
+		possible_values=[StarlightItemShopList[2]],
 		is_little_endian=False, ),
 	Attribute(
 		name="STARLIGHT TEMPLE ITEM 4",
 		addresses=[0x9b3a8a7,0x9b3d0b0,0x9b3f8bb,0x9b420c8,0x9b448cc,0x9b478d0,0x9b4a8d0,0x9b4d938,0x9b508a3,0x9b530ac,0x9b558b7,0x9b580c4,0x9b5a8c8,0x9b5d0cc,0x9b600cc,0x9b63134],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("STARLIGHT TEMPLE"),
+		possible_values=[StarlightItemShopList[3]],
 		is_little_endian=False, ),
 	Attribute(
 		name="STARLIGHT TEMPLE ITEM 5",
 		addresses=[0x9b3a8ab,0x9b3d0b4,0x9b3f8bf,0x9b420cc,0x9b448d0,0x9b478d4,0x9b4a8d4,0x9b4d93c,0x9b508a7,0x9b530b0,0x9b558bb,0x9b580c8,0x9b5a8cc,0x9b5d0d0,0x9b600d0,0x9b63138],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("STARLIGHT TEMPLE"),
+		possible_values=[StarlightItemShopList[4]],
 		is_little_endian=False, ),
 	Attribute(
 		name="STARLIGHT TEMPLE ITEM 6",
 		addresses=[0x9b3a8af,0x9b3d0b8,0x9b3f8c3,0x9b420d0,0x9b448d4,0x9b478d8,0x9b4a8d8,0x9b4d940,0x9b508ab,0x9b530b4,0x9b558bf,0x9b580cc,0x9b5a8d0,0x9b5d0d4,0x9b600d4,0x9b6313c],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("STARLIGHT TEMPLE"),
+		possible_values=[StarlightItemShopList[5]],
 		is_little_endian=False, ),
 	Attribute(
 		name="STARLIGHT TEMPLE ITEM 7",
 		addresses=[0x9b3a8b3,0x9b3d0bc,0x9b3f8c7,0x9b420d4,0x9b448d8,0x9b478dc,0x9b4a8dc,0x9b4d944,0x9b508af,0x9b530b8,0x9b558c3,0x9b580d0,0x9b5a8d4,0x9b5d0d8,0x9b600d8,0x9b63140],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("STARLIGHT TEMPLE"),
+		possible_values=[StarlightItemShopList[6]],
 		is_little_endian=False, ),
 	Attribute(
 		name="STARLIGHT TEMPLE ITEM 8",
 		addresses=[0x9b3a8b7,0x9b3d0c0,0x9b3f8cb,0x9b420d8,0x9b448dc,0x9b478e0,0x9b4a8e0,0x9b4d948,0x9b508b3,0x9b530bc,0x9b558c7,0x9b580d4,0x9b5a8d8,0x9b5d0dc,0x9b600dc,0x9b63144],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("STARLIGHT TEMPLE"),
+		possible_values=[StarlightItemShopList[7]],
 		is_little_endian=False, ),
 	Attribute(
 		name="STARLIGHT TEMPLE ITEM 9",
 		addresses=[0x9b3a8bb,0x9b3d0c4,0x9b3f8cf,0x9b420dc,0x9b448e0,0x9b478e4,0x9b4a8e4,0x9b4d94c,0x9b508b7,0x9b530c0,0x9b558cb,0x9b580d8,0x9b5a8dc,0x9b5d0e0,0x9b600e0,0x9b63148],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("STARLIGHT TEMPLE"),
+		possible_values=[StarlightItemShopList[8]],
 		is_little_endian=False, ),
 	Attribute(
 		name="STARLIGHT TEMPLE ITEM 10",
 		addresses=[0x9b3a8bf,0x9b3d0c8,0x9b3f8d3,0x9b420e0,0x9b448e4,0x9b478e8,0x9b4a8e8,0x9b4d950,0x9b508bb,0x9b530c4,0x9b558cf,0x9b580dc,0x9b5a8e0,0x9b5d0e4,0x9b600e4,0x9b6314c],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("STARLIGHT TEMPLE"),
+		possible_values=[StarlightItemShopList[9]],
 		is_little_endian=False, ),
 	Attribute(
 		name="STARLIGHT TEMPLE ITEM 11",
 		addresses=[0x9b3a8c3,0x9b3d0cc,0x9b3f8d7,0x9b420e4,0x9b448e8,0x9b478ec,0x9b4a8ec,0x9b4d954,0x9b508bf,0x9b530c8,0x9b558d3,0x9b580e0,0x9b5a8e4,0x9b5d0e8,0x9b600e8,0x9b63150],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("STARLIGHT TEMPLE"),
+		possible_values=[StarlightItemShopList[10]],
 		is_little_endian=False, ),
 	Attribute(
 		name="STARLIGHT TEMPLE ITEM 12",
 		addresses=[0x9b3a8c7,0x9b3d0d0,0x9b3f8db,0x9b420e8,0x9b448ec,0x9b478f0,0x9b4a8f0,0x9b4d958,0x9b508c3,0x9b530cc,0x9b558d7,0x9b580e4,0x9b5a8e8,0x9b5d0ec,0x9b600ec,0x9b63154],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("STARLIGHT TEMPLE"),
+		possible_values=[StarlightItemShopList[11]],
 		is_little_endian=False, ),
 	Attribute(
 		name="STARLIGHT TEMPLE ITEM 13",
 		addresses=[0x9b3a8cb,0x9b3d0d4,0x9b3f8df,0x9b420ec,0x9b448f0,0x9b478f4,0x9b4a8f4,0x9b4d95c,0x9b508c7,0x9b530d0,0x9b558db,0x9b580e8,0x9b5a8ec,0x9b5d0f0,0x9b600f0,0x9b63158],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("STARLIGHT TEMPLE"),
+		possible_values=[StarlightItemShopList[12]],
 		is_little_endian=False, ),
 	Attribute(
 		name="STARLIGHT TEMPLE ITEM 14",
 		addresses=[0x9b3a8cf,0x9b3d0d8,0x9b3f8e3,0x9b420f0,0x9b448f4,0x9b478f8,0x9b4a8f8,0x9b4d960,0x9b508cb,0x9b530d4,0x9b558df,0x9b580ec,0x9b5a8f0,0x9b5d0f4,0x9b600f4,0x9b6315c],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("STARLIGHT TEMPLE"),
+		possible_values=[StarlightItemShopList[13]],
 		is_little_endian=False, ),
 	Attribute(
 		name="STARLIGHT TEMPLE ITEM 15",
 		addresses=[0x9b3a8d3,0x9b3d0dc,0x9b3f8e7,0x9b420f4,0x9b448f8,0x9b478fc,0x9b4a8fc,0x9b4d964,0x9b508cf,0x9b530d8,0x9b558e3,0x9b580f0,0x9b5a8f4,0x9b5d0f8,0x9b600f8,0x9b63160],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("STARLIGHT TEMPLE"),
+		possible_values=[StarlightItemShopList[14]],
 		is_little_endian=False, ),
 	Attribute(
 		name="STARLIGHT TEMPLE ITEM 16",
 		addresses=[0x9b3a8d7,0x9b3d0e0,0x9b3f8eb,0x9b420f8,0x9b448fc,0x9b47900,0x9b4a900,0x9b4d968,0x9b508d3,0x9b530dc,0x9b558e7,0x9b580f4,0x9b5a8f8,0x9b5d0fc,0x9b600fc,0x9b63164],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("STARLIGHT TEMPLE"),
+		possible_values=[StarlightItemShopList[15]],
 		is_little_endian=False, ),
 	Attribute(
 		name="STARLIGHT TEMPLE ITEM 17",
 		addresses=[0x9b3a8db,0x9b3d0e4,0x9b3f8ef,0x9b420fc,0x9b44900,0x9b47904,0x9b4a904,0x9b4d96c,0x9b508d7,0x9b530e0,0x9b558eb,0x9b580f8,0x9b5a8fc,0x9b5d100,0x9b60100,0x9b63168],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("STARLIGHT TEMPLE"),
+		possible_values=[StarlightItemShopList[16]],
 		is_little_endian=False, ),
 
 # 06 DONNY SHOP
@@ -16215,67 +16298,67 @@ Attributes = [
 		name="DONNY ITEM 1",
 		addresses=[0x9b508fc,0x9b53105,0x9b3a900,0x9b3d109,0x9b55910,0x9b5811d,0x9b3f914,0x9b42121,0x9b5a921,0x9b44925,0x9b5d125,0x9b60125,0x9b6318d,0x9b47929,0x9b4a929,0x9b4d991],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("DONNY"),
+		possible_values=[DonnyShopList[0]],
 		is_little_endian=False, ),
 	Attribute(
 		name="DONNY ITEM 2",
 		addresses=[0x9b50900,0x9b53109,0x9b3a904,0x9b3d10d,0x9b55914,0x9b58121,0x9b3f918,0x9b42125,0x9b5a925,0x9b44929,0x9b5d129,0x9b60129,0x9b63191,0x9b4792d,0x9b4a92d,0x9b4d995],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("DONNY"),
+		possible_values=[DonnyShopList[1]],
 		is_little_endian=False, ),
 	Attribute(
 		name="DONNY ITEM 3",
 		addresses=[0x9b50904,0x9b5310d,0x9b3a908,0x9b3d111,0x9b55918,0x9b58125,0x9b3f91c,0x9b42129,0x9b5a929,0x9b4492d,0x9b5d12d,0x9b6012d,0x9b63195,0x9b47931,0x9b4a931,0x9b4d999],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("DONNY"),
+		possible_values=[DonnyShopList[2]],
 		is_little_endian=False, ),
 	Attribute(
 		name="DONNY ITEM 4",
 		addresses=[0x9b50908,0x9b53111,0x9b3a90c,0x9b3d115,0x9b5591c,0x9b58129,0x9b3f920,0x9b4212d,0x9b5a92d,0x9b44931,0x9b5d131,0x9b60131,0x9b63199,0x9b47935,0x9b4a935,0x9b4d99d],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("DONNY"),
+		possible_values=[DonnyShopList[3]],
 		is_little_endian=False, ),
 	Attribute(
 		name="DONNY ITEM 5",
 		addresses=[0x9b5090c,0x9b53115,0x9b3a910,0x9b3d119,0x9b55920,0x9b5812d,0x9b3f924,0x9b42131,0x9b5a931,0x9b44935,0x9b5d135,0x9b60135,0x9b6319d,0x9b47939,0x9b4a939,0x9b4d9a1],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("DONNY"),
+		possible_values=[DonnyShopList[4]],
 		is_little_endian=False, ),
 	Attribute(
 		name="DONNY ITEM 6",
 		addresses=[0x9b3a914,0x9b3d11d,0x9b55924,0x9b58131,0x9b3f928,0x9b42135,0x9b5a935,0x9b44939,0x9b5d139,0x9b60139,0x9b631a1,0x9b4793d,0x9b4a93d,0x9b4d9a5],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("DONNY"),
+		possible_values=[DonnyShopList[5]],
 		is_little_endian=False, ),
 	Attribute(
 		name="DONNY ITEM 7",
 		addresses=[0x9b58135,0x9b3f92c,0x9b42139,0x9b5a939,0x9b4493d,0x9b5d13d,0x9b6013d,0x9b631a5,0x9b47941,0x9b4a941,0x9b4d9a9],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("DONNY"),
+		possible_values=[DonnyShopList[6]],
 		is_little_endian=False, ),
 	Attribute(
 		name="DONNY ITEM 8",
 		addresses=[0x9b4213d,0x9b5a93d,0x9b44941,0x9b5d141,0x9b60141,0x9b631a9,0x9b47945,0x9b4a945,0x9b4d9ad],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("DONNY"),
+		possible_values=[DonnyShopList[7]],
 		is_little_endian=False, ),
 	Attribute(
 		name="DONNY ITEM 9",
 		addresses=[0x9b44945,0x9b5d145,0x9b60145,0x9b631ad,0x9b47949,0x9b4a949,0x9b4d9b1],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("DONNY"),
+		possible_values=[DonnyShopList[8]],
 		is_little_endian=False, ),
 	Attribute(
 		name="DONNY ITEM 10",
 		addresses=[0x9b60149,0x9b631b1,0x9b4794d,0x9b4a94d,0x9b4d9b5],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("DONNY"),
+		possible_values=[DonnyShopList[9]],
 		is_little_endian=False, ),
 	Attribute(
 		name="DONNY ITEM 11",
 		addresses=[0x9b4a951,0x9b4d9b9],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("DONNY"),
+		possible_values=[DonnyShopList[10]],
 		is_little_endian=False, ),
 
 # 07 BORNEO SHOP
@@ -16284,25 +16367,25 @@ Attributes = [
 		name="BORNEO ITEM 1",
 		addresses=[0x9b3a933,0x9b3d13c,0x9b3f94b,0x9b4215c,0x9b44964,0x9b4796c,0x9b4a970,0x9b4d9d8,0x9b5092b,0x9b53134,0x9b55943,0x9b58154,0x9b5a95c,0x9b5d164,0x9b60168,0x9b631d0],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("BORNEO"),
+		possible_values=[BorneoShopList[0]],
 		is_little_endian=False, ),
 	Attribute(
 		name="BORNEO ITEM 2",
 		addresses=[0x9b3a937,0x9b3d140,0x9b3f94f,0x9b42160,0x9b44968,0x9b47970,0x9b4a974,0x9b4d9dc,0x9b5092f,0x9b53138,0x9b55947,0x9b58158,0x9b5a960,0x9b5d168,0x9b6016c,0x9b631d4],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("BORNEO"),
+		possible_values=[BorneoShopList[1]],
 		is_little_endian=False, ),
 	Attribute(
 		name="BORNEO ITEM 3",
 		addresses=[0x9b3a93b,0x9b3d144,0x9b3f953,0x9b42164,0x9b4496c,0x9b47974,0x9b4a978,0x9b4d9e0,0x9b50933,0x9b5313c,0x9b5594b,0x9b5815c,0x9b5a964,0x9b5d16c,0x9b60170,0x9b631d8],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("BORNEO"),
+		possible_values=[BorneoShopList[2]],
 		is_little_endian=False, ),
 	Attribute(
 		name="BORNEO ITEM 4",
 		addresses=[0x9b3a93f,0x9b3d148,0x9b3f957,0x9b42168,0x9b44970,0x9b47978,0x9b4a97c,0x9b4d9e4,0x9b50937,0x9b53140,0x9b5594f,0x9b58160,0x9b5a968,0x9b5d170,0x9b60174,0x9b631dc],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("BORNEO"),
+		possible_values=[BorneoShopList[3]],
 		is_little_endian=False, ),
 
 # 08 GORDON SHOP
