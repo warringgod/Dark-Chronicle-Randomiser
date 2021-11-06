@@ -764,7 +764,7 @@ FlavinShopList = GenerateShopList(8)
 OliveShopList = GenerateShopList(5)
 JuliaShopList = [] #Don't do Julia atm because she sells weapons
 MenaShopList = GenerateShopList(7)
-CorrineShopList = GenerateShopList(4)
+CorinneShopList = GenerateShopList(4)
 RosaShopList = GenerateShopList(5)
 WoodysShopList = GenerateShopList(11) # currently only changing 5? why?
 MushroomEateryShopList = GenerateShopList(14)
@@ -16750,31 +16750,31 @@ Attributes = [
 		name="OLIVE ITEM 1",
 		addresses=[0x9b3ab4e,0x9b3d357,0x9b3fb69,0x9b42380,0x9b44b8f,0x9b47b97,0x9b4ab9b,0x9b4dc1b,0x9b50b46,0x9b5334f,0x9b55b61,0x9b58378,0x9b5ab87,0x9b5d38f,0x9b60393,0x9b63413],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("OLIVE"),
+		possible_values=[OliveShopList[0]],
 		is_little_endian=False, ),
 	Attribute(
 		name="OLIVE ITEM 2",
 		addresses=[0x9b3ab52,0x9b3d35b,0x9b3fb6d,0x9b42384,0x9b44b93,0x9b47b9b,0x9b4ab9f,0x9b4dc1f,0x9b50b4a,0x9b53353,0x9b55b65,0x9b5837c,0x9b5ab8b,0x9b5d393,0x9b60397,0x9b63417],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("OLIVE"),
+		possible_values=[OliveShopList[1]],
 		is_little_endian=False, ),
 	Attribute(
 		name="OLIVE ITEM 3",
 		addresses=[0x9b3ab56,0x9b3d35f,0x9b3fb71,0x9b42388,0x9b44b97,0x9b47b9f,0x9b4aba3,0x9b4dc23,0x9b50b4e,0x9b53357,0x9b55b69,0x9b58380,0x9b5ab8f,0x9b5d397,0x9b6039b,0x9b6341b],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("OLIVE"),
+		possible_values=[OliveShopList[2]],
 		is_little_endian=False, ),
 	Attribute(
 		name="OLIVE ITEM 4",
 		addresses=[0x9b3ab5a,0x9b3d363,0x9b3fb75,0x9b4238c,0x9b44b9b,0x9b47ba3,0x9b4aba7,0x9b4dc27,0x9b50b52,0x9b5335b,0x9b55b6d,0x9b58384,0x9b5ab93,0x9b5d39b,0x9b6039f,0x9b6341f],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("OLIVE"),
+		possible_values=[OliveShopList[3]],
 		is_little_endian=False, ),
 	Attribute(
 		name="OLIVE ITEM 5",
 		addresses=[0x9b3ab5e,0x9b3d367,0x9b3fb79,0x9b42390,0x9b44b9f,0x9b47ba7,0x9b4abab,0x9b4dc2b,0x9b50b56,0x9b5335f,0x9b55b71,0x9b58388,0x9b5ab97,0x9b5d39f,0x9b603a3,0x9b63423],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("OLIVE"),
+		possible_values=[OliveShopList[4]],
 		is_little_endian=False, ),
 
 # 19 JULIA
@@ -16786,43 +16786,43 @@ Attributes = [
 		name="MENA ITEM 1",
 		addresses=[0x9b3ab9f,0x9b3d3ac,0x9b3fbc1,0x9b50b97,0x9b533a4,0x9b55bb9,0x9b583d3,0x9b423db,0x9b44bea,0x9b5abe2,0x9b5d3ea,0x9b603ee,0x9b47bf2,0x9b4abf6,0x9b4dc76,0x9b6346e],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("MENA"),
+		possible_values=[MenaShopList[0]],
 		is_little_endian=False, ),
 	Attribute(
 		name="MENA ITEM 2",
 		addresses=[0x9b3aba3,0x9b3d3b0,0x9b3fbc5,0x9b50b9b,0x9b533a8,0x9b55bbd,0x9b583d7,0x9b423df,0x9b44bee,0x9b5abe6,0x9b5d3ee,0x9b603f2,0x9b47bf6,0x9b4abfa,0x9b4dc7a,0x9b63472],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("MENA"),
+		possible_values=[MenaShopList[1]],
 		is_little_endian=False, ),
 	Attribute(
 		name="MENA ITEM 3",
 		addresses=[0x9b3aba7,0x9b3d3b4,0x9b3fbc9,0x9b50b9f,0x9b533ac,0x9b55bc1,0x9b583db,0x9b423e3,0x9b44bf2,0x9b5abea,0x9b5d3f2,0x9b603f6,0x9b47bfa,0x9b4abfe,0x9b4dc7e,0x9b63476],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("MENA"),
+		possible_values=[MenaShopList[2]],
 		is_little_endian=False, ),
 	Attribute(
 		name="MENA ITEM 4",
 		addresses=[0x9b583df,0x9b423e7,0x9b44bf6,0x9b5abee,0x9b5d3f6,0x9b603fa,0x9b47bfe,0x9b4ac02,0x9b4dc82,0x9b6347a],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("MENA"),
+		possible_values=[MenaShopList[3]],
 		is_little_endian=False, ),
 	Attribute(
 		name="MENA ITEM 5",
 		addresses=[0x9b44bfa,0x9b5abf2,0x9b5d3fa,0x9b603fe,0x9b47c02,0x9b4ac06,0x9b4dc86,0x9b6347e],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("MENA"),
+		possible_values=[MenaShopList[4]],
 		is_little_endian=False, ),
 	Attribute(
 		name="MENA ITEM 6",
 		addresses=[0x9b5d3fe,0x9b60402,0x9b47c06,0x9b4ac0a,0x9b4dc8a,0x9b63482],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("MENA"),
+		possible_values=[MenaShopList[5]],
 		is_little_endian=False, ),
 	Attribute(
 		name="MENA ITEM 7",
 		addresses=[0x9b4dc8e,0x9b63486],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("MENA"),
+		possible_values=[MenaShopList[6]],
 		is_little_endian=False, ),
 
 # 21 CORINNE SHOP
@@ -16831,25 +16831,25 @@ Attributes = [
 		name="CORINNE ITEM 1",
 		addresses=[0x9b3abc7,0x9b3d3d4,0x9b3fbe9,0x9b42407,0x9b44c1a,0x9b47c26,0x9b4ac2a,0x9b4dcae,0x9b50bbf,0x9b533cc,0x9b55be1,0x9b583ff,0x9b5ac12,0x9b5d41e,0x9b60422,0x9b634a6],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("CORINNE"),
+		possible_values=[CorinneShopList[0]],
 		is_little_endian=False, ),
 	Attribute(
 		name="CORINNE ITEM 2",
 		addresses=[0x9b3abcb,0x9b3d3d8,0x9b3fbed,0x9b4240b,0x9b44c1e,0x9b47c2a,0x9b4ac2e,0x9b4dcb2,0x9b50bc3,0x9b533d0,0x9b55be5,0x9b58403,0x9b5ac16,0x9b5d422,0x9b60426,0x9b634aa],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("CORINNE"),
+		possible_values=[CorinneShopList[1]],
 		is_little_endian=False, ),
 	Attribute(
 		name="CORINNE ITEM 3",
 		addresses=[0x9b3abcf,0x9b3d3dc,0x9b3fbf1,0x9b4240f,0x9b44c22,0x9b47c2e,0x9b4ac32,0x9b4dcb6,0x9b50bc7,0x9b533d4,0x9b55be9,0x9b58407,0x9b5ac1a,0x9b5d426,0x9b6042a,0x9b634ae],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("CORINNE"),
+		possible_values=[CorinneShopList[2]],
 		is_little_endian=False, ),
 	Attribute(
 		name="CORINNE ITEM 4",
 		addresses=[0x9b3abd3,0x9b3d3e0,0x9b3fbf5,0x9b42413,0x9b44c26,0x9b47c32,0x9b4ac36,0x9b4dcba,0x9b50bcb,0x9b533d8,0x9b55bed,0x9b5840b,0x9b5ac1e,0x9b5d42a,0x9b6042e,0x9b634b2],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("CORINNE"),
+		possible_values=[CorinneShopList[3]],
 		is_little_endian=False, ),
 
 # 22 ROSA SHOP
@@ -16858,31 +16858,31 @@ Attributes = [
 		name="ROSA ITEM 1",
 		addresses=[0x9b3abfb,0x9b3d408,0x9b3fc1d,0x9b4243b,0x9b44c4e,0x9b47c5a,0x9b4ac5e,0x9b4dce2,0x9b50bf3,0x9b53400,0x9b55c15,0x9b58433,0x9b5ac46,0x9b5d452,0x9b60456,0x9b634da],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("ROSA"),
+		possible_values=[RosaShopList[0]],
 		is_little_endian=False, ),
 	Attribute(
 		name="ROSA ITEM 2",
 		addresses=[0x9b3abff,0x9b3d40c,0x9b3fc21,0x9b4243f,0x9b44c52,0x9b47c5e,0x9b4ac62,0x9b4dce6,0x9b50bf7,0x9b53404,0x9b55c19,0x9b58437,0x9b5ac4a,0x9b5d456,0x9b6045a,0x9b634de],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("ROSA"),
+		possible_values=[RosaShopList[1]],
 		is_little_endian=False, ),
 	Attribute(
 		name="ROSA ITEM 3",
 		addresses=[0x9b3ac03,0x9b3d410,0x9b3fc25,0x9b42443,0x9b44c56,0x9b47c62,0x9b4ac66,0x9b4dcea,0x9b50bfb,0x9b53408,0x9b55c1d,0x9b5843b,0x9b5ac4e,0x9b5d45a,0x9b6045e,0x9b634e2],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("ROSA"),
+		possible_values=[RosaShopList[2]],
 		is_little_endian=False, ),
 	Attribute(
 		name="ROSA ITEM 4",
 		addresses=[0x9b3ac07,0x9b3d414,0x9b3fc29,0x9b42447,0x9b44c5a,0x9b47c66,0x9b4ac6a,0x9b4dcee,0x9b50bff,0x9b5340c,0x9b55c21,0x9b5843f,0x9b5ac52,0x9b5d45e,0x9b60462,0x9b634e6],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("ROSA"),
+		possible_values=[RosaShopList[3]],
 		is_little_endian=False, ),
 	Attribute(
 		name="ROSA ITEM 5",
 		addresses=[0x9b3ac0b,0x9b3d418,0x9b3fc2d,0x9b4244b,0x9b44c5e,0x9b47c6a,0x9b4ac6e,0x9b4dcf2,0x9b50c03,0x9b53410,0x9b55c25,0x9b58443,0x9b5ac56,0x9b5d462,0x9b60466,0x9b634ea],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("ROSA"),
+		possible_values=[RosaShopList[4]],
 		is_little_endian=False, ),
 
 # 24 WOODY TAILORS SHOP
@@ -16891,31 +16891,31 @@ Attributes = [
 		name="WOODY TAILORS ITEM 1",
 		addresses=[0x9b3ac5b,0x9b3d470,0x9b3fc89,0x9b424af,0x9b44cc6,0x9b47cda,0x9b4ace6,0x9b4dd6a,0x9b50c53,0x9b53468,0x9b55c81,0x9b584a7,0x9b5acbe,0x9b5d4d2,0x9b604de,0x9b63562],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("WOODY TAILORS"),
+		possible_values=[WoodysShopList[0]],
 		is_little_endian=False, ),
 	Attribute(
 		name="WOODY TAILORS ITEM 2",
 		addresses=[0x9b3ac5f,0x9b3d474,0x9b3fc8d,0x9b424b3,0x9b44cca,0x9b47cde,0x9b4acea,0x9b4dd6e,0x9b50c57,0x9b5346c,0x9b55c85,0x9b584ab,0x9b5acc2,0x9b5d4d6,0x9b604e2,0x9b63566],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("WOODY TAILORS"),
+		possible_values=[WoodysShopList[1]],
 		is_little_endian=False, ),
 	Attribute(
 		name="WOODY TAILORS ITEM 3",
 		addresses=[0x9b3ac63,0x9b3d478,0x9b3fc91,0x9b424b7,0x9b44cce,0x9b47ce2,0x9b4acee,0x9b4dd72,0x9b50c5b,0x9b53470,0x9b55c89,0x9b584af,0x9b5acc6,0x9b5d4da,0x9b604e6,0x9b6356a],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("WOODY TAILORS"),
+		possible_values=[WoodysShopList[2]],
 		is_little_endian=False, ),
 	Attribute(
 		name="WOODY TAILORS ITEM 4",
 		addresses=[0x9b3ac67,0x9b3d47c,0x9b3fc95,0x9b424bb,0x9b44cd2,0x9b47ce6,0x9b4acf2,0x9b4dd76,0x9b50c5f,0x9b53474,0x9b55c8d,0x9b584b3,0x9b5acca,0x9b5d4de,0x9b604ea,0x9b6356e],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("WOODY TAILORS"),
+		possible_values=[WoodysShopList[3]],
 		is_little_endian=False, ),
 	Attribute(
 		name="WOODY TAILORS ITEM 5",
 		addresses=[0x9b3ac6b,0x9b3d480,0x9b3fc99,0x9b424bf,0x9b44cd6,0x9b47cea,0x9b4acf6,0x9b4dd7a,0x9b50c63,0x9b53478,0x9b55c91,0x9b584b7,0x9b5acce,0x9b5d4e2,0x9b604ee,0x9b63572],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("WOODY TAILORS"),
+		possible_values=[WoodysShopList[4]],
 		is_little_endian=False, ),
 
 # 25 JURAK ARMS SHOP
