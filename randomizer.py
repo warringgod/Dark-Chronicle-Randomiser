@@ -757,17 +757,17 @@ ParnShopList = GenerateShopList(8)
 ClaireShopList = GenerateShopList(1)
 StewartShopList = GenerateShopList(4)
 AdelShopList = GenerateShopList(6)
-ErikShoplist = GenerateShopList(1)
-BrunoItemList = GenerateShopList(4)
-RufioItemList = GenerateShopList(19)
-FlavinItemList = GenerateShopList(8)
-OliveItemList = GenerateShopList(5)
-JuliaItemList = [] #Don't do Julia atm because she sells weapons
-MenaItemList = GenerateShopList(7)
-CorrineItemList = GenerateShopList(4)
-RosaItemList = GenerateShopList(5)
-WoodysItemList = GenerateShopList(11) # currently only changing 5? why?
-MushroomEateryItemList = GenerateShopList(14)
+ErikShopList = GenerateShopList(1)
+BrunoShopList = GenerateShopList(4)
+RufioShopList = GenerateShopList(19)
+FlavinShopList = GenerateShopList(8)
+OliveShopList = GenerateShopList(5)
+JuliaShopList = [] #Don't do Julia atm because she sells weapons
+MenaShopList = GenerateShopList(7)
+CorrineShopList = GenerateShopList(4)
+RosaShopList = GenerateShopList(5)
+WoodysShopList = GenerateShopList(11) # currently only changing 5? why?
+MushroomEateryShopList = GenerateShopList(14)
 GPartsShopList = [] #dont do ridepod stuff?
 GToolsShopList = GenerateShopList(5)
 PollyPostShopList = GenerateShopList(5)
@@ -16394,25 +16394,25 @@ Attributes = [
 		name="GORDON ITEM 1",
 		addresses=[0x9b3a95e,0x9b3d167,0x9b3f976,0x9b42187,0x9b50956,0x9b5315f,0x9b5596e,0x9b5817f,0x9b4498f,0x9b47997,0x9b4a99b,0x9b4da03,0x9b5a987,0x9b5d18f,0x9b60193,0x9b631fb],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("GORDON"),
+		possible_values=[GordonShopList[0]],
 		is_little_endian=False, ),
 	Attribute(
 		name="GORDON ITEM 2",
 		addresses=[0x9b3a962,0x9b3d16b,0x9b3f97a,0x9b4218b,0x9b5095a,0x9b53163,0x9b55972,0x9b58183,0x9b44993,0x9b4799b,0x9b4a99f,0x9b4da07,0x9b5a98b,0x9b5d193,0x9b60197,0x9b631ff],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("GORDON"),
+		possible_values=[GordonShopList[1]],
 		is_little_endian=False, ),
 	Attribute(
 		name="GORDON ITEM 3",
 		addresses=[0x9b3a966,0x9b3d16f,0x9b3f97e,0x9b4218f,0x9b5095e,0x9b53167,0x9b55976,0x9b58187,0x9b44997,0x9b4799f,0x9b4a9a3,0x9b4da0b,0x9b5a98f,0x9b5d197,0x9b6019b,0x9b63203],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("GORDON"),
+		possible_values=[GordonShopList[2]],
 		is_little_endian=False, ),
 	Attribute(
 		name="GORDON ITEM 4",
 		addresses=[0x9b4499b,0x9b479a3,0x9b4a9a7,0x9b4da0f,0x9b5a993,0x9b5d19b,0x9b6019f,0x9b63207],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("GORDON"),
+		possible_values=[GordonShopList[3]],
 		is_little_endian=False, ),
 
 # 09 PARN SHOP
@@ -16421,49 +16421,49 @@ Attributes = [
 		name="PARN ITEM 1",
 		addresses=[0x9b3a987,0x9b3d190,0x9b3f99f,0x9b421b0,0x9b449bc,0x9b479c4,0x9b4a9c8,0x9b4da30,0x9b5097f,0x9b53188,0x9b55997,0x9b581a8,0x9b5a9b4,0x9b5d1bc,0x9b601c0,0x9b63228],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("PARN"),
+		possible_values=[ParnShopList[0]],
 		is_little_endian=False, ),
 	Attribute(
 		name="PARN ITEM 2",
 		addresses=[0x9b3a98b,0x9b3d194,0x9b3f9a3,0x9b421b4,0x9b449c0,0x9b479c8,0x9b4a9cc,0x9b4da34,0x9b50983,0x9b5318c,0x9b5599b,0x9b581ac,0x9b5a9b8,0x9b5d1c0,0x9b601c4,0x9b6322c],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("PARN"),
+		possible_values=[ParnShopList[1]],
 		is_little_endian=False, ),
 	Attribute(
 		name="PARN ITEM 3",
 		addresses=[0x9b3a98f,0x9b3d198,0x9b3f9a7,0x9b421b8,0x9b449c4,0x9b479cc,0x9b4a9d0,0x9b4da38,0x9b50987,0x9b53190,0x9b5599f,0x9b581b0,0x9b5a9bc,0x9b5d1c4,0x9b601c8,0x9b63230],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("PARN"),
+		possible_values=[ParnShopList[2]],
 		is_little_endian=False, ),
 	Attribute(
 		name="PARN ITEM 4",
 		addresses=[0x9b3a993,0x9b3d19c,0x9b3f9ab,0x9b421bc,0x9b449c8,0x9b479d0,0x9b4a9d4,0x9b4da3c,0x9b5098b,0x9b53194,0x9b559a3,0x9b581b4,0x9b5a9c0,0x9b5d1c8,0x9b601cc,0x9b63234],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("PARN"),
+		possible_values=[ParnShopList[3]],
 		is_little_endian=False, ),
 	Attribute(
 		name="PARN ITEM 5",
 		addresses=[0x9b3a997,0x9b3d1a0,0x9b3f9af,0x9b421c0,0x9b449cc,0x9b479d4,0x9b4a9d8,0x9b4da40,0x9b5098f,0x9b53198,0x9b559a7,0x9b581b8,0x9b5a9c4,0x9b5d1cc,0x9b601d0,0x9b63238],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("PARN"),
+		possible_values=[ParnShopList[4]],
 		is_little_endian=False, ),
 	Attribute(
 		name="PARN ITEM 6",
 		addresses=[0x9b3a99b,0x9b3d1a4,0x9b3f9b3,0x9b421c4,0x9b449d0,0x9b479d8,0x9b4a9dc,0x9b4da44,0x9b50993,0x9b5319c,0x9b559ab,0x9b581bc,0x9b5a9c8,0x9b5d1d0,0x9b601d4,0x9b6323c],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("PARN"),
+		possible_values=[ParnShopList[5]],
 		is_little_endian=False, ),
 	Attribute(
 		name="PARN ITEM 7",
 		addresses=[0x9b3a99f,0x9b3d1a8,0x9b3f9b7,0x9b421c8,0x9b449d4,0x9b479dc,0x9b4a9e0,0x9b4da48,0x9b50997,0x9b531a0,0x9b559af,0x9b581c0,0x9b5a9cc,0x9b5d1d4,0x9b601d8,0x9b63240],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("PARN"),
+		possible_values=[ParnShopList[6]],
 		is_little_endian=False, ),
 	Attribute(
 		name="PARN ITEM 8",
 		addresses=[0x9b3a9a3,0x9b3d1ac,0x9b3f9bb,0x9b421cc,0x9b449d8,0x9b479e0,0x9b4a9e4,0x9b4da4c,0x9b5099b,0x9b531a4,0x9b559b3,0x9b581c4,0x9b5a9d0,0x9b5d1d8,0x9b601dc,0x9b63244],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("PARN"),
+		possible_values=[ParnShopList[7]],
 		is_little_endian=False, ),
 
 # 10 CLAIRE SHOP
@@ -16472,7 +16472,7 @@ Attributes = [
 		name="CLAIRE ITEM 1",
 		addresses=[0x9b3a9c9,0x9b3d1d2,0x9b3f9e1,0x9b421f2,0x9b449fe,0x9b47a06,0x9b4aa0a,0x9b4da72,0x9b509c1,0x9b531ca,0x9b559d9,0x9b581ea,0x9b5a9f6,0x9b5d1fe,0x9b60202,0x9b6326a],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("CLAIRE"),
+		possible_values=[ClaireShopList[0]],
 		is_little_endian=False, ),
 
 # 11 STEWART SHOP
@@ -16481,25 +16481,25 @@ Attributes = [
 		name="STEWART ITEM 1",
 		addresses=[0x9b3a9eb,0x9b3d1f4,0x9b3fa03,0x9b42214,0x9b44a20,0x9b47a28,0x9b4aa2c,0x9b4da94,0x9b509e3,0x9b531ec,0x9b559fb,0x9b5820c,0x9b5aa18,0x9b5d220,0x9b60224,0x9b6328c],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("STEWART"),
+		possible_values=[StewartShopList[0]],
 		is_little_endian=False, ),
 	Attribute(
 		name="STEWART ITEM 2",
 		addresses=[0x9b3a9ef,0x9b3d1f8,0x9b3fa07,0x9b42218,0x9b44a24,0x9b47a2c,0x9b4aa30,0x9b4da98,0x9b509e7,0x9b531f0,0x9b559ff,0x9b58210,0x9b5aa1c,0x9b5d224,0x9b60228,0x9b63290],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("STEWART"),
+		possible_values=[StewartShopList[1]],
 		is_little_endian=False, ),
 	Attribute(
 		name="STEWART ITEM 3",
 		addresses=[0x9b3a9f3,0x9b3d1fc,0x9b3fa0b,0x9b4221c,0x9b44a28,0x9b47a30,0x9b4aa34,0x9b4da9c,0x9b509eb,0x9b531f4,0x9b55a03,0x9b58214,0x9b5aa20,0x9b5d228,0x9b6022c,0x9b63294],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("STEWART"),
+		possible_values=[StewartShopList[2]],
 		is_little_endian=False, ),
 	Attribute(
 		name="STEWART ITEM 4",
 		addresses=[0x9b3a9f7,0x9b3d200,0x9b3fa0f,0x9b42220,0x9b44a2c,0x9b47a34,0x9b4aa38,0x9b4daa0,0x9b509ef,0x9b531f8,0x9b55a07,0x9b58218,0x9b5aa24,0x9b5d22c,0x9b60230,0x9b63298],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("STEWART"),
+		possible_values=[StewartShopList[3]],
 		is_little_endian=False, ),
 
 # 12 ADEL SHOP
@@ -16508,37 +16508,37 @@ Attributes = [
 		name="ADEL ITEM 1",
 		addresses=[0x9b3aa19,0x9b3d222,0x9b3fa31,0x9b42242,0x9b44a4e,0x9b47a56,0x9b4aa5a,0x9b4dac2,0x9b50a11,0x9b5321a,0x9b55a29,0x9b5823a,0x9b5aa46,0x9b5d24e,0x9b60252,0x9b632ba],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("ADEL"),
+		possible_values=[AdelShopList[0]],
 		is_little_endian=False, ),
 	Attribute(
 		name="ADEL ITEM 2",
 		addresses=[0x9b3aa1d,0x9b3d226,0x9b3fa35,0x9b42246,0x9b44a52,0x9b47a5a,0x9b4aa5e,0x9b4dac6,0x9b50a15,0x9b5321e,0x9b55a2d,0x9b5823e,0x9b5aa4a,0x9b5d252,0x9b60256,0x9b632be],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("ADEL"),
+		possible_values=[AdelShopList[1]],
 		is_little_endian=False, ),
 	Attribute(
 		name="ADEL ITEM 3",
 		addresses=[0x9b3aa21,0x9b3d22a,0x9b3fa39,0x9b4224a,0x9b44a56,0x9b47a5e,0x9b4aa62,0x9b4daca,0x9b50a19,0x9b53222,0x9b55a31,0x9b58242,0x9b5aa4e,0x9b5d256,0x9b6025a,0x9b632c2],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("ADEL"),
+		possible_values=[AdelShopList[2]],
 		is_little_endian=False, ),
 	Attribute(
 		name="ADEL ITEM 4",
 		addresses=[0x9b3aa25,0x9b3d22e,0x9b3fa3d,0x9b4224e,0x9b44a5a,0x9b47a62,0x9b4aa66,0x9b4dace,0x9b50a1d,0x9b53226,0x9b55a35,0x9b58246,0x9b5aa52,0x9b5d25a,0x9b6025e,0x9b632c6],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("ADEL"),
+		possible_values=[AdelShopList[3]],
 		is_little_endian=False, ),
 	Attribute(
 		name="ADEL ITEM 5",
 		addresses=[0x9b3aa29,0x9b3d232,0x9b3fa41,0x9b42252,0x9b44a5e,0x9b47a66,0x9b4aa6a,0x9b4dad2,0x9b50a21,0x9b5322a,0x9b55a39,0x9b5824a,0x9b5aa56,0x9b5d25e,0x9b60262,0x9b632ca],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("ADEL"),
+		possible_values=[AdelShopList[4]],
 		is_little_endian=False, ),
 	Attribute(
 		name="ADEL ITEM 6",
 		addresses=[0x9b3aa2d,0x9b3d236,0x9b3fa45,0x9b42256,0x9b44a62,0x9b47a6a,0x9b4aa6e,0x9b4dad6,0x9b50a25,0x9b5322e,0x9b55a3d,0x9b5824e,0x9b5aa5a,0x9b5d262,0x9b60266,0x9b632ce],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("ADEL"),
+		possible_values=[AdelShopList[5]],
 		is_little_endian=False, ),
 
 # 13 ERIK SHOP
@@ -16547,7 +16547,7 @@ Attributes = [
 		name="ERIK ITEM 1",
 		addresses=[0x9b3aa49,0x9b3d252,0x9b3fa61,0x9b42272,0x9b44a7e,0x9b47a86,0x9b4aa8a,0x9b4daf2,0x9b50a41,0x9b5324a,0x9b55a59,0x9b5826a,0x9b5aa76,0x9b5d27e,0x9b60282,0x9b632ea],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("ERIK"),
+		possible_values=[ErikShopList[0]],
 		is_little_endian=False, ),
 
 # 14 GERALD SHOP
@@ -16560,20 +16560,20 @@ Attributes = [
 		name="BRUNO ITEM 1",
 		addresses=[0x9b3aa8e,0x9b3d297,0x9b3faa9,0x9b422c0,0x9b44acf,0x9b47ad7,0x9b4aadb,0x9b4db43,0x9b50a86,0x9b5328f,0x9b55aa1,0x9b582b8,0x9b5aac7,0x9b5d2cf,0x9b602d3,0x9b6333b],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("BRUNO"),
+		possible_values=[BrunoShopList[0]],
 		is_little_endian=False, ),
 #addresses=[0x9b3aa92,0x9b3d29b,0x9b3faad,0x9b422c4,0x9b44ad3,0x9b47adb,0x9b4aadf,0x9b4db47,0x9b50a8a,0x9b53293,0x9b55aa5,0x9b582bc,0x9b5aacb,0x9b5d2d3,0x9b602d7,0x9b6333f],
 	Attribute(
 		name="BRUNO ITEM 3",
 		addresses=[0x9b3aa96,0x9b3d29f,0x9b3fab1,0x9b422c8,0x9b44ad7,0x9b47adf,0x9b4aae3,0x9b4db4b,0x9b50a8e,0x9b53297,0x9b55aa9,0x9b582c0,0x9b5aacf,0x9b5d2d7,0x9b602db,0x9b63343],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("BRUNO"),
+		possible_values=[BrunoShopList[1]],
 		is_little_endian=False, ),
 	Attribute(
 		name="BRUNO ITEM 4",
 		addresses=[0x9b3aa9a,0x9b3d2a3,0x9b3fab5,0x9b422cc,0x9b44adb,0x9b47ae3,0x9b4aae7,0x9b4db4f,0x9b50a92,0x9b5329b,0x9b55aad,0x9b582c4,0x9b5aad3,0x9b5d2db,0x9b602df,0x9b63347],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("BRUNO"),
+		possible_values=[BrunoShopList[2]],
 		is_little_endian=False, ),
 
 # 16 RUFIO SHOP
@@ -16582,115 +16582,115 @@ Attributes = [
 		name="RUFIO ITEM 1",
 		addresses=[0x9b3aabe,0x9b3d2c7,0x9b3fad9,0x9b422f0,0x9b44aff,0x9b47b07,0x9b4ab0b,0x9b50ab6,0x9b532bf,0x9b55ad1,0x9b582e8,0x9b5aaf7,0x9b5d2ff,0x9b60303,0x9b4db73,0x9b6336b],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("RUFIO"),
+		possible_values=[RufioShopList[0]],
 		is_little_endian=False, ),
 	Attribute(
 		name="RUFIO ITEM 2",
 		addresses=[0x9b3aac2,0x9b3d2cb,0x9b3fadd,0x9b422f4,0x9b44b03,0x9b47b0b,0x9b4ab0f,0x9b50aba,0x9b532c3,0x9b55ad5,0x9b582ec,0x9b5aafb,0x9b5d303,0x9b60307,0x9b4db77,0x9b6336f],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("RUFIO"),
+		possible_values=[RufioShopList[1]],
 		is_little_endian=False, ),
 	Attribute(
 		name="RUFIO ITEM 3",
 		addresses=[0x9b3aac6,0x9b3d2cf,0x9b3fae1,0x9b422f8,0x9b44b07,0x9b47b0f,0x9b4ab13,0x9b50abe,0x9b532c7,0x9b55ad9,0x9b582f0,0x9b5aaff,0x9b5d307,0x9b6030b,0x9b4db7b,0x9b63373],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("RUFIO"),
+		possible_values=[RufioShopList[2]],
 		is_little_endian=False, ),
 	Attribute(
 		name="RUFIO ITEM 4",
 		addresses=[0x9b3aaca,0x9b3d2d3,0x9b3fae5,0x9b422fc,0x9b44b0b,0x9b47b13,0x9b4ab17,0x9b50ac2,0x9b532cb,0x9b55add,0x9b582f4,0x9b5ab03,0x9b5d30b,0x9b6030f,0x9b4db7f,0x9b63377],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("RUFIO"),
+		possible_values=[RufioShopList[3]],
 		is_little_endian=False, ),
 	Attribute(
 		name="RUFIO ITEM 5",
 		addresses=[0x9b3aace,0x9b3d2d7,0x9b3fae9,0x9b42300,0x9b44b0f,0x9b47b17,0x9b4ab1b,0x9b50ac6,0x9b532cf,0x9b55ae1,0x9b582f8,0x9b5ab07,0x9b5d30f,0x9b60313,0x9b4db83,0x9b6337b],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("RUFIO"),
+		possible_values=[RufioShopList[4]],
 		is_little_endian=False, ),
 	Attribute(
 		name="RUFIO ITEM 6",
 		addresses=[0x9b3aad2,0x9b3d2db,0x9b3faed,0x9b42304,0x9b44b13,0x9b47b1b,0x9b4ab1f,0x9b50aca,0x9b532d3,0x9b55ae5,0x9b582fc,0x9b5ab0b,0x9b5d313,0x9b60317,0x9b4db87,0x9b6337f],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("RUFIO"),
+		possible_values=[RufioShopList[5]],
 		is_little_endian=False, ),
 	Attribute(
 		name="RUFIO ITEM 7",
 		addresses=[0x9b3aad6,0x9b3d2df,0x9b3faf1,0x9b42308,0x9b44b17,0x9b47b1f,0x9b4ab23,0x9b50ace,0x9b532d7,0x9b55ae9,0x9b58300,0x9b5ab0f,0x9b5d317,0x9b6031b,0x9b4db8b,0x9b63383],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("RUFIO"),
+		possible_values=[RufioShopList[6]],
 		is_little_endian=False, ),
 	Attribute(
 		name="RUFIO ITEM 8",
 		addresses=[0x9b3aada,0x9b3d2e3,0x9b3faf5,0x9b4230c,0x9b44b1b,0x9b47b23,0x9b4ab27,0x9b50ad2,0x9b532db,0x9b55aed,0x9b58304,0x9b5ab13,0x9b5d31b,0x9b6031f,0x9b4db8f,0x9b63387],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("RUFIO"),
+		possible_values=[RufioShopList[7]],
 		is_little_endian=False, ),
 	Attribute(
 		name="RUFIO ITEM 9",
 		addresses=[0x9b3aade,0x9b3d2e7,0x9b3faf9,0x9b42310,0x9b44b1f,0x9b47b27,0x9b4ab2b,0x9b50ad6,0x9b532df,0x9b55af1,0x9b58308,0x9b5ab17,0x9b5d31f,0x9b60323,0x9b4db93,0x9b6338b],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("RUFIO"),
+		possible_values=[RufioShopList[8]],
 		is_little_endian=False, ),
 	Attribute(
 		name="RUFIO ITEM 10",
 		addresses=[0x9b3aae2,0x9b3d2eb,0x9b3fafd,0x9b42314,0x9b44b23,0x9b47b2b,0x9b4ab2f,0x9b50ada,0x9b532e3,0x9b55af5,0x9b5830c,0x9b5ab1b,0x9b5d323,0x9b60327,0x9b4db97,0x9b6338f],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("RUFIO"),
+		possible_values=[RufioShopList[9]],
 		is_little_endian=False, ),
 	Attribute(
 		name="RUFIO ITEM 11",
 		addresses=[0x9b3aae6,0x9b3d2ef,0x9b3fb01,0x9b42318,0x9b44b27,0x9b47b2f,0x9b4ab33,0x9b50ade,0x9b532e7,0x9b55af9,0x9b58310,0x9b5ab1f,0x9b5d327,0x9b6032b,0x9b4db9b,0x9b63393],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("RUFIO"),
+		possible_values=[RufioShopList[10]],
 		is_little_endian=False, ),
 	Attribute(
 		name="RUFIO ITEM 12",
 		addresses=[0x9b3aaea,0x9b3d2f3,0x9b3fb05,0x9b4231c,0x9b44b2b,0x9b47b33,0x9b4ab37,0x9b50ae2,0x9b532eb,0x9b55afd,0x9b58314,0x9b5ab23,0x9b5d32b,0x9b6032f,0x9b4db9f,0x9b63397],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("RUFIO"),
+		possible_values=[RufioShopList[11]],
 		is_little_endian=False, ),
 	Attribute(
 		name="RUFIO ITEM 13",
 		addresses=[0x9b3aaee,0x9b3d2f7,0x9b3fb09,0x9b42320,0x9b44b2f,0x9b47b37,0x9b4ab3b,0x9b50ae6,0x9b532ef,0x9b55b01,0x9b58318,0x9b5ab27,0x9b5d32f,0x9b60333,0x9b4dba3,0x9b6339b],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("RUFIO"),
+		possible_values=[RufioShopList[12]],
 		is_little_endian=False, ),
 	Attribute(
 		name="RUFIO ITEM 14",
 		addresses=[0x9b4dba7,0x9b6339f],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("RUFIO"),
+		possible_values=[RufioShopList[13]],
 		is_little_endian=False, ),
 	Attribute(
 		name="RUFIO ITEM 15",
 		addresses=[0x9b4dbab,0x9b633a3],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("RUFIO"),
+		possible_values=[RufioShopList[14]],
 		is_little_endian=False, ),
 	Attribute(
 		name="RUFIO ITEM 16",
 		addresses=[0x9b4dbaf,0x9b633a7],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("RUFIO"),
+		possible_values=[RufioShopList[15]],
 		is_little_endian=False, ),
 	Attribute(
 		name="RUFIO ITEM 17",
 		addresses=[0x9b4dbb3,0x9b633ab],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("RUFIO"),
+		possible_values=[RufioShopList[16]],
 		is_little_endian=False, ),
 	Attribute(
 		name="RUFIO ITEM 18",
 		addresses=[0x9b4dbb7,0x9b633af],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("RUFIO"),
+		possible_values=[RufioShopList[17]],
 		is_little_endian=False, ),
 	Attribute(
 		name="RUFIO ITEM 19",
 		addresses=[0x9b4dbbb,0x9b633b3],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("RUFIO"),
+		possible_values=[RufioShopList[18]],
 		is_little_endian=False, ),
 
 # 17 FLAVIN SHOP
@@ -16699,49 +16699,49 @@ Attributes = [
 		name="FLAVIN ITEM 1",
 		addresses=[0x9b3ab10,0x9b3d319,0x9b3fb2b,0x9b42342,0x9b44b51,0x9b47b59,0x9b4ab5d,0x9b4dbdd,0x9b50b08,0x9b53311,0x9b55b23,0x9b5833a,0x9b5ab49,0x9b5d351,0x9b60355,0x9b633d5],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("FLAVIN"),
+		possible_values=[FlavinShopList[0]],
 		is_little_endian=False, ),
 	Attribute(
 		name="FLAVIN ITEM 2",
 		addresses=[0x9b3ab14,0x9b3d31d,0x9b3fb2f,0x9b42346,0x9b44b55,0x9b47b5d,0x9b4ab61,0x9b4dbe1,0x9b50b0c,0x9b53315,0x9b55b27,0x9b5833e,0x9b5ab4d,0x9b5d355,0x9b60359,0x9b633d9],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("FLAVIN"),
+		possible_values=[FlavinShopList[1]],
 		is_little_endian=False, ),
 	Attribute(
 		name="FLAVIN ITEM 3",
 		addresses=[0x9b3ab18,0x9b3d321,0x9b3fb33,0x9b4234a,0x9b44b59,0x9b47b61,0x9b4ab65,0x9b4dbe5,0x9b50b10,0x9b53319,0x9b55b2b,0x9b58342,0x9b5ab51,0x9b5d359,0x9b6035d,0x9b633dd],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("FLAVIN"),
+		possible_values=[FlavinShopList[2]],
 		is_little_endian=False, ),
 	Attribute(
 		name="FLAVIN ITEM 4",
 		addresses=[0x9b3ab1c,0x9b3d325,0x9b3fb37,0x9b4234e,0x9b44b5d,0x9b47b65,0x9b4ab69,0x9b4dbe9,0x9b50b14,0x9b5331d,0x9b55b2f,0x9b58346,0x9b5ab55,0x9b5d35d,0x9b60361,0x9b633e1],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("FLAVIN"),
+		possible_values=[FlavinShopList[3]],
 		is_little_endian=False, ),
 	Attribute(
 		name="FLAVIN ITEM 5",
 		addresses=[0x9b3ab20,0x9b3d329,0x9b3fb3b,0x9b42352,0x9b44b61,0x9b47b69,0x9b4ab6d,0x9b4dbed,0x9b50b18,0x9b53321,0x9b55b33,0x9b5834a,0x9b5ab59,0x9b5d361,0x9b60365,0x9b633e5],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("FLAVIN"),
+		possible_values=[FlavinShopList[4]],
 		is_little_endian=False, ),
 	Attribute(
 		name="FLAVIN ITEM 6",
 		addresses=[0x9b3ab24,0x9b3d32d,0x9b3fb3f,0x9b42356,0x9b44b65,0x9b47b6d,0x9b4ab71,0x9b4dbf1,0x9b50b1c,0x9b53325,0x9b55b37,0x9b5834e,0x9b5ab5d,0x9b5d365,0x9b60369,0x9b633e9],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("FLAVIN"),
+		possible_values=[FlavinShopList[5]],
 		is_little_endian=False, ),
 	Attribute(
 		name="FLAVIN ITEM 7",
 		addresses=[0x9b3ab28,0x9b3d331,0x9b3fb43,0x9b4235a,0x9b44b69,0x9b47b71,0x9b4ab75,0x9b4dbf5,0x9b50b20,0x9b53329,0x9b55b3b,0x9b58352,0x9b5ab61,0x9b5d369,0x9b6036d,0x9b633ed],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("FLAVIN"),
+		possible_values=[FlavinShopList[6]],
 		is_little_endian=False, ),
 	Attribute(
 		name="FLAVIN ITEM 8",
 		addresses=[0x9b3ab2c,0x9b3d335,0x9b3fb47,0x9b4235e,0x9b44b6d,0x9b47b75,0x9b4ab79,0x9b4dbf9,0x9b50b24,0x9b5332d,0x9b55b3f,0x9b58356,0x9b5ab65,0x9b5d36d,0x9b60371,0x9b633f1],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("FLAVIN"),
+		possible_values=[FlavinShopList[7]],
 		is_little_endian=False, ),
 
 # 18 OLIVE SHOP
