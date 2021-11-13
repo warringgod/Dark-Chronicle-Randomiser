@@ -67,6 +67,8 @@ tier5weaponsmonica = [50, 51, 56, 64, 66, 71, 75, 85, 86, 97, 98, 100, 106]
 tier6weaponsmonica = [55, 59, 63, 72, 77, 80, 84, 87, 96, 99, 105, 107]
 tier7weaponsmonica = [57, 60, 78, 79, 81, 83, 88, 89, 101, 102, 108, 109]
 
+tierweapons = tier1weaponsmax + tier2weaponsmax + tier3weaponsmax + tier4weaponsmax + tier5weaponsmax + tier6weaponsmax + tier7weaponsmax + tier1weaponsmonica + tier2weaponsmonica + tier3weaponsmonica + tier4weaponsmonica + tier5weaponsmonica + tier6weaponsmonica + tier7weaponsmonica
+
 #CLOTHES
 tierclothes = [111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131,
 			   132, 133, 134, 258, 259, 260, 261, 262, 263, 264, 265, 266, 267]
@@ -457,15 +459,17 @@ def ChooseShopItem(Shop):
 	elif 10 <= x <= 15:
 		item_number = random.choice(tierfood)
 	elif 16 <= x <= 29:
-		item_number = random.choice(tier7weaponsmonica)
-	elif 30 <= x <= 50:
-		item_number = random.choice(tier5weaponsmonica)
+		item_number = random.choice(tier1weaponsmax)
+	elif 30 <= x <= 40:
+		item_number = random.choice(tier2weaponsmax)
+	elif 41 <= x <= 50:
+		item_number = random.choice(tier2weaponsmax)
 	elif 51 <= x <= 70:
-		item_number = random.choice(tier4weaponsmonica)
+		item_number = random.choice(tier3weaponsmax)
 	elif 71 <= x <= 90:
-		item_number = random.choice(tier3weaponsmonica)
+		item_number = random.choice(tier5weaponsmax)
 	elif 91 <= x <= 100:
-		item_number = random.choice(tier2weaponsmonica)
+		item_number = random.choice(tier4weaponsmax)
 	return item_number
 
 def GenerateShopList(MaxNumberof3ByteItems):
@@ -489,7 +493,23 @@ def GenerateShopList(MaxNumberof3ByteItems):
 
 	return actualshoplist
 
-	######
+	###### CHANGE ITEM PRICES
+def Change3DigitItemPrice(Price):
+
+	item_number = Price
+
+	y =	concat3(fdig(item_number,1),fdig(item_number,2),fdig(item_number,3))
+
+	return [y]
+
+def Change4DigitItemPrice(Price):
+
+	item_number = Price
+
+	y =	concat4(fdig(item_number,1),fdig(item_number,2),fdig(item_number,3),fdig(item_number,4))
+
+	return [y]
+
 def Change5DigitItemPrice(Price):
 
 	item_number = Price
@@ -21583,6 +21603,30 @@ Attributes = [
 		is_little_endian=False, ),
 
 # changing item prices
+	Attribute(
+		name="Battle Wrench Price",
+		addresses=[0x9b38a63, 0x9b3b263, 0x9b3da63, 0x9b40263, 0x9b42a63, 0x9b45a63, 0x9b48a63, 0x9b4ba63, 0x9b4ea63, 0x9b51263, 0x9b53a63, 0x9b56263, 0x9b58a63, 0x9b5b263, 0x9b5e263, 0x9b61263],
+		number_of_bytes=3,
+		possible_values=Change3DigitItemPrice(100),
+		is_little_endian=False, ),
+	Attribute(
+		name="Drill Wrench Price",
+		addresses=[0x9b38a75, 0x9b3b275, 0x9b3da75, 0x9b40275, 0x9b42a75, 0x9b45a75, 0x9b48a75, 0x9b4ba75, 0x9b4ea75, 0x9b51275, 0x9b53a75, 0x9b56275, 0x9b58a75, 0x9b5b275, 0x9b5e275, 0x9b61275],
+		number_of_bytes=3,
+		possible_values=Change3DigitItemPrice(100),
+		is_little_endian=False, ),
+	Attribute(
+		name="Smash Wrench Price",
+		addresses=[0x9b38a87, 0x9b3b287, 0x9b3da87, 0x9b40287, 0x9b42a87, 0x9b45a87, 0x9b48a87, 0x9b4ba87, 0x9b4ea87, 0x9b51287, 0x9b53a87, 0x9b56287, 0x9b58a87, 0x9b5b287, 0x9b5e287, 0x9b61287],
+		number_of_bytes=3,
+		possible_values=Change3DigitItemPrice(100),
+		is_little_endian=False, ),
+	Attribute(
+		name="Stinger Wrench Price",
+		addresses=[0x9b38a99, 0x9b3b299, 0x9b3da99, 0x9b40299, 0x9b42a99, 0x9b45a99, 0x9b48a99, 0x9b4ba99, 0x9b4ea99, 0x9b51299, 0x9b53a99, 0x9b56299, 0x9b58a99, 0x9b5b299, 0x9b5e299, 0x9b61299],
+		number_of_bytes=3,
+		possible_values=Change3DigitItemPrice(100),
+		is_little_endian=False, ),
 	Attribute(
 		name="Fruit Of Eden Price",
 		addresses=[0X9B39E6E,0X9B3EE6F,0X9B4166F,0X9B43E6F,0X9B46E6F,0X9B49E6F,0X9B4CE6F,0X9B4FE6E,0X9B5266E,0X9B54E6F,0X9B5766F,0X9B59E6F,0X9B5C66F,0X9B5F66F,0X9B6266F,0X9B3C66E],
