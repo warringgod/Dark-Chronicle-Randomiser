@@ -85,6 +85,10 @@ tiergems = [186, 187, 188, 189, 190, 191, 192, 193, 194, 195, 196, 197]
 tierraregems = [198, 199]
 tiercoins = [200, 201, 202, 203, 204, 205, 206, 207, 208, 209]
 tierfish = [310, 320, 321, 322, 323, 324, 325, 326, 327, 328, 329, 330, 331, 332, 333, 334, 335, 336]
+tierfood = [268, 269, 270, 271, 272, 292, 299]
+tierthrowables = [ 173, 280, 281, 282, 283, 284, 285, 286, 287, 288, 289, 290, 291, 365, 366, 367, 368, 390, 391]
+tierstatus = [253, 254, 255, 256, 257, 275, 276, 277, 278, 279, 425]
+
 
 #DROPS
 tier1drops = [210, 211, 212, 213, 214, 215, 216, 217, 218, 219, 220, 221, 222, 223, 224, 226, 227, 228, 229, 230, 231,
@@ -111,7 +115,6 @@ tier5chests = [286,381,320,321,322,323,324,325,326,327,328,329,330,331,332,333,3
 tier6chests = [377,378,379,380,271,336,307,390,273,391,383,200,201,202,203,204,205,206,207,208,209]
 tier7chests = [111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,258,259,260,261,262,263,264,265,266,267]
 tier8chests = [186,187,188,190,191,192,193,194,195,196,197,189,295,198,199,388,389,296,384]
-
 
 previousShopName = "NULL"
 previousShopItems = []
@@ -445,84 +448,24 @@ def concat5(a,b,c,d,e):
 	string = int(string,16)
 	return string
 
-
-def ChooseShopItems(Shop):
-	item_number = 0
-
-	if previousShopName != Shop:
-		previousShopItems = [0]
-
-	while item_number in (previousShopItems):
-
-		x = random.randint(0, 100)
-
-		if 0 <= x <= 29:
-			item_number = random.choice(tier1drops)
-		elif 30 <= x <= 34:
-			item_number = random.choice(tierattachments)
-		elif 35 <= x <= 36:
-			item_number = random.choice(tierfish)
-		elif 37 <= x <= 39:
-			item_number = random.choice(tiergems)
-		elif 40 <= x <= 64:
-			item_number = random.choice(tier2drops)
-		elif 65 <= x <= 69:
-			item_number = random.choice(tiercoins)
-		elif 70 <= x <= 74:
-			item_number = random.choice(tierclothes)
-		elif 75 <= x <= 80:
-			item_number = random.choice(tier3drops)
-		elif 81 <= x <= 82:
-			item_number = random.choice(tierraregems)
-		elif 83 <= x <= 85:
-			item_number = random.choice(tier1chests)
-		elif 86 <= x <= 88:
-			item_number = random.choice(tier2chests)
-		elif 89 <= x <= 92:
-			item_number = random.choice(tier3chests)
-		elif 93 <= x <= 100:
-			item_number = random.choice(tier4chests)
-
-	print(item_number)
-
-	previousShopItems.append(item_number)
-
-	y = concat3(fdig(item_number, 1), fdig(item_number, 2), fdig(item_number, 3))
-
-	return [y]
-
-#temporary copy, changing to stop dupe items in shops
 def ChooseShopItem(Shop):
 	item_number = 0
 	x = random.randint(0, 100)
 
-	if 0 <= x <= 29:
-		item_number = random.choice(tier1drops)
-	elif 30 <= x <= 34:
+	if 0 <= x <= 10:
 		item_number = random.choice(tierattachments)
-	elif 35 <= x <= 36:
-		item_number = random.choice(tierfish)
-	elif 37 <= x <= 39:
-		item_number = random.choice(tiergems)
-	elif 40 <= x <= 64:
-		item_number = random.choice(tier2drops)
-	elif 65 <= x <= 69:
-		item_number = random.choice(tiercoins)
-	elif 70 <= x <= 74:
-		item_number = random.choice(tierclothes)
-	elif 75 <= x <= 80:
-		item_number = random.choice(tier3drops)
-	elif 81 <= x <= 82:
-		item_number = random.choice(tierraregems)
-	elif 83 <= x <= 85:
-		item_number = random.choice(tier1chests)
-	elif 86 <= x <= 88:
-		item_number = random.choice(tier2chests)
-	elif 89 <= x <= 92:
-		item_number = random.choice(tier3chests)
-	elif 93 <= x <= 100:
-		item_number = random.choice(tier4chests)
-
+	elif 10 <= x <= 15:
+		item_number = random.choice(tierfood)
+	elif 16 <= x <= 29:
+		item_number = random.choice(tier7weaponsmonica)
+	elif 30 <= x <= 50:
+		item_number = random.choice(tier5weaponsmonica)
+	elif 51 <= x <= 70:
+		item_number = random.choice(tier4weaponsmonica)
+	elif 71 <= x <= 90:
+		item_number = random.choice(tier3weaponsmonica)
+	elif 91 <= x <= 100:
+		item_number = random.choice(tier2weaponsmonica)
 	return item_number
 
 def GenerateShopList(MaxNumberof3ByteItems):
@@ -540,6 +483,7 @@ def GenerateShopList(MaxNumberof3ByteItems):
 		shoplist.append(item_number)
 		print(item_number)
 
+		item_number = str(item_number).zfill(3)
 		y = concat3(fdig(item_number, 1), fdig(item_number, 2), fdig(item_number, 3))
 		actualshoplist.append(y)
 
@@ -570,6 +514,7 @@ def ChooseSewerChestDrops():
 		item_number = random.choice(tier1ridepod)
 	elif x == 100:
 		item_number = random.choice(tier4chests + tier5chests + tier6chests + tier7chests + tier8chests + tier2ridepod)
+
 	y =	concat3(fdig(item_number,1),fdig(item_number,2),fdig(item_number,3))
 
 	return [y]
@@ -768,7 +713,7 @@ CorinneShopList = GenerateShopList(4)
 RosaShopList = GenerateShopList(5)
 WoodysShopList = GenerateShopList(11) # currently only changing 5? why?
 MushroomEateryShopList = GenerateShopList(14)
-GPartsShopList = [] #dont do ridepod stuff?
+GPartsShopList = GenerateShopList(5) #dont do ridepod stuff?
 GToolsShopList = GenerateShopList(5)
 PollyPostShopList = GenerateShopList(5)
 
@@ -16927,85 +16872,85 @@ Attributes = [
 		name="MUSHROOM BURGER EATERY ITEM 1",
 		addresses=[0x9b3accc,0x9b3d4e9,0x9b3fd05,0x9b42531,0x9b44d47,0x9b47d5b,0x9b4ad67,0x9b4ddeb,0x9b50cc4,0x9b534e1,0x9b55cfd,0x9b58529,0x9b5ad3f,0x9b5d553,0x9b6055f,0x9b635e3],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("MUSHROOM BURGER EATERY"),
+		possible_values=[MushroomEateryShopList[0]],
 		is_little_endian=False, ),
 	Attribute(
 		name="MUSHROOM BURGER EATERY ITEM 2",
 		addresses=[0x9b3acd0,0x9b3d4ed,0x9b3fd09,0x9b42535,0x9b44d4b,0x9b47d5f,0x9b4ad6b,0x9b4ddef,0x9b50cc8,0x9b534e5,0x9b55d01,0x9b5852d,0x9b5ad43,0x9b5d557,0x9b60563,0x9b635e7],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("MUSHROOM BURGER EATERY"),
+		possible_values=[MushroomEateryShopList[1]],
 		is_little_endian=False, ),
 	Attribute(
 		name="MUSHROOM BURGER EATERY ITEM 3",
 		addresses=[0x9b3acd4,0x9b3d4f1,0x9b3fd0d,0x9b42539,0x9b44d4f,0x9b47d63,0x9b4ad6f,0x9b4ddf3,0x9b50ccc,0x9b534e9,0x9b55d05,0x9b58531,0x9b5ad47,0x9b5d55b,0x9b60567,0x9b635eb],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("MUSHROOM BURGER EATERY"),
+		possible_values=[MushroomEateryShopList[2]],
 		is_little_endian=False, ),
 	Attribute(
 		name="MUSHROOM BURGER EATERY ITEM 4",
 		addresses=[0x9b3acd8,0x9b3d4f5,0x9b3fd11,0x9b4253d,0x9b44d53,0x9b47d67,0x9b4ad73,0x9b4ddf7,0x9b50cd0,0x9b534ed,0x9b55d09,0x9b58535,0x9b5ad4b,0x9b5d55f,0x9b6056b,0x9b635ef],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("MUSHROOM BURGER EATERY"),
+		possible_values=[MushroomEateryShopList[3]],
 		is_little_endian=False, ),
 	Attribute(
 		name="MUSHROOM BURGER EATERY ITEM 5",
 		addresses=[0x9b3acdc,0x9b3d4f9,0x9b3fd15,0x9b42541,0x9b44d57,0x9b47d6b,0x9b4ad77,0x9b4ddfb,0x9b50cd4,0x9b534f1,0x9b55d0d,0x9b58539,0x9b5ad4f,0x9b5d563,0x9b6056f,0x9b635f3],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("MUSHROOM BURGER EATERY"),
+		possible_values=[MushroomEateryShopList[4]],
 		is_little_endian=False, ),
 	Attribute(
 		name="MUSHROOM BURGER EATERY ITEM 6",
 		addresses=[0x9b3ace0,0x9b3d4fd,0x9b3fd19,0x9b42545,0x9b44d5b,0x9b47d6f,0x9b4ad7b,0x9b4ddff,0x9b50cd8,0x9b534f5,0x9b55d11,0x9b5853d,0x9b5ad53,0x9b5d567,0x9b60573,0x9b635f7],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("MUSHROOM BURGER EATERY"),
+		possible_values=[MushroomEateryShopList[5]],
 		is_little_endian=False, ),
 	Attribute(
 		name="MUSHROOM BURGER EATERY ITEM 7",
 		addresses=[0x9b3ace4,0x9b3d501,0x9b3fd1d,0x9b42549,0x9b44d5f,0x9b47d73,0x9b4ad7f,0x9b4de03,0x9b50cdc,0x9b534f9,0x9b55d15,0x9b58541,0x9b5ad57,0x9b5d56b,0x9b60577,0x9b635fb],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("MUSHROOM BURGER EATERY"),
+		possible_values=[MushroomEateryShopList[6]],
 		is_little_endian=False, ),
 	Attribute(
 		name="MUSHROOM BURGER EATERY ITEM 8",
 		addresses=[0x9b3ace8,0x9b3d505,0x9b3fd21,0x9b4254d,0x9b44d63,0x9b47d77,0x9b4ad83,0x9b4de07,0x9b50ce0,0x9b534fd,0x9b55d19,0x9b58545,0x9b5ad5b,0x9b5d56f,0x9b6057b,0x9b635ff],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("MUSHROOM BURGER EATERY"),
+		possible_values=[MushroomEateryShopList[7]],
 		is_little_endian=False, ),
 	Attribute(
 		name="MUSHROOM BURGER EATERY ITEM 9",
 		addresses=[0x9b3acec,0x9b3d509,0x9b3fd25,0x9b42551,0x9b44d67,0x9b47d7b,0x9b4ad87,0x9b4de0b,0x9b50ce4,0x9b53501,0x9b55d1d,0x9b58549,0x9b5ad5f,0x9b5d573,0x9b6057f,0x9b63603],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("MUSHROOM BURGER EATERY"),
+		possible_values=[MushroomEateryShopList[8]],
 		is_little_endian=False, ),
 	Attribute(
 		name="MUSHROOM BURGER EATERY ITEM 10",
 		addresses=[0x9b3acf0,0x9b3d50d,0x9b3fd29,0x9b42555,0x9b44d6b,0x9b47d7f,0x9b4ad8b,0x9b4de0f,0x9b50ce8,0x9b53505,0x9b55d21,0x9b5854d,0x9b5ad63,0x9b5d577,0x9b60583,0x9b63607],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("MUSHROOM BURGER EATERY"),
+		possible_values=[MushroomEateryShopList[9]],
 		is_little_endian=False, ),
 	Attribute(
 		name="MUSHROOM BURGER EATERY ITEM 11",
 		addresses=[0x9b3acf4,0x9b3d511,0x9b3fd2d,0x9b42559,0x9b44d6f,0x9b47d83,0x9b4ad8f,0x9b4de13,0x9b50cec,0x9b53509,0x9b55d25,0x9b58551,0x9b5ad67,0x9b5d57b,0x9b60587,0x9b6360b],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("MUSHROOM BURGER EATERY"),
+		possible_values=[MushroomEateryShopList[10]],
 		is_little_endian=False, ),
 	Attribute(
 		name="MUSHROOM BURGER EATERY ITEM 12",
 		addresses=[0x9b3acf8,0x9b3d515,0x9b3fd31,0x9b4255d,0x9b44d73,0x9b47d87,0x9b4ad93,0x9b4de17,0x9b50cf0,0x9b5350d,0x9b55d29,0x9b58555,0x9b5ad6b,0x9b5d57f,0x9b6058b,0x9b6360f],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("MUSHROOM BURGER EATERY"),
+		possible_values=[MushroomEateryShopList[11]],
 		is_little_endian=False, ),
 	Attribute(
 		name="MUSHROOM BURGER EATERY ITEM 13",
 		addresses=[0x9b3acfc,0x9b3d519,0x9b3fd35,0x9b42561,0x9b44d77,0x9b47d8b,0x9b4ad97,0x9b4de1b,0x9b50cf4,0x9b53511,0x9b55d2d,0x9b58559,0x9b5ad6f,0x9b5d583,0x9b6058f,0x9b63613],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("MUSHROOM BURGER EATERY"),
+		possible_values=[MushroomEateryShopList[12]],
 		is_little_endian=False, ),
 	Attribute(
 		name="MUSHROOM BURGER EATERY ITEM 14",
 		addresses=[0x9b3ad00,0x9b3d51d,0x9b3fd39,0x9b42565,0x9b44d7b,0x9b47d8f,0x9b4ad9b,0x9b4de1f,0x9b50cf8,0x9b53515,0x9b55d31,0x9b5855d,0x9b5ad73,0x9b5d587,0x9b60593,0x9b63617],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("MUSHROOM BURGER EATERY"),
+		possible_values=[MushroomEateryShopList[13]],
 		is_little_endian=False, ),
 
 # 27 STARLIGHT WEAPONS SHOP
@@ -17017,31 +16962,31 @@ Attributes = [
 		name="G PARTS ITEM 1",
 		addresses=[0x9b3ad43,0x9b3d560,0x9b3fd7c,0x9b425ab,0x9b44dc4,0x9b47ddc,0x9b4ade8,0x9b4de6c,0x9b50d3b,0x9b53558,0x9b55d74,0x9b585a3,0x9b5adbc,0x9b5d5d4,0x9b605e0,0x9b63664],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("G PARTS"),
+		possible_values=[GPartsShopList[0]],
 		is_little_endian=False, ),
 	Attribute(
 		name="G PARTS ITEM 2",
 		addresses=[0x9b3ad47,0x9b3d564,0x9b3fd80,0x9b425af,0x9b44dc8,0x9b47de0,0x9b4adec,0x9b4de70,0x9b50d3f,0x9b5355c,0x9b55d78,0x9b585a7,0x9b5adc0,0x9b5d5d8,0x9b605e4,0x9b63668],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("G PARTS"),
+		possible_values=[GPartsShopList[1]],
 		is_little_endian=False, ),
 	Attribute(
 		name="G PARTS ITEM 3",
 		addresses=[0x9b3ad4b,0x9b3d568,0x9b3fd84,0x9b425b3,0x9b44dcc,0x9b47de4,0x9b4adf0,0x9b4de74,0x9b50d43,0x9b53560,0x9b55d7c,0x9b585ab,0x9b5adc4,0x9b5d5dc,0x9b605e8,0x9b6366c],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("G PARTS"),
+		possible_values=[GPartsShopList[2]],
 		is_little_endian=False, ),
 	Attribute(
 		name="G PARTS ITEM 4",
 		addresses=[0x9b3ad4f,0x9b3d56c,0x9b3fd88,0x9b425b7,0x9b44dd0,0x9b47de8,0x9b4adf4,0x9b4de78,0x9b50d47,0x9b53564,0x9b55d80,0x9b585af,0x9b5adc8,0x9b5d5e0,0x9b605ec,0x9b63670],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("G PARTS"),
+		possible_values=[GPartsShopList[3]],
 		is_little_endian=False, ),
 	Attribute(
 		name="G PARTS ITEM 5",
 		addresses=[0x9b3ad53,0x9b3d570,0x9b3fd8c,0x9b425bb,0x9b44dd4,0x9b47dec,0x9b4adf8,0x9b4de7c,0x9b50d4b,0x9b53568,0x9b55d84,0x9b585b3,0x9b5adcc,0x9b5d5e4,0x9b605f0,0x9b63674],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("G PARTS"),
+		possible_values=[GPartsShopList[4]],
 		is_little_endian=False, ),
 
 # 29 G TOOLS SHOP
@@ -17050,31 +16995,31 @@ Attributes = [
 		name="G TOOLS ITEM 1",
 		addresses=[0x9b3ad6c,0x9b3d589,0x9b3fda5,0x9b425d4,0x9b44ded,0x9b47e05,0x9b4ae11,0x9b4de95,0x9b50d64,0x9b53581,0x9b55d9d,0x9b585cc,0x9b5ade5,0x9b5d5fd,0x9b60609,0x9b6368d],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("G TOOLS"),
+		possible_values=[GToolsShopList[0]],
 		is_little_endian=False, ),
 	Attribute(
 		name="G TOOLS ITEM 2",
 		addresses=[0x9b3ad70,0x9b3d58d,0x9b3fda9,0x9b425d8,0x9b44df1,0x9b47e09,0x9b4ae15,0x9b4de99,0x9b50d68,0x9b53585,0x9b55da1,0x9b585d0,0x9b5ade9,0x9b5d601,0x9b6060d,0x9b63691],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("G TOOLS"),
+		possible_values=[GToolsShopList[1]],
 		is_little_endian=False, ),
 	Attribute(
 		name="G TOOLS ITEM 3",
 		addresses=[0x9b3ad74,0x9b3d591,0x9b3fdad,0x9b425dc,0x9b44df5,0x9b47e0d,0x9b4ae19,0x9b4de9d,0x9b50d6c,0x9b53589,0x9b55da5,0x9b585d4,0x9b5aded,0x9b5d605,0x9b60611,0x9b63695],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("G TOOLS"),
+		possible_values=[GToolsShopList[2]],
 		is_little_endian=False, ),
 	Attribute(
 		name="G TOOLS ITEM 4",
 		addresses=[0x9b3ad78,0x9b3d595,0x9b3fdb1,0x9b425e0,0x9b44df9,0x9b47e11,0x9b4ae1d,0x9b4dea1,0x9b50d70,0x9b5358d,0x9b55da9,0x9b585d8,0x9b5adf1,0x9b5d609,0x9b60615,0x9b63699],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("G TOOLS"),
+		possible_values=[GToolsShopList[3]],
 		is_little_endian=False, ),
 	Attribute(
 		name="G TOOLS ITEM 5",
 		addresses=[0x9b3ad7c,0x9b3d599,0x9b3fdb5,0x9b425e4,0x9b44dfd,0x9b47e15,0x9b4ae21,0x9b4dea5,0x9b50d74,0x9b53591,0x9b55dad,0x9b585dc,0x9b5adf5,0x9b5d60d,0x9b60619,0x9b6369d],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("G TOOLS"),
+		possible_values=[GToolsShopList[4]],
 		is_little_endian=False, ),
 
 # 35 POLLYS SHOP(AFTER SHE JOINS)
@@ -17083,32 +17028,31 @@ Attributes = [
 		name="POLLY POST RECRUIT ITEM 1",
 		addresses=[0x9B3AEFB,0x9B3D718,0x9B3FF38,0x9B41FF0,0x9B4276B,0x9B44F95,0x9B47FB6,0x9B4AFC2,0x9B4E09E,0x9B50ECB,0x9B536E8,0x9B55F04,0x9B58733,0x9B5AF5D,0x9B5D77A,0x9B60786,0x9B6380A],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("POLLY POST RECRUIT"),
+		possible_values=[PollyPostShopList[0]],
 		is_little_endian=False, ),
 	Attribute(
 		name="POLLY POST RECRUIT ITEM 2",
 		addresses=[0x9B3AEFF, 0x9B3D71C, 0x9B3FF3C,0x9B41FF4,0x9B4276F,0x9B44F99,0x9B47FBA,0x9B4AFC6,0x9B4E0A2,0x9B50ECF,0x9B536EC,0x9B55F08,0x9B58737,0x9B5AF61,0x9B5D77E,0x9B6078A,0x9B6380E],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("POLLY POST RECRUIT"),
+		possible_values=[PollyPostShopList[1]],
 		is_little_endian=False, ),
 	Attribute(
 		name="POLLY POST RECRUIT ITEM 3",
-		addresses=[0x9B3AF03, 0x9B3D720, 0x9B3FF40, 0x9B41FF8, 0x9B42773, 0x9B44F9D, 0x9B47FBE, 0x9B4AFCA, 0x9B4E0A6,
-				   0x9B50ED3, 0x9B536F0, 0x9B55F0C, 0x9B5873B, 0x9B5AF65, 0x9B5D77C, 0x9B60794, 0x9B6381E],
+		addresses=[0x9B3AF03, 0x9B3D720, 0x9B3FF40, 0x9B41FF8, 0x9B42773, 0x9B44F9D, 0x9B47FBE, 0x9B4AFCA, 0x9B4E0A6,0x9B50ED3, 0x9B536F0, 0x9B55F0C, 0x9B5873B, 0x9B5AF65, 0x9B5D782, 0x9B6078E, 0x9B6381E],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("POLLY POST RECRUIT"),
+		possible_values=[PollyPostShopList[2]],
 		is_little_endian=False, ),
 	Attribute(
 		name="POLLY POST RECRUIT ITEM 4",
 		addresses=[0X9B3AF07,0X9B3D724,0X9B3FF44,0x9B41FFC,0x9B42777,0x9B44FA1,0x9B47FC2,0x9B4AFCE,0x9B4E0AA,0x9B50ED7,0x9B536F4,0x9B55F10,0x9B5873F,0x9B5AF69,0x9B5D786,0x9B60792,0x9B63816],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("POLLY POST RECRUIT"),
+		possible_values=[PollyPostShopList[3]],
 		is_little_endian=False, ),
 	Attribute(
 		name="POLLY POST RECRUIT ITEM 5",
 		addresses=[0x9B3AF0B,0x9B3D728,0x9B3FF48,0x9B42000,0x9B4277B,0x9B44FA5,0x9B47FC6,0x9B47FC6,0x9B4E0AE,0x9B50EDB,0x9B536F8,0x9B55F14,0x9B58743,0x9B5AF6D,0x9B5D78A,0x9B60796,0x9B6381A],
 		number_of_bytes=3,
-		possible_values=ChooseShopItems("POLLY POST RECRUIT"),
+		possible_values=[PollyPostShopList[4]],
 		is_little_endian=False, ),
 
 # 30 G WEAPONS SHOP
