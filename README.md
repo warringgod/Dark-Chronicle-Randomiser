@@ -23,7 +23,12 @@ Things that are Rando'd (All are Optional):
 * All Dungeon Monsters's stats ( HP, ABS, GILDA, ATK, DEF, DROPS)
 * All Dungeon Chests ( For balance, it's not truly random, you can't get dark chronicle weapon in the first dungeon for example, its usually about within 2 chapters items-ish)
 * All Shops ( Is truly random, balanced around price, may make a balanced mode for this, Cedrics shop is excluded as it uses EXP for price)
-* All Weapons have Max Stat gains of 999 (Yes even the spheda clubs, although some only have 999 atk and durability due to space given to the value in the rom)
+* All Weapons have Max Stat gains of 999 (Yes even the spheda clubs, although some only have 99 atk and durability due to space given to the value in the rom)
+
+
+# due to the way ive coded it without foresight, if you want to remove shop randomisation, put /* # on the line before the line that has "# START OF SHOPS"
+# and */ on the line before "#END OF SHOPS"
+# same with the lines # START DUNGEON CHEST DROPS
 
 Changes I'd like to make, if i could figure out how to do them (someone please help me)
 * Rando follower abilities/ability points

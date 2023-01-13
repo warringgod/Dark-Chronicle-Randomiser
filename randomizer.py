@@ -45,6 +45,8 @@ Max_ATK_Range = 150
 Change_DEF = True
 Min_DEF_Range = 80
 Max_DEF_Range = 100
+
+Change_Shop_Items = True
 ##CHANGE ME#
 
 #Constants
@@ -68,6 +70,7 @@ tier6weaponsmonica = [55, 59, 63, 72, 77, 80, 84, 87, 96, 99, 105, 107]
 tier7weaponsmonica = [57, 60, 78, 79, 81, 83, 88, 89, 101, 102, 108, 109]
 
 tierweapons = tier1weaponsmax + tier2weaponsmax + tier3weaponsmax + tier4weaponsmax + tier5weaponsmax + tier6weaponsmax + tier7weaponsmax + tier1weaponsmonica + tier2weaponsmonica + tier3weaponsmonica + tier4weaponsmonica + tier5weaponsmonica + tier6weaponsmonica + tier7weaponsmonica
+tierweaponsgroup1 = tier1weaponsmax + tier2weaponsmax + tier3weaponsmax + tier4weaponsmax + tier1weaponsmonica + tier2weaponsmonica + tier3weaponsmonica + tier4weaponsmonica
 
 #CLOTHES
 tierclothes = [111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131,
@@ -453,23 +456,37 @@ def concat5(a,b,c,d,e):
 def ChooseShopItem(Shop):
 	item_number = 0
 	x = random.randint(0, 100)
-
-	if 0 <= x <= 10:
+    
+	if 0 <= x <= 24:
+		item_number = random.choice(tier1drops)
+	elif 25 <= x <= 29:
+		item_number = random.choice(tierweaponsgroup1)
+	elif 30 <= x <= 34:
 		item_number = random.choice(tierattachments)
-	elif 10 <= x <= 15:
-		item_number = random.choice(tierfood)
-	elif 16 <= x <= 29:
-		item_number = random.choice(tier1weaponsmax)
-	elif 30 <= x <= 40:
-		item_number = random.choice(tier2weaponsmax)
-	elif 41 <= x <= 50:
-		item_number = random.choice(tier2weaponsmax)
-	elif 51 <= x <= 70:
-		item_number = random.choice(tier3weaponsmax)
-	elif 71 <= x <= 90:
-		item_number = random.choice(tier5weaponsmax)
-	elif 91 <= x <= 100:
-		item_number = random.choice(tier4weaponsmax)
+	elif 35 <= x <= 36:
+		item_number = random.choice(tierfish)
+	elif 37 <= x <= 39:
+		item_number = random.choice(tiergems)
+	elif 40 <= x <= 59:
+		item_number = random.choice(tier2drops)
+	elif 60 <= x <= 64:
+		item_number = random.choice(tierweaponsgroup1)        
+	elif 65 <= x <= 69:
+		item_number = random.choice(tiercoins)
+	elif 70 <= x <= 74:
+		item_number = random.choice(tierclothes)
+	elif 75 <= x <= 80:
+		item_number = random.choice(tier3drops)
+	elif 81 <= x <= 82:
+		item_number = random.choice(tierraregems)
+	elif 83 <= x <= 85:
+		item_number = random.choice(tier1chests)
+	elif 86 <= x <= 88:
+		item_number = random.choice(tier2chests)
+	elif 89 <= x <= 92:
+		item_number = random.choice(tier3chests)
+	elif 93 <= x <= 100:
+		item_number = random.choice(tier4chests)
 	return item_number
 
 def GenerateShopList(MaxNumberof3ByteItems):
@@ -17078,6 +17095,8 @@ Attributes = [
 # 30 G WEAPONS SHOP
 # G WEAPONS ITEM POOL [6,7,13,32,70,71,76,95,294,298,352]
 
+#END OF SHOPS
+
 	# START OF WEAPON STAT STUFF
 
 	Attribute(
@@ -17099,7 +17118,7 @@ Attributes = [
 		possible_values=[101105223608376224214622900865844532370874575435817963151290961177349798201],
 		is_little_endian=False, ),
 
-# DUNGEON CHEST DROPS
+# START DUNGEON CHEST DROPS
 	# SEWERS
 	Attribute(
 		name="SEWER CHEST 1",
@@ -21602,6 +21621,7 @@ Attributes = [
 		possible_values=ChooseZelmiteChestDrops(),
 		is_little_endian=False, ),
 
+# END DUNGEON CHEST DROPS
 # changing item prices
 	Attribute(
 		name="Battle Wrench Price",
