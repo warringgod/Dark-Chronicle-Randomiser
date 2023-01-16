@@ -6,6 +6,7 @@
 #How to Use
 
 1. Run the .exe and click on "Load File" button, finding your DC2 rom ( I know this works with USA rom https://cdromance.com/ps2-iso/dark-cloud-2-usa/)
+   Version 2, if you use Version 1 some stuff may not work
    Your Window may freeze, and take a minute or more to actually randomise, as there is a lot of stuff to change in the 4GB rom, but it'll work.
    
 * Because I'm unable to create a UI properly, If you want to change the Min MAX value of the enemies for a hard/easy mode playthrough, you can edit directly the randomizer.py file, the Seed Functionality probably doesn't work either, sorry.
